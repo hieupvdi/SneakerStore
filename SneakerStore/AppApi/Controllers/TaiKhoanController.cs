@@ -22,5 +22,13 @@ namespace AppApi.Controllers
             if (!result.IsCompletedSuccessfully) return Ok(result.Result);
             return BadRequest(result.Result);
         }
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn(SignInModel signInModel)
+        {
+
+            var result = _taiKhoanRepository.SignInAsync(signInModel);
+            if (!result.IsCompletedSuccessfully) return Ok(result.Result);
+            return BadRequest(result.Result);
+        }
     }
 }
