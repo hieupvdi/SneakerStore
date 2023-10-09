@@ -36,9 +36,17 @@ namespace AppApi.Repositories
             return await _shopDbContext.SaveChangesAsync();
         }
 
-        public Task<Guid> Edit(KichCo kc)
+        public async Task<Guid> Edit(KichCo kc)
         {
-            throw new NotImplementedException();
+            var kichco = await _shopDbContext.KichCos.FindAsync(kc.ID);
+            if (kichco == null)
+            {
+                throw new($"Không thể tim thấy Kichco với Id:  {kc.ID}");
+            }
+
+            kichco.Size = kc.Size;
+            await _shopDbContext.SaveChangesAsync();
+            return kichco.ID;
         }
 
         public async Task<List<KichCo>> GetAll()
