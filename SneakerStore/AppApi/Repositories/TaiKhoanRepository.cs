@@ -2,20 +2,25 @@
 using AppApi.SneakerDbContext;
 using AppData.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace AppApi.Repositories
 {
     public class TaiKhoanRepository : ITaiKhoanRepository
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private SNDbcontext _dbcontext;
-     
 
-        public TaiKhoanRepository(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole<Guid>> roleManager,SNDbcontext dbcontext)                                 
+
+        public TaiKhoanRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole<Guid>> roleManager, SNDbcontext dbcontext)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _roleManager = roleManager;
             _dbcontext = dbcontext;
         }
@@ -60,14 +65,51 @@ namespace AppApi.Repositories
             return result;
         }
 
-        public Task<string> SignInAsync(SignInModel model)
+        public async Task<string> SignInAsync(SignInModel model)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByNameAsync(model.UserName);
+
+            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            {
+                // Đăng nhập thành công
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                var token = await GenerateToken(user);
+                return token;
+            }
+
+            // Đăng nhập thất bại
+            return null; // Hoặc bạn có thể trả về một giá trị khác để chỉ ra đăng nhập thất bại
         }
 
-        public Task<string> GenerateToken(ApplicationUser model)
+        public async Task<string> GenerateToken(ApplicationUser model)
         {
-            throw new NotImplementedException();
+            // Định nghĩa các claims cho token
+            var claims = new[]
+            {
+              new Claim(ClaimTypes.NameIdentifier, "1"),
+                new Claim(ClaimTypes.Name, "exampleuser"),
+                new Claim(ClaimTypes.Email, "example@example.com"),
+                new Claim(ClaimTypes.Role, "Admin"),
+                // Các claims khác có thể thêm vào ở đây
+             };
+
+            // Định nghĩa key 
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JwtSettings:Key"));
+            // Tạo credentials bằng cách sử dụng key và mã hóa HmacSha256
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expiry = DateTime.UtcNow.AddHours(60);
+
+            // Tạo token JWT
+            var token = new JwtSecurityToken(
+                issuer: "JwtSettings:Issuer",
+                audience: "JwtSettings:Audience",
+                claims: claims,
+                expires: expiry,
+                signingCredentials: creds
+            );
+
+            // Trả về token dưới dạng chuỗi
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public async Task<List<ApplicationUser>> GetAllAsync()

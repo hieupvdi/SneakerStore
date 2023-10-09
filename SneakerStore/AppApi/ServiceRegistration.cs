@@ -9,7 +9,8 @@ namespace AppApi
         public static void Configure(IServiceCollection services)
         {
             services.AddScoped<ITaiKhoanRepository, TaiKhoanRepository>();
-            
+            services.AddScoped<IMauSacRepository, MauSacRepository>();
+
         }
     }
 }
