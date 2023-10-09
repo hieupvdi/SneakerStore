@@ -10,7 +10,7 @@ namespace AppApi
         {
             services.AddScoped<ITaiKhoanRepository, TaiKhoanRepository>();
             services.AddScoped<IMauSacRepository, MauSacRepository>();
-
+            services.AddScoped<IKichCoRepository, KichCoRepository>();
         }
     }
 }
