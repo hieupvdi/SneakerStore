@@ -35,7 +35,7 @@ namespace AppApi.Repositories
         {
             var mausac = await _shopDbContext.MauSacs.FindAsync(ms.ID);
             if (mausac == null) {
-                throw new ($"Không thể tim thấy chức vụ với Id:  {ms.ID}");
+                throw new ($"Không thể tim thấy mauSac với Id:  {ms.ID}");
             }
 
             mausac.TenMauSac = ms.TenMauSac;           
@@ -61,7 +61,7 @@ namespace AppApi.Repositories
             var mauSac = await _shopDbContext.MauSacs.FindAsync(id);
             if (mauSac == null)
             {
-                throw new ($"Không thể tìm thấy 1 Chuc Vu : {id}");
+                throw new ($"Không thể tìm thấy 1 mauSac : {id}");
             }
             _shopDbContext.MauSacs.Remove(mauSac);
             return await _shopDbContext.SaveChangesAsync();
