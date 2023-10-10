@@ -12,6 +12,9 @@ namespace AppApi
             services.AddScoped<IMauSacRepository, MauSacRepository>();
             services.AddScoped<IKichCoRepository, KichCoRepository>();
             services.AddScoped<ILoaiSanPhamRepository, LoaiSanPhamRepository>();
+            services.AddScoped<IAnhSanPhamRepository, AnhSanPhamRepository>();
+            services.AddScoped<IGiamGiaRepository, GiamGiaRepository>();
+
         }
     }
 }
