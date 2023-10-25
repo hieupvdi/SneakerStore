@@ -10,5 +10,6 @@ namespace AppData.Models
     {
         public Guid ID { get; set; }
         public string URlAnh { get; set; }  
+
     }
 }

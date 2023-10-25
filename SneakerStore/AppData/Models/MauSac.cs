@@ -9,6 +9,7 @@ namespace AppData.Models
     public class MauSac
     {
         public Guid ID { get; set; }
-        public string TenMauSac { get; set; }   
+        public string TenMauSac { get; set; }
+       
     }
 }
