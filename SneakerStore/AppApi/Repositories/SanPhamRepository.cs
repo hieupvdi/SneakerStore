@@ -93,12 +93,12 @@ namespace AppApi.Repositories
                     SoLuongTon = x.a.SoLuongTon,
                     NhaSanXuat = x.a.NhaSanXuat,
                     TrangThai = x.a.TrangThai,
-                    IDKichCo = x.b.IDKichCo,
-                    IDMauSac = x.c.IDMauSac,
-                    IDLoaiSanPham = x.d.IDLoaiSanPham,
-                    IDAnhSanPham = x.e.IDAnhSanPham,
-                    IDGiamGia = x.g.IDGiamGia,
-                 }
+                    IDKichCo = x.b.ID,
+                    IDMauSac = x.c.ID,
+                    IDLoaiSanPham = x.d.ID,
+                    IDAnhSanPham = x.e.ID,
+                    IDGiamGia = x.g.ID,
+                }
                  ).ToListAsync();
                  return data;
         
