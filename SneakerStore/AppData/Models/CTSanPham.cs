@@ -22,16 +22,16 @@ namespace AppData.Models
         public Guid IdLoaiSanPham { get; set; }
         public Guid IdDeGiay { get; set; }
         public Guid IdGiamGia { get; set; }
-        public virtual SanPham? SanPham { get; set; }
-        public virtual KichCo? KichCo { get; set; }
-        public virtual LoaiSanPham? LoaiSanPham { get; set; }
-        public virtual MauSac? MauSac { get; set; }
-        public virtual DeGiay? DeGiay { get; set; }
-        public virtual GiamGia? GiamGia { get; set; }
+        public virtual SanPham? SanPhams { get; set; }
+        public virtual KichCo? KichCos { get; set; }
+        public virtual LoaiSanPham? LoaiSanPhams { get; set; }
+        public virtual MauSac? MauSacs { get; set; }
+        public virtual DeGiay? DeGiays { get; set; }
+        public virtual GiamGia? GiamGias { get; set; }
 
-        public virtual ICollection<AnhSanPham> AnhSanPham { get; set; }
-        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiet { get; set; }
-        public ICollection<GioHangChiTiet> GioHangChiTiet { get; set; }
+        public virtual ICollection<AnhSanPham> AnhSanPhams { get; set; }
+        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
+        public ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }
 
     }
 }

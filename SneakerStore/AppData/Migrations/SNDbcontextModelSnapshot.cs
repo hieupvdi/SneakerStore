@@ -84,7 +84,7 @@ namespace AppData.Migrations
                     b.Property<decimal>("Giaban")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("GiamGiaId1")
+                    b.Property<Guid?>("GiamGiaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Gianhap")
@@ -138,7 +138,7 @@ namespace AppData.Migrations
 
                     b.HasIndex("DeGiayId");
 
-                    b.HasIndex("GiamGiaId1");
+                    b.HasIndex("GiamGiaId");
 
                     b.HasIndex("IdDeGiay");
 
@@ -324,7 +324,7 @@ namespace AppData.Migrations
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("VoucherId1")
+                    b.Property<Guid?>("VoucherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -335,7 +335,7 @@ namespace AppData.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("VoucherId1");
+                    b.HasIndex("VoucherId");
 
                     b.ToTable("HoaDons");
                 });
@@ -352,7 +352,7 @@ namespace AppData.Migrations
                     b.Property<decimal>("DonGia")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("HoaDonId1")
+                    b.Property<Guid?>("HoaDonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdCTSP")
@@ -368,7 +368,7 @@ namespace AppData.Migrations
 
                     b.HasIndex("CTSanPhamId");
 
-                    b.HasIndex("HoaDonId1");
+                    b.HasIndex("HoaDonId");
 
                     b.HasIndex("IdCTSP");
 
@@ -460,7 +460,7 @@ namespace AppData.Migrations
                     b.Property<Guid>("IdPTTT")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PhuongThucThanhToanId1")
+                    b.Property<Guid?>("PhuongThucThanhToanId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("SoTien")
@@ -475,7 +475,7 @@ namespace AppData.Migrations
 
                     b.HasIndex("IdPTTT");
 
-                    b.HasIndex("PhuongThucThanhToanId1");
+                    b.HasIndex("PhuongThucThanhToanId");
 
                     b.ToTable("PhuongThucThanhToanCTs");
                 });
@@ -504,7 +504,7 @@ namespace AppData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ChucVuId1")
+                    b.Property<Guid?>("ChucVuId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DiaChi")
@@ -549,7 +549,7 @@ namespace AppData.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChucVuId1");
+                    b.HasIndex("ChucVuId");
 
                     b.HasIndex("IdCV");
 
@@ -596,7 +596,7 @@ namespace AppData.Migrations
             modelBuilder.Entity("AppData.Models.AnhSanPham", b =>
                 {
                     b.HasOne("AppData.Models.CTSanPham", null)
-                        .WithMany("AnhSanPham")
+                        .WithMany("AnhSanPhams")
                         .HasForeignKey("CTSanPhamId");
 
                     b.HasOne("AppData.Models.CTSanPham", "CTSanPhams")
@@ -616,197 +616,197 @@ namespace AppData.Migrations
 
                     b.HasOne("AppData.Models.GiamGia", null)
                         .WithMany("CTSanPhams")
-                        .HasForeignKey("GiamGiaId1");
+                        .HasForeignKey("GiamGiaId");
 
-                    b.HasOne("AppData.Models.DeGiay", "DeGiay")
+                    b.HasOne("AppData.Models.DeGiay", "DeGiays")
                         .WithMany()
                         .HasForeignKey("IdDeGiay")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.GiamGia", "GiamGia")
+                    b.HasOne("AppData.Models.GiamGia", "GiamGias")
                         .WithMany()
                         .HasForeignKey("IdGiamGia")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.KichCo", "KichCo")
+                    b.HasOne("AppData.Models.KichCo", "KichCos")
                         .WithMany()
                         .HasForeignKey("IdKichCo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.LoaiSanPham", "LoaiSanPham")
+                    b.HasOne("AppData.Models.LoaiSanPham", "LoaiSanPhams")
                         .WithMany()
                         .HasForeignKey("IdLoaiSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.MauSac", "MauSac")
+                    b.HasOne("AppData.Models.MauSac", "MauSacs")
                         .WithMany()
                         .HasForeignKey("IdMauSac")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.SanPham", "SanPham")
+                    b.HasOne("AppData.Models.SanPham", "SanPhams")
                         .WithMany()
                         .HasForeignKey("IdSP")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AppData.Models.KichCo", null)
-                        .WithMany("CTSanPham")
+                        .WithMany("CTSanPhams")
                         .HasForeignKey("KichCoId");
 
                     b.HasOne("AppData.Models.LoaiSanPham", null)
-                        .WithMany("CTSanPham")
+                        .WithMany("CTSanPhams")
                         .HasForeignKey("LoaiSanPhamId");
 
                     b.HasOne("AppData.Models.MauSac", null)
-                        .WithMany("CTSanPham")
+                        .WithMany("CTSanPhams")
                         .HasForeignKey("MauSacId");
 
                     b.HasOne("AppData.Models.SanPham", null)
-                        .WithMany("CTSanPham")
+                        .WithMany("CTSanPhams")
                         .HasForeignKey("SanPhamId");
 
-                    b.Navigation("DeGiay");
+                    b.Navigation("DeGiays");
 
-                    b.Navigation("GiamGia");
+                    b.Navigation("GiamGias");
 
-                    b.Navigation("KichCo");
+                    b.Navigation("KichCos");
 
-                    b.Navigation("LoaiSanPham");
+                    b.Navigation("LoaiSanPhams");
 
-                    b.Navigation("MauSac");
+                    b.Navigation("MauSacs");
 
-                    b.Navigation("SanPham");
+                    b.Navigation("SanPhams");
                 });
 
             modelBuilder.Entity("AppData.Models.GioHang", b =>
                 {
-                    b.HasOne("AppData.Models.User", "User")
-                        .WithOne("GioHang")
+                    b.HasOne("AppData.Models.User", "Users")
+                        .WithOne("GioHangs")
                         .HasForeignKey("AppData.Models.GioHang", "IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("AppData.Models.GioHangChiTiet", b =>
                 {
                     b.HasOne("AppData.Models.CTSanPham", null)
-                        .WithMany("GioHangChiTiet")
+                        .WithMany("GioHangChiTiets")
                         .HasForeignKey("CTSanPhamId");
 
                     b.HasOne("AppData.Models.GioHang", null)
-                        .WithMany("GioHangChiTiet")
+                        .WithMany("GioHangChiTiets")
                         .HasForeignKey("GioHangIdUser");
 
-                    b.HasOne("AppData.Models.GioHang", "GioHang")
+                    b.HasOne("AppData.Models.GioHang", "GioHangs")
                         .WithMany()
                         .HasForeignKey("IDUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.CTSanPham", "CTSanPham")
+                    b.HasOne("AppData.Models.CTSanPham", "CTSanPhams")
                         .WithMany()
                         .HasForeignKey("IdCTSP")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
 
-                    b.Navigation("GioHang");
+                    b.Navigation("GioHangs");
                 });
 
             modelBuilder.Entity("AppData.Models.HoaDon", b =>
                 {
-                    b.HasOne("AppData.Models.User", "User")
+                    b.HasOne("AppData.Models.User", "Users")
                         .WithMany()
                         .HasForeignKey("IdUser");
 
-                    b.HasOne("AppData.Models.Voucher", "Voucher")
+                    b.HasOne("AppData.Models.Voucher", "Vouchers")
                         .WithMany()
                         .HasForeignKey("IdVoucher");
 
                     b.HasOne("AppData.Models.User", null)
-                        .WithMany("HoaDon")
+                        .WithMany("HoaDons")
                         .HasForeignKey("UserId");
 
                     b.HasOne("AppData.Models.Voucher", null)
-                        .WithMany("HoaDon")
-                        .HasForeignKey("VoucherId1");
+                        .WithMany("HoaDons")
+                        .HasForeignKey("VoucherId");
 
-                    b.Navigation("User");
+                    b.Navigation("Users");
 
-                    b.Navigation("Voucher");
+                    b.Navigation("Vouchers");
                 });
 
             modelBuilder.Entity("AppData.Models.HoaDonChiTiet", b =>
                 {
                     b.HasOne("AppData.Models.CTSanPham", null)
-                        .WithMany("HoaDonChiTiet")
+                        .WithMany("HoaDonChiTiets")
                         .HasForeignKey("CTSanPhamId");
 
                     b.HasOne("AppData.Models.HoaDon", null)
-                        .WithMany("HoaDonChiTiet")
-                        .HasForeignKey("HoaDonId1");
+                        .WithMany("HoaDonChiTiets")
+                        .HasForeignKey("HoaDonId");
 
-                    b.HasOne("AppData.Models.CTSanPham", "CTSanPham")
+                    b.HasOne("AppData.Models.CTSanPham", "CTSanPhams")
                         .WithMany()
                         .HasForeignKey("IdCTSP")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.HoaDon", "HoaDon")
+                    b.HasOne("AppData.Models.HoaDon", "HoaDons")
                         .WithMany()
                         .HasForeignKey("IdHD")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
 
-                    b.Navigation("HoaDon");
+                    b.Navigation("HoaDons");
                 });
 
             modelBuilder.Entity("AppData.Models.PhuongThucThanhToanCT", b =>
                 {
-                    b.HasOne("AppData.Models.HoaDon", "HoaDon")
+                    b.HasOne("AppData.Models.HoaDon", "HoaDons")
                         .WithMany()
                         .HasForeignKey("IdHD")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AppData.Models.PhuongThucThanhToan", "PhuongThucThanhToan")
+                    b.HasOne("AppData.Models.PhuongThucThanhToan", "PhuongThucThanhToans")
                         .WithMany()
                         .HasForeignKey("IdPTTT")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AppData.Models.PhuongThucThanhToan", null)
-                        .WithMany("PhuongThucThanhToanCT")
-                        .HasForeignKey("PhuongThucThanhToanId1");
+                        .WithMany("PhuongThucThanhToanCTs")
+                        .HasForeignKey("PhuongThucThanhToanId");
 
-                    b.Navigation("HoaDon");
+                    b.Navigation("HoaDons");
 
-                    b.Navigation("PhuongThucThanhToan");
+                    b.Navigation("PhuongThucThanhToans");
                 });
 
             modelBuilder.Entity("AppData.Models.User", b =>
                 {
                     b.HasOne("AppData.Models.ChucVu", null)
                         .WithMany("Users")
-                        .HasForeignKey("ChucVuId1");
+                        .HasForeignKey("ChucVuId");
 
-                    b.HasOne("AppData.Models.ChucVu", "ChucVu")
+                    b.HasOne("AppData.Models.ChucVu", "ChucVus")
                         .WithMany()
                         .HasForeignKey("IdCV")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ChucVu");
+                    b.Navigation("ChucVus");
                 });
 
             modelBuilder.Entity("AppData.Models.ChucVu", b =>
@@ -816,11 +816,11 @@ namespace AppData.Migrations
 
             modelBuilder.Entity("AppData.Models.CTSanPham", b =>
                 {
-                    b.Navigation("AnhSanPham");
+                    b.Navigation("AnhSanPhams");
 
-                    b.Navigation("GioHangChiTiet");
+                    b.Navigation("GioHangChiTiets");
 
-                    b.Navigation("HoaDonChiTiet");
+                    b.Navigation("HoaDonChiTiets");
                 });
 
             modelBuilder.Entity("AppData.Models.DeGiay", b =>
@@ -835,49 +835,49 @@ namespace AppData.Migrations
 
             modelBuilder.Entity("AppData.Models.GioHang", b =>
                 {
-                    b.Navigation("GioHangChiTiet");
+                    b.Navigation("GioHangChiTiets");
                 });
 
             modelBuilder.Entity("AppData.Models.HoaDon", b =>
                 {
-                    b.Navigation("HoaDonChiTiet");
+                    b.Navigation("HoaDonChiTiets");
                 });
 
             modelBuilder.Entity("AppData.Models.KichCo", b =>
                 {
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
                 });
 
             modelBuilder.Entity("AppData.Models.LoaiSanPham", b =>
                 {
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
                 });
 
             modelBuilder.Entity("AppData.Models.MauSac", b =>
                 {
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
                 });
 
             modelBuilder.Entity("AppData.Models.PhuongThucThanhToan", b =>
                 {
-                    b.Navigation("PhuongThucThanhToanCT");
+                    b.Navigation("PhuongThucThanhToanCTs");
                 });
 
             modelBuilder.Entity("AppData.Models.SanPham", b =>
                 {
-                    b.Navigation("CTSanPham");
+                    b.Navigation("CTSanPhams");
                 });
 
             modelBuilder.Entity("AppData.Models.User", b =>
                 {
-                    b.Navigation("GioHang");
+                    b.Navigation("GioHangs");
 
-                    b.Navigation("HoaDon");
+                    b.Navigation("HoaDons");
                 });
 
             modelBuilder.Entity("AppData.Models.Voucher", b =>
                 {
-                    b.Navigation("HoaDon");
+                    b.Navigation("HoaDons");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,12 +9,12 @@ namespace AppData.Configuration
         public void Configure(EntityTypeBuilder<CTSanPham> builder)
         {
             builder.HasKey(c => c.Id);
-            builder.HasOne(c => c.SanPham).WithMany().HasForeignKey(c => c.IdSP);
-            builder.HasOne(c => c.KichCo).WithMany().HasForeignKey(c => c.IdKichCo);
-            builder.HasOne(c => c.MauSac).WithMany().HasForeignKey(c => c.IdMauSac);
-            builder.HasOne(c => c.LoaiSanPham).WithMany().HasForeignKey(c => c.IdLoaiSanPham);
-            builder.HasOne(c => c.DeGiay).WithMany().HasForeignKey(c => c.IdDeGiay);
-            builder.HasOne(c => c.GiamGia).WithMany().HasForeignKey(c => c.IdGiamGia);
+            builder.HasOne(c => c.SanPhams).WithMany().HasForeignKey(c => c.IdSP);
+            builder.HasOne(c => c.KichCos).WithMany().HasForeignKey(c => c.IdKichCo);
+            builder.HasOne(c => c.MauSacs).WithMany().HasForeignKey(c => c.IdMauSac);
+            builder.HasOne(c => c.LoaiSanPhams).WithMany().HasForeignKey(c => c.IdLoaiSanPham);
+            builder.HasOne(c => c.DeGiays).WithMany().HasForeignKey(c => c.IdDeGiay);
+            builder.HasOne(c => c.GiamGias).WithMany().HasForeignKey(c => c.IdGiamGia);
            
         }
     }

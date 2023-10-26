@@ -17,6 +17,6 @@ namespace AppData.Models
         public int SoLuong { get; set; }
         public string MoTa { get; set; }
         public int TrangThai { get; set; }
-        public virtual ICollection<HoaDon> HoaDon { get; set; }
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

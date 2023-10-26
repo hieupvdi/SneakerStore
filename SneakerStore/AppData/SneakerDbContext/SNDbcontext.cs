@@ -56,8 +56,8 @@ namespace AppData.SneakerDbContext
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.Entity<User>()
-                .HasOne(a => a.GioHang)
-                .WithOne(b => b.User)
+                .HasOne(a => a.GioHangs)
+                .WithOne(b => b.Users)
                 .HasForeignKey<GioHang>(b => b.IdUser);
             //modelBuilder.Seed();
         }

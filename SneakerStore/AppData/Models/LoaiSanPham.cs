@@ -11,6 +11,6 @@ namespace AppData.Models
         public Guid Id { get; set; }
         public string TenLoaiSanPham { get; set; }
         public int TrangThai { get; set; }
-        public virtual ICollection<CTSanPham> CTSanPham { get; set; }
+        public virtual ICollection<CTSanPham> CTSanPhams { get; set; }
     }
 }
