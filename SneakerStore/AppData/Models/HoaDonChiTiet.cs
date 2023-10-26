@@ -13,8 +13,8 @@ namespace AppData.Models
         public Guid IdCTSP { get; set; }
         public int SoLuong { get; set; }    
         public decimal DonGia { get; set; }
-        public virtual HoaDon? HoaDons { get; set; }
-        public virtual CTSanPham? CTSanPhams { get; set; }
+        public virtual HoaDon? HoaDon { get; set; }
+        public virtual CTSanPham? CTSanPham { get; set; }
 
     }
 }

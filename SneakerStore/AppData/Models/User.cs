@@ -22,9 +22,9 @@ namespace AppData.Models
         public int SoDiem { get; set; }
 
         public int TrangThai { get; set; }
-        public virtual ChucVu ChucVus { get; set; }
+        public virtual ChucVu? ChucVu { get; set; }
 
-        public virtual GioHang? GioHangs { get; set; }
+        public virtual GioHang? GioHang { get; set; }
         public virtual ICollection<HoaDon> HoaDons { get; set; }
 
     }

@@ -9,13 +9,15 @@ namespace AppData.Configuration
         public void Configure(EntityTypeBuilder<CTSanPham> builder)
         {
             builder.HasKey(c => c.Id);
-            builder.HasOne(c => c.SanPhams).WithMany().HasForeignKey(c => c.IdSP);
-            builder.HasOne(c => c.KichCos).WithMany().HasForeignKey(c => c.IdKichCo);
-            builder.HasOne(c => c.MauSacs).WithMany().HasForeignKey(c => c.IdMauSac);
-            builder.HasOne(c => c.LoaiSanPhams).WithMany().HasForeignKey(c => c.IdLoaiSanPham);
-            builder.HasOne(c => c.DeGiays).WithMany().HasForeignKey(c => c.IdDeGiay);
-            builder.HasOne(c => c.GiamGias).WithMany().HasForeignKey(c => c.IdGiamGia);
-           
+
+
+            builder.HasOne(p => p.SanPham).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdSP);
+            builder.HasOne(p => p.KichCo).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdKichCo);
+            builder.HasOne(p => p.MauSac).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdMauSac);
+            builder.HasOne(p => p.LoaiSanPham).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdLoaiSanPham);
+            builder.HasOne(p => p.DeGiay).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdDeGiay);     
+            builder.HasOne(p => p.GiamGia).WithMany(p => p.CTSanPhams).HasForeignKey(p => p.IdGiamGia);
+       
         }
     }
 }

@@ -15,8 +15,10 @@ namespace AppData.Configuration
         {
             builder.HasKey(c => c.Id);
 
-            builder.HasOne(c => c.HoaDons).WithMany().HasForeignKey(c => c.IdHD);
-            builder.HasOne(c => c.PhuongThucThanhToans).WithMany().HasForeignKey(c => c.IdPTTT);
+            builder.HasOne(p => p.HoaDon).WithMany(p => p.PhuongThucThanhToanCTs).HasForeignKey(p => p.IdHD);
+            builder.HasOne(p => p.PhuongThucThanhToan).WithMany(p => p.PhuongThucThanhToanCTs).HasForeignKey(p => p.IdPTTT);
+
+    
         }
     }
 }

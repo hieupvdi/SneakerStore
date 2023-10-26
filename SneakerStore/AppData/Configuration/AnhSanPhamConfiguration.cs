@@ -14,7 +14,7 @@ namespace AppData.Configuration
         public void Configure(EntityTypeBuilder<AnhSanPham> builder)
         {
             builder.HasKey(c => c.Id);
-            builder.HasOne(c => c.CTSanPhams).WithMany().HasForeignKey(c => c.IdCTSP);
+            builder.HasOne(p => p.CTSanPham).WithMany(p => p.AnhSanPhams).HasForeignKey(p => p.IdCTSP);
         }
     }
 }

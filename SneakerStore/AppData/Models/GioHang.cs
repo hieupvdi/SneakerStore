@@ -12,8 +12,8 @@ namespace AppData.Models
         public string MoTa { get; set; }
         public int TrangThai { get; set; }
 
-
+        public virtual User? User { get; set; }
         public virtual ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }
-        public virtual User? Users { get; set; }
+      
     }
 }

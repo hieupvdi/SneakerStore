@@ -35,9 +35,10 @@ namespace AppData.Models
 
 
 
-        public virtual User? Users { get; set; }
+        public virtual User? User { get; set; }
 
-        public virtual Voucher? Vouchers { get; set; }
+        public virtual Voucher? Voucher { get; set; }
+        public virtual ICollection<PhuongThucThanhToanCT> PhuongThucThanhToanCTs { get; set; }
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 
 

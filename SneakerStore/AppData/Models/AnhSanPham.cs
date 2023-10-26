@@ -12,6 +12,6 @@ namespace AppData.Models
         public Guid IdCTSP { get; set; }
         public string URlAnh { get; set; }
         public int TrangThai { get; set; }
-        public virtual CTSanPham? CTSanPhams { get; set; }
+        public virtual CTSanPham? CTSanPham { get; set; }
     }
 }

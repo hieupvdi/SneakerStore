@@ -13,8 +13,9 @@ namespace AppData.Configuration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(c => c.Id);
-            builder.HasOne(c => c.ChucVus).WithMany().HasForeignKey(c => c.IdCV);
+            builder.HasKey(c => c.Id);       
+            builder.HasOne(p => p.ChucVu).WithMany(p => p.Users).HasForeignKey(p => p.IdCV);
+            builder.HasAlternateKey(p => p.TenTaiKhoan); // Unique
         }
     }
 }
