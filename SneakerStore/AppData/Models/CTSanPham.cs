@@ -22,6 +22,8 @@ namespace AppData.Models
         public Guid IdLoaiSanPham { get; set; }
         public Guid IdDeGiay { get; set; }
         public Guid IdGiamGia { get; set; }
+
+
         public virtual SanPham? SanPham { get; set; }
         public virtual KichCo? KichCo { get; set; }
         public virtual LoaiSanPham? LoaiSanPham { get; set; }
