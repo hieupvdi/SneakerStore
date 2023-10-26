@@ -1,5 +1,5 @@
 ﻿using AppApi.IRepositories;
-using AppApi.SneakerDbContext;
+using AppData.SneakerDbContext;
 using AppData.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,13 +16,13 @@ namespace AppApi.Repositories
         {
             var kichco = new KichCo()
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Size = kc.Size,
 
             };
             await _shopDbContext.KichCos.AddAsync(kichco);
             await _shopDbContext.SaveChangesAsync();
-            return kichco.ID;
+            return kichco.Id;
         }
 
         public async Task<int> Delete(Guid id)
@@ -38,15 +38,15 @@ namespace AppApi.Repositories
 
         public async Task<Guid> Edit(KichCo kc)
         {
-            var kichco = await _shopDbContext.KichCos.FindAsync(kc.ID);
+            var kichco = await _shopDbContext.KichCos.FindAsync(kc.Id);
             if (kichco == null)
             {
-                throw new($"Không thể tim thấy Kichco với Id:  {kc.ID}");
+                throw new($"Không thể tim thấy Kichco với Id:  {kc.Id}");
             }
 
             kichco.Size = kc.Size;
             await _shopDbContext.SaveChangesAsync();
-            return kichco.ID;
+            return kichco.Id;
         }
 
         public async Task<List<KichCo>> GetAll()
@@ -54,7 +54,7 @@ namespace AppApi.Repositories
             return await _shopDbContext.KichCos
                    .Select(i => new KichCo()
                    {
-                       ID = i.ID,
+                       Id = i.Id,
                        Size = i.Size
 
                    }

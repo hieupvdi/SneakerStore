@@ -39,7 +39,7 @@ namespace AppApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            kc.ID = id;
+            kc.Id = id;
             var affectedResult = await _kichcoRepository.Edit(kc);
             if (affectedResult == Guid.Empty)
                 return BadRequest();

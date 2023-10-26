@@ -40,7 +40,7 @@ namespace AppApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            gg.ID = id;
+            gg.Id = id;
             var affectedResult = await _giamgiaRepository.Edit(gg);
             if (affectedResult == Guid.Empty)
                 return BadRequest();

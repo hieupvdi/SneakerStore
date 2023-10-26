@@ -1,5 +1,5 @@
 ﻿using AppApi.IRepositories;
-using AppApi.SneakerDbContext;
+using AppData.SneakerDbContext;
 using AppData.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +16,7 @@ namespace AppApi.Repositories
         {
             var giamgia = new GiamGia()
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 TenMaGiamGia = gg.TenMaGiamGia,
                 NgayBatDau=gg.NgayBatDau,
                 NgayKetThuc=gg.NgayKetThuc,
@@ -27,7 +27,7 @@ namespace AppApi.Repositories
             };
             await _shopDbContext.GiamGias.AddAsync(giamgia);
             await _shopDbContext.SaveChangesAsync();
-            return giamgia.ID;
+            return giamgia.Id;
         }
 
         public async Task<int> Delete(Guid id)
@@ -43,10 +43,10 @@ namespace AppApi.Repositories
 
         public async Task<Guid> Edit(GiamGia gg)
         {
-            var giamgia = await _shopDbContext.GiamGias.FindAsync(gg.ID);
+            var giamgia = await _shopDbContext.GiamGias.FindAsync(gg.Id);
             if (giamgia == null)
             {
-                throw new($"Không thể tim thấy giamgia với Id:  {gg.ID}");
+                throw new($"Không thể tim thấy giamgia với Id:  {gg.Id}");
             }
 
             giamgia.TenMaGiamGia = gg.TenMaGiamGia;
@@ -56,7 +56,7 @@ namespace AppApi.Repositories
             giamgia.TrangThai = gg.TrangThai;
             giamgia.MoTa = gg.MoTa;
             await _shopDbContext.SaveChangesAsync();
-            return giamgia.ID;
+            return giamgia.Id;
         }
 
         public async Task<List<GiamGia>> GetAll()
@@ -64,7 +64,7 @@ namespace AppApi.Repositories
             return await _shopDbContext.GiamGias
                    .Select(i => new GiamGia()
                    {
-                       ID = i.ID,
+                       Id = i.Id,
                        TenMaGiamGia = i.TenMaGiamGia,
                        NgayBatDau = i.NgayBatDau,
                        NgayKetThuc = i.NgayKetThuc,

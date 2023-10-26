@@ -1,5 +1,5 @@
 ﻿using AppApi.IRepositories;
-using AppApi.SneakerDbContext;
+using AppData.SneakerDbContext;
 using AppData.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,13 +16,13 @@ namespace AppApi.Repositories
         {
             var loaisp = new LoaiSanPham()
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 TenLoaiSanPham = ls.TenLoaiSanPham,
 
             };
             await _shopDbContext.LoaiSanPhams.AddAsync(loaisp);
             await _shopDbContext.SaveChangesAsync();
-            return loaisp.ID;
+            return loaisp.Id;
         }
 
         public async Task<int> Delete(Guid id)
@@ -38,15 +38,15 @@ namespace AppApi.Repositories
 
         public async Task<Guid> Edit(LoaiSanPham ls)
         {
-            var loaisp = await _shopDbContext.LoaiSanPhams.FindAsync(ls.ID);
+            var loaisp = await _shopDbContext.LoaiSanPhams.FindAsync(ls.Id);
             if (loaisp == null)
-            {
-                throw new($"Không thể tim thấy loai sp với Id:  {ls.ID}");
+            {   
+                throw new($"Không thể tim thấy loai sp với Id:  {ls.Id}");
             }
 
             loaisp.TenLoaiSanPham = ls.TenLoaiSanPham;
             await _shopDbContext.SaveChangesAsync();
-            return loaisp.ID;
+            return loaisp.Id;
         }
 
         public async Task<List<LoaiSanPham>> GetAll()
@@ -54,7 +54,7 @@ namespace AppApi.Repositories
             return await _shopDbContext.LoaiSanPhams
                     .Select(i => new LoaiSanPham()
                     {
-                        ID = i.ID,
+                        Id = i.Id,
                         TenLoaiSanPham = i.TenLoaiSanPham
 
                     }

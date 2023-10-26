@@ -40,7 +40,7 @@ namespace AppApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            ms.ID = id;
+            ms.Id = id;
             var affectedResult = await _mausacRepository.Edit(ms);
             if (affectedResult == Guid.Empty)
                 return BadRequest();

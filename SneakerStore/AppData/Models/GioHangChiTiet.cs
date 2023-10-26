@@ -13,8 +13,8 @@ namespace AppData.Models
         public int  SoLuong { get; set; }
         public int TrangThai { get; set; }
         public decimal GiaTien { get; set; }
-        public Guid IDSanPham { get; set; }
-        public virtual SanPham? SanPham { get; set; }
+        public Guid IdCTSP { get; set; }
+        public virtual CTSanPham? CTSanPham { get; set; }
         public virtual GioHang? GioHang { get; set; }
         
     }

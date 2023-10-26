@@ -8,7 +8,9 @@ namespace AppData.Models
 {
     public class KichCo
     {
-        public Guid ID { get; set; }
-        public double Size { get; set; }    
+        public Guid Id { get; set; }
+        public double Size { get; set; }
+        public int TrangThai { get; set; }
+        public virtual ICollection<CTSanPham> CTSanPham { get; set; }
     }
 }

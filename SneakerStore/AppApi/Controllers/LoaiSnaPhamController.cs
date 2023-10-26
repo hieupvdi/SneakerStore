@@ -39,7 +39,7 @@ namespace AppApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            ls.ID = id;
+            ls.Id = id;
             var affectedResult = await _loaisanphamRepository.Edit(ls);
             if (affectedResult == Guid.Empty)
                 return BadRequest();

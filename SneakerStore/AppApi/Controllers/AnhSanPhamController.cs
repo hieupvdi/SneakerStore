@@ -40,7 +40,7 @@ namespace AppApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            asp.ID = id;
+            asp.Id = id;
             var affectedResult = await _anhsanphamRepository.Edit(asp);
             if (affectedResult == Guid.Empty)
                 return BadRequest();

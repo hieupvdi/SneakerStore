@@ -1,5 +1,5 @@
-﻿using AppApi.IRepositories;
-using AppApi.SneakerDbContext;
+﻿using AppData.IRepositories;
+using AppData.SneakerDbContext;
 using AppData.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,13 +16,13 @@ namespace AppApi.Repositories
         {
             var sp = new AnhSanPham()
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 URlAnh = asp.URlAnh,
 
             };
             await _shopDbContext.AnhSanPhams.AddAsync(asp);
             await _shopDbContext.SaveChangesAsync();
-            return sp.ID;
+            return sp.Id;
         }
 
         public async Task<int> Delete(Guid id)
@@ -38,15 +38,15 @@ namespace AppApi.Repositories
 
         public async Task<Guid> Edit(AnhSanPham asp)
         {
-            var sp = await _shopDbContext.AnhSanPhams.FindAsync(asp.ID);
+            var sp = await _shopDbContext.AnhSanPhams.FindAsync(asp.Id);
             if (sp == null)
             {
-                throw new($"Không thể tim thấy loai sp với Id:  {sp.ID}");
+                throw new($"Không thể tim thấy loai sp với Id:  {sp.Id}");
             }
 
             sp.URlAnh = asp.URlAnh;
             await _shopDbContext.SaveChangesAsync();
-            return sp.ID;
+            return sp.Id;
         }
 
         public async Task<List<AnhSanPham>> GetAll()
@@ -54,7 +54,7 @@ namespace AppApi.Repositories
             return await _shopDbContext.AnhSanPhams
                   .Select(i => new AnhSanPham()
                   {
-                      ID = i.ID,
+                      Id = i.Id,
                       URlAnh = i.URlAnh
 
                   }

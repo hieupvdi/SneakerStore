@@ -1,5 +1,5 @@
 using AppApi;
-using AppApi.SneakerDbContext;
+using AppData.SneakerDbContext;
 using AppData.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<SNDbcontext>().AddDefaultTokenProviders();
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<SNDbcontext>().AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<SNDbcontext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SneakerStore"));
