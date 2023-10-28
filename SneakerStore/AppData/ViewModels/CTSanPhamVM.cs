@@ -22,5 +22,16 @@ namespace AppData.ViewModels
         public Guid IdLoaiSanPham { get; set; }
         public Guid IdDeGiay { get; set; }
         public Guid IdGiamGia { get; set; }
+        //thuoc tính join
+        public string TenSP { get; set; }
+        public int Size { get; set; }
+        public string Mau { get; set; }
+        public string Loaisp { get; set; }
+        public string De { get; set; }
+        public string GiamGia { get; set; }
+
+
+
+
     }
 }

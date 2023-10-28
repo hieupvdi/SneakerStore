@@ -13,12 +13,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<SNDbcontext>().AddDefaultTokenProviders();
-
-builder.Services.AddDbContext<SNDbcontext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SneakerStore"));
-});
-
 ServiceRegistration.Configure(builder.Services);
 var app = builder.Build();
 

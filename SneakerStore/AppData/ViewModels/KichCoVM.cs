@@ -9,7 +9,7 @@ namespace AppData.ViewModels
     public class KichCoVM
     {
         public Guid Id { get; set; }
-        public double Size { get; set; }
+        public int Size { get; set; }
         public int TrangThai { get; set; }
     }
 }

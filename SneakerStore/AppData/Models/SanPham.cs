@@ -9,7 +9,7 @@ namespace AppData.Models
     public class SanPham
     {
         public Guid Id { get; set; }
-        public string Ten { get; set; }
+        public string TenSP { get; set; }
         public int TrangThai { get; set; }
         public virtual ICollection<CTSanPham> CTSanPhams { get; set; }
     }
