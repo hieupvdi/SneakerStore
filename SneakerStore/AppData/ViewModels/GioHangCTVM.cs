@@ -8,11 +8,16 @@ namespace AppData.ViewModels
 {
     public class GioHangCTVM
     {
-        public Guid ID { get; set; }
-        public Guid IDUser { get; set; }
+        public Guid Id { get; set; }
+        public Guid IdUser { get; set; }
         public int SoLuong { get; set; }
-        public int TrangThai { get; set; }
-        public decimal GiaTien { get; set; }
+        public decimal DonGia { get; set; }
         public Guid IdCTSP { get; set; }
+        public int TrangThai { get; set; }
+
+
+        //thuộc tính join
+        public  string TenTK { get; set; }
+        public string TenSP { get; set;}
     }
 }

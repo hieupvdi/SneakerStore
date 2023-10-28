@@ -13,5 +13,10 @@ namespace AppData.ViewModels
         public Guid IdCTSP { get; set; }
         public int SoLuong { get; set; }
         public decimal DonGia { get; set; }
+        public int TrangThai { get; set; }
+        //THUOC TINH JOIN
+
+        public string MaHD { get; set; }
+        public string TenSP { get; set; }
     }
 }

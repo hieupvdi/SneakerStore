@@ -33,9 +33,9 @@ namespace AppData.Services
                     SoLuongTon=obj.SoLuongTon,
                     NhaSanXuat =obj.NhaSanXuat,
                     IdSP =obj.IdSP,
-                    IdKichCo =obj.IdKichCo,
+                    IdSize =obj.IdSize,
                     IdMauSac=obj.IdMauSac, 
-                    IdLoaiSanPham =obj.IdLoaiSanPham,
+                    IdDanhMuc =obj.IdDanhMuc,
                     IdDeGiay =obj.IdDeGiay,
                     IdGiamGia =obj.IdGiamGia,
                     TrangThai = obj.TrangThai,
@@ -91,9 +91,9 @@ namespace AppData.Services
                     ctsp.SoLuongTon = obj.SoLuongTon;
                     ctsp.NhaSanXuat = obj.NhaSanXuat;
                     ctsp.IdSP = obj.IdSP;
-                    ctsp.IdKichCo = obj.IdKichCo;
+                    ctsp.IdSize = obj.IdSize;
                     ctsp.IdMauSac = obj.IdMauSac;
-                    ctsp.IdLoaiSanPham = obj.IdLoaiSanPham;
+                    ctsp.IdDanhMuc = obj.IdDanhMuc;
                     ctsp.IdDeGiay = obj.IdDeGiay;
                     ctsp.IdGiamGia = obj.IdGiamGia;
                     ctsp.TrangThai = obj.TrangThai;
@@ -116,9 +116,9 @@ namespace AppData.Services
         {
             var query = from a in _dbcontext.CTSanPhams
                         join b in _dbcontext.SanPhams on a.IdSP equals b.Id
-                        join c in _dbcontext.KichCos on a.IdKichCo equals c.Id
+                        join c in _dbcontext.Sizes on a.IdSize equals c.Id
                         join d in _dbcontext.MauSacs on a.IdMauSac equals d.Id
-                        join f in _dbcontext.LoaiSanPhams on a.IdLoaiSanPham equals f.Id
+                        join f in _dbcontext.DanhMucs on a.IdDanhMuc equals f.Id
                         join g in _dbcontext.DeGiays on a.IdDeGiay equals g.Id
                         join h in _dbcontext.GiamGias on a.IdGiamGia equals h.Id
                        
@@ -134,9 +134,9 @@ namespace AppData.Services
                SoLuongTon = x.a.SoLuongTon,
                NhaSanXuat = x.a.NhaSanXuat,
                TenSP = x.b.SanPham.TenSP,
-               Size = x.c.Size,
+               sizeNumber = x.c.sizeNumber,
                Mau = x.d.TenMauSac,
-               Loaisp = x.f.TenLoaiSanPham,
+               TenDanhMuc = x.f.Ten,
                De = x.g.Name,
                GiamGia = x.h.TenMaGiamGia,
                TrangThai = x.a.TrangThai,
@@ -163,9 +163,9 @@ namespace AppData.Services
                 SoLuongTon = ctsp.SoLuongTon,
                 NhaSanXuat = ctsp.NhaSanXuat,
                 IdSP = ctsp.IdSP,
-                IdKichCo = ctsp.IdKichCo,
+                IdSize = ctsp.IdSize,
                 IdMauSac = ctsp.IdMauSac,
-                IdLoaiSanPham = ctsp.IdLoaiSanPham,
+                IdDanhMuc = ctsp.IdDanhMuc,
                 IdDeGiay = ctsp.IdDeGiay,
                 IdGiamGia = ctsp.IdGiamGia,
                 TrangThai = ctsp.TrangThai,
