@@ -8,7 +8,12 @@ namespace AppData.Models
 {
     public class GioHang
     {
-        public Guid IDUser { get; set; }
-        public virtual ApplicationUser User { get; set; }       
+        public Guid IdUser { get; set; }
+        public string MoTa { get; set; }
+        public int TrangThai { get; set; }
+
+        public virtual User? User { get; set; }
+        public virtual ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }
+      
     }
 }

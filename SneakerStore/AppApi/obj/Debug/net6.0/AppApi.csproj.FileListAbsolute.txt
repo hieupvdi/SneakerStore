@@ -80,7 +80,6 @@ C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\App
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.AssemblyInfoInputs.cache
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.AssemblyInfo.cs
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\refint\AppApi.dll
@@ -93,10 +92,6 @@ C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\App
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\AppApi.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\AppApi.pdb
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Humanizer.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -105,8 +100,6 @@ C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Mic
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
-C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -152,3 +145,4 @@ C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\sco
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.csproj.CopyComplete
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.genruntimeconfig.cache
 C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\ref\AppApi.dll
+C:\Users\Admin\Desktop\ThucTap\Nhom1_TT\SneakerStore\AppApi\obj\Debug\net6.0\AppApi.MvcApplicationPartsAssemblyInfo.cs
