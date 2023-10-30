@@ -133,7 +133,7 @@ namespace AppData.Services
                ChatLieu = x.a.ChatLieu,
                SoLuongTon = x.a.SoLuongTon,
                NhaSanXuat = x.a.NhaSanXuat,
-               TenSP = x.b.SanPham.TenSP,
+               TenSP = x.b.TenSP,
                sizeNumber = x.c.sizeNumber,
                Mau = x.d.TenMauSac,
                TenDanhMuc = x.f.Ten,

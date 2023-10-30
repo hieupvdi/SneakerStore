@@ -1,71 +1,60 @@
-﻿
-using AppData.Models;
-using Microsoft.AspNetCore.Http;
+﻿using AppData.IServices;
+using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AppApi.Controllers
 {
-    public class MauSacController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MauSacController : ControllerBase
     {
-        //private IMauSacRepository _mausacRepository;
-        //public MauSacController(IMauSacRepository mausacRepository)
-        //{
-        //    _mausacRepository = mausacRepository;
-        //}
+        private IMauSacServices _mauSacServices;
+        public MauSacController(IMauSacServices mauSacServices)
+        {
+            _mauSacServices = mauSacServices;
+        }
 
-        //[HttpGet("MauSac/get-all")]
-        //public async Task<IActionResult> GetAll()
-        //{
+        [HttpGet("MauSac/get-all")]
+        public async Task<IActionResult> GetAll()
+        {
 
-        //    var result = _mausacRepository.GetAll();
-        //    if (!result.IsCompletedSuccessfully) return Ok(result.Result);
-        //    return BadRequest(result.Result);
-        //}
+            var result = _mauSacServices.GetMauSacAll();
+            return Ok(result);
+        }
 
-       
 
-        //[HttpPost("MauSac/create")]
-        //public async Task<IActionResult> Create([FromBody] MauSac ms)
-        //{
-        //    var result = await _mausacRepository.Create(ms);
-        //    return Ok(result);
-        //}
 
-        //[HttpPut("MauSac/update{id}")]
+        [HttpPost("MauSac/create")]
+        public async Task<IActionResult> Create([FromBody] MauSacVM ms)
+        {
+            var result = await _mauSacServices.CreateMauSac(ms);
+            return Ok(result);
+        }
 
-        //public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] MauSac ms)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    ms.Id = id;
-        //    var affectedResult = await _mausacRepository.Edit(ms);
-        //    if (affectedResult == Guid.Empty)
-        //        return BadRequest();
-        //    return Ok();
-        //}
+        [HttpPut("MauSac/update{id}")]
 
-        //[HttpGet("MauSac/{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var mausac = await _mausacRepository.GetById(id);
-        //    if (mausac == null)
-        //    {
-        //        return BadRequest("Can't find chucvu");
-        //    }
-        //    return Ok(mausac);
-        //}
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] MauSacVM ms)
+        {
+            var result = await _mauSacServices.EditMauSac(ms);
 
-        
-        //[HttpDelete("MauSac/{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    var affectedResult = await _mausacRepository.Delete(id);
-        //    if (affectedResult == 0)
-        //        return BadRequest();
-        //    return Ok();
-        //}
+            return Ok(result);
+        }
 
+        [HttpGet("MauSac/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var ms = await _mauSacServices.GetMauSacById(id);
+            return Ok(ms);
+        }
+
+
+        [HttpDelete("MauSac/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _mauSacServices.DeleteMauSac(id);
+            return Ok(result);
+        }
     }
 }
