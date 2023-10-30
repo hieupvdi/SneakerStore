@@ -75,8 +75,7 @@ namespace AppData.Services
 
                 if (cv != null)
                 {
-                    //mapper
-                    cv.Id = obj.Id;
+                    
                     cv.Ten = obj.Ten;
                     cv.TrangThai = obj.TrangThai;
 

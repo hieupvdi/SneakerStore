@@ -10,10 +10,6 @@ namespace AppData.Models
     {
 
 
-
-
-
-
         public Guid Id { get; set; }
         public Guid? IdUser { get; set; }
         public Guid? IdVoucher { get; set; }
@@ -39,7 +35,7 @@ namespace AppData.Models
 
         public virtual Voucher? Voucher { get; set; }
         public virtual ICollection<PhuongThucThanhToanCT> PhuongThucThanhToanCTs { get; set; }
-        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
+        public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }
 
 
 

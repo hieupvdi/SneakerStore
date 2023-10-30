@@ -20,8 +20,7 @@ namespace AppApi.Controllers
         {
 
             var result = _chucVuServices.GetChucVuAll();
-            if (!result.IsCompletedSuccessfully) return Ok(result.Result);
-            return BadRequest(result.Result);
+            return Ok(result);
         }
 
 

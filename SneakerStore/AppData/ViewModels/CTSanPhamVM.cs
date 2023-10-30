@@ -17,16 +17,16 @@ namespace AppData.ViewModels
         public string NhaSanXuat { get; set; }
         public int TrangThai { get; set; }
         public Guid IdSP { get; set; }
-        public Guid IdKichCo { get; set; }
+        public Guid IdSize { get; set; }
         public Guid IdMauSac { get; set; }
-        public Guid IdLoaiSanPham { get; set; }
+        public Guid IdDanhMuc { get; set; }
         public Guid IdDeGiay { get; set; }
         public Guid IdGiamGia { get; set; }
         //thuoc tính join
         public string TenSP { get; set; }
-        public int Size { get; set; }
+        public int sizeNumber { get; set; }
         public string Mau { get; set; }
-        public string Loaisp { get; set; }
+        public string TenDanhMuc { get; set; }
         public string De { get; set; }
         public string GiamGia { get; set; }
 

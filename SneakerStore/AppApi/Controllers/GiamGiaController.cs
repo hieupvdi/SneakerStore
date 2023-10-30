@@ -1,70 +1,60 @@
-﻿
-using AppData.Models;
-using Microsoft.AspNetCore.Http;
+﻿using AppData.IServices;
+using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AppApi.Controllers
 {
-    public class GiamGiaController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GiamGiaController : ControllerBase
     {
-        //private IGiamGiaRepository _giamgiaRepository;
-        //public GiamGiaController(IGiamGiaRepository giamgiaRepository)
-        //{
-        //    _giamgiaRepository = giamgiaRepository;
-        //}
+        private IGiamGiaServices _giamGiaServices;
+        public GiamGiaController(IGiamGiaServices giamGiaServices)
+        {
+            _giamGiaServices = giamGiaServices;
+        }
 
-        //[HttpGet("GiamGia/get-all")]
-        //public async Task<IActionResult> GetAll()
-        //{
+        [HttpGet("GiamGia/get-all")]
+        public async Task<IActionResult> GetAll()
+        {
 
-        //    var result = _giamgiaRepository.GetAll();
-        //    if (!result.IsCompletedSuccessfully) return Ok(result.Result);
-        //    return BadRequest(result.Result);
-        //}
-
+            var result = _giamGiaServices.GetGiamGiaAll();
+            return Ok(result);
+        }
 
 
-        //[HttpPost("GiamGia/create")]
-        //public async Task<IActionResult> Create([FromBody] GiamGia gg)
-        //{
-        //    var result = await _giamgiaRepository.Create(gg);
-        //    return Ok(result);
-        //}
 
-        //[HttpPut("GiamGia/update{id}")]
+        [HttpPost("GiamGia/create")]
+        public async Task<IActionResult> Create([FromBody] GiamGiaVM gg)
+        {
+            var result = await _giamGiaServices.CreateGiamGia(gg);
+            return Ok(result);
+        }
 
-        //public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] GiamGia gg)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    gg.Id = id;
-        //    var affectedResult = await _giamgiaRepository.Edit(gg);
-        //    if (affectedResult == Guid.Empty)
-        //        return BadRequest();
-        //    return Ok();
-        //}
+        [HttpPut("GiamGia/update{id}")]
 
-        //[HttpGet("AnhSP/{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var giamgia = await _giamgiaRepository.GetById(id);
-        //    if (giamgia == null)
-        //    {
-        //        return BadRequest("Can't find giamgia");
-        //    }
-        //    return Ok(giamgia);
-        //}
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] GiamGiaVM gg)
+        {
+            var result = await _giamGiaServices.EditGiamGia(gg);
+
+            return Ok(result);
+        }
+
+        [HttpGet("GiamGia/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var gg = await _giamGiaServices.GetGiamGiaById(id);
+            return Ok(gg);
+        }
 
 
-        //[HttpDelete("GiamGia/{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    var affectedResult = await _giamgiaRepository.Delete(id);
-        //    if (affectedResult == 0)
-        //        return BadRequest();
-        //    return Ok();
-        //}
+        [HttpDelete("GiamGia/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _giamGiaServices.DeleteGiamGia(id);
+            return Ok(result);
+        }
     }
 }

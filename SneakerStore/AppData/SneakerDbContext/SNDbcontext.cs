@@ -21,16 +21,17 @@ namespace AppData.SneakerDbContext
         public DbSet<DeGiay> DeGiays { get; set; }
         public DbSet<GiamGia> GiamGias { get; set; }
         public DbSet<GioHang> GioHangs { get; set; }
-        public DbSet<GioHangChiTiet> GioHangChiTiets { get; set; }
+        public DbSet<GioHangCT> GioHangCTs { get; set; }
         public DbSet<HoaDon> HoaDons { get; set; }
-        public DbSet<HoaDonChiTiet> HoaDonChiTiets { get; set; }
-        public DbSet<KichCo> KichCos { get; set; }
-        public DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public DbSet<HoaDonCT> HoaDonCTs { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<DanhMuc> DanhMucs { get; set; }
         public DbSet<MauSac> MauSacs { get; set; }
         public DbSet<PhuongThucThanhToan> PhuongThucThanhToans { get; set; }
         public DbSet<PhuongThucThanhToanCT> PhuongThucThanhToanCTs { get; set; }
-        public DbSet<CTSanPham> SanPhams { get; set; }
+        public DbSet<SanPham> SanPhams { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<DiaChi> DiaChis { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
 
         public SNDbcontext(DbContextOptions options) : base(options)

@@ -15,25 +15,24 @@ namespace AppData.Models
         public string ChatLieu { get; set; }
         public int SoLuongTon { get; set; }
         public string NhaSanXuat { get; set; }
-        public int TrangThai { get; set; }
         public Guid IdSP { get; set; }  
-        public Guid IdKichCo { get; set; }  
+        public Guid IdSize { get; set; }  
         public Guid IdMauSac { get; set; }
-        public Guid IdLoaiSanPham { get; set; }
+        public Guid IdDanhMuc { get; set; }
         public Guid IdDeGiay { get; set; }
         public Guid IdGiamGia { get; set; }
-
+        public int TrangThai { get; set; }
 
         public virtual SanPham? SanPham { get; set; }
-        public virtual KichCo? KichCo { get; set; }
-        public virtual LoaiSanPham? LoaiSanPham { get; set; }
+        public virtual Size? Size { get; set; }
+        public virtual DanhMuc? DanhMuc { get; set; }
         public virtual MauSac? MauSac { get; set; }
         public virtual DeGiay? DeGiay { get; set; }
         public virtual GiamGia? GiamGia { get; set; }
 
         public virtual ICollection<AnhSanPham> AnhSanPhams { get; set; }
-        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
-        public ICollection<GioHangChiTiet> GioHangChiTiets { get; set; }
+        public virtual ICollection<HoaDonCT> HoaDonCTs { get; set; }
+        public ICollection<GioHangCT> GioHangCTs { get; set; }
 
     }
 }
