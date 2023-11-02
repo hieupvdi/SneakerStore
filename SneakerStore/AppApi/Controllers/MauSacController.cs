@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _mauSacServices.GetMauSacAll();
+            var result = await _mauSacServices.GetMauSacAll();
             return Ok(result);
         }
 

@@ -21,7 +21,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _voucherServices.GetVoucherAll();
+            var result = await _voucherServices.GetVoucherAll();
             return Ok(result);
         }
 

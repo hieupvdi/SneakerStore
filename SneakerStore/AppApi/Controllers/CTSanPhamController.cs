@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _ctsanPhamServices.GetCTSanPhamAll();
+            var result = await _ctsanPhamServices.GetCTSanPhamAll();
             return Ok(result);
         }
 

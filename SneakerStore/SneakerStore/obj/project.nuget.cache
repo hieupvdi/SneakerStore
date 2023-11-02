@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dFlxCugRcOVc53vjmBYa51bzUMk1C4bqs2DiR/C7vSGjnpfEghNMtL89Ajdu2rajZX3C+BJgOvh1ikkCJF+O3Q==",
+  "dgSpecHash": "8VW+WmCjbuiMWwvacJeE8tGIqu+5cOLg2XPymFom82wsH9gJvoD7JTB5a85MXBCAQNbexGYqdbUrjSc1vPZQ5A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1_TT\\SneakerStore\\SneakerStore\\SneakerStore.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\SneakerStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
