@@ -28,6 +28,9 @@ namespace AppData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AnhSo")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("IdCTSP")
                         .HasColumnType("uniqueidentifier");
 
