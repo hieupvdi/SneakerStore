@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _hoaDonServices.GetHoaDonAll();
+            var result = await _hoaDonServices.GetHoaDonAll();
             return Ok(result);
         }
 

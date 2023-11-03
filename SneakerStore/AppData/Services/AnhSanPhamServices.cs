@@ -28,6 +28,7 @@ namespace AppData.Services
                     Id = Guid.NewGuid(),
                     IdCTSP=obj.IdCTSP,
                     URlAnh = obj.URlAnh,
+					AnhSo = obj.AnhSo,
                     TrangThai = obj.TrangThai,
                 };
 
@@ -78,6 +79,7 @@ namespace AppData.Services
                     asp.Id = obj.Id;
                     asp.IdCTSP=obj.IdCTSP;
                     asp.URlAnh = obj.URlAnh;
+                    asp.AnhSo=obj.AnhSo;
                     asp.TrangThai = obj.TrangThai;
 
                     _dbcontext.Update(asp);

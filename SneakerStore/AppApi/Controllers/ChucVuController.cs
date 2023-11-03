@@ -19,7 +19,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _chucVuServices.GetChucVuAll();
+            var result = await _chucVuServices.GetChucVuAll();
             return Ok(result);
         }
 

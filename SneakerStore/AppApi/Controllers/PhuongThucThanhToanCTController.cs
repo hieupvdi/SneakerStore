@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _phuongThucThanhToanCTServices.GetPTTTCTAll();
+            var result = await _phuongThucThanhToanCTServices.GetPTTTCTAll();
             return Ok(result);
         }
 

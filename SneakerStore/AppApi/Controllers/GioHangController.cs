@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _gioHangServices.GetGioHangAll();
+            var result = await _gioHangServices.GetGioHangAll();
             return Ok(result);
         }
 

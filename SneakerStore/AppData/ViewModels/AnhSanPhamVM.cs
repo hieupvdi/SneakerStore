@@ -12,6 +12,7 @@ namespace AppData.ViewModels
         public Guid IdCTSP { get; set; }
         public string URlAnh { get; set; }
         public string Tensp { get; set; }
-        public int TrangThai { get; set; }
+		public int AnhSo { get; set; }
+		public int TrangThai { get; set; }
     }
 }

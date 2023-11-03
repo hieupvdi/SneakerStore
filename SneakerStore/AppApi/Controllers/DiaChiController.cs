@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _diaChiServices.GetDiaChiAll();
+            var result = await _diaChiServices.GetDiaChiAll();
             return Ok(result);
         }
 

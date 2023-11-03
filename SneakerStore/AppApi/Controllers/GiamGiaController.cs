@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _giamGiaServices.GetGiamGiaAll();
+            var result = await _giamGiaServices.GetGiamGiaAll();
             return Ok(result);
         }
 

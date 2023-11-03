@@ -20,7 +20,7 @@ namespace AppApi.Controllers
         public async Task<IActionResult> GetAll()
         {
 
-            var result = _sizeServices.GetSizeAll();
+            var result = await _sizeServices.GetSizeAll();
             return Ok(result);
         }
 
