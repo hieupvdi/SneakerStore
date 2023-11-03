@@ -1,0 +1,170 @@
+﻿@model IEnumerable<AppData.ViewModels.CTSanPhamVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Quản Lý Sản Phẩm</h3>
+            <div class="d-flex justify-content-end">
+
+                <a href="@Url.Action("CreateProduct","ProductAdmin")">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"> Thêm</i>
+                    </button>
+                </a>
+
+            </div>
+        </div>
+        <div class="card-body">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gianhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Giaban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChatLieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuongTon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhaSanXuat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMauSac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDanhMuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDeGiay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGiamGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sizeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDanhMuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.De)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiamGia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gianhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giaban)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChatLieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhaSanXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMauSac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDanhMuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDeGiay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGiamGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sizeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDanhMuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.De)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiamGia)
+            </td>
+            <td>
+                                <a class="btn btn-primary" href="@Url.Action("EditProduct","ProductAdmin",new{id=item.Id})">Sửa</a>
+                                <a class="btn btn-danger" href="@Url.Action("DetailProducts","ProductAdmin",new{id=item.Id})">Chi Tiết</a>
+                                <a class="btn btn-warning" href="@Url.Action("DeleteProduct","ProductAdmin",new{id=item.Id})">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+        </div>
+
+
+        <div class="card-footer">
+        </div>
+
+    </div>
+
+</section>

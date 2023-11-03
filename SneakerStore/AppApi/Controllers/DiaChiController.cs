@@ -33,7 +33,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("DiaChi/update{id}")]
+        [HttpPut("DiaChi/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] DiaChiVM dc)
         {
@@ -50,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("DiaChi/{id}")]
+        [HttpDelete("DiaChi/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _diaChiServices.DeleteDiaChi(id);

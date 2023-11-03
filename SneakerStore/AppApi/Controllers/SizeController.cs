@@ -33,7 +33,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("Size/update{id}")]
+        [HttpPut("Size/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] SizeVM si)
         {
@@ -50,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("Size/{id}")]
+        [HttpDelete("Size/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _sizeServices.DeleteSize(id);

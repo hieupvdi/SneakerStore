@@ -33,7 +33,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("User/update{id}")]
+        [HttpPut("User/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UserVM u)
         {
@@ -50,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("User/{id}")]
+        [HttpDelete("User/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _userServices.DeleteUser(id);
