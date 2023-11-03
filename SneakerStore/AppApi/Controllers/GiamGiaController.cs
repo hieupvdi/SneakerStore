@@ -33,7 +33,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("GiamGia/update{id}")]
+        [HttpPut("GiamGia/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] GiamGiaVM gg)
         {
@@ -50,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("GiamGia/{id}")]
+        [HttpDelete("GiamGia/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _giamGiaServices.DeleteGiamGia(id);

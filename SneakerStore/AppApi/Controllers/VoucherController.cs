@@ -34,7 +34,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("Voucher/update{id}")]
+        [HttpPut("Voucher/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] VoucherVM vo)
         {
@@ -51,7 +51,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("Voucher/{id}")]
+        [HttpDelete("Voucher/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _voucherServices.DeleteVoucher(id);

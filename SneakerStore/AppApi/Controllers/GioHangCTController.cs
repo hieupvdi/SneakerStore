@@ -33,7 +33,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("GioHangCT/update{id}")]
+        [HttpPut("GioHangCT/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] GioHangCTVM ghct)
         {
@@ -50,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("GioHangCT/{id}")]
+        [HttpDelete("GioHangCT/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _gioHangCTServices.DeleteGioHangCT(id);

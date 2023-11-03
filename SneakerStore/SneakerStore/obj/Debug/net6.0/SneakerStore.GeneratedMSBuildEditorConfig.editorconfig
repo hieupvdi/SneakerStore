@@ -16,8 +16,88 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Admin\Desktop\ThucTap\Nhom1\SneakerStore\SneakerStore
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/ChucVu/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1Y1Z1XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/ChucVu/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1Y1Z1XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/ChucVu/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1Y1Z1XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/ChucVu/ShowCV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1Y1Z1XFNob3dDVi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DanhMuc/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaE11Y1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DanhMuc/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaE11Y1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DanhMuc/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaE11Y1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DanhMuc/ShowAllDM.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaE11Y1xTaG93QWxsRE0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DeGiay/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVHaWF5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DeGiay/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVHaWF5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DeGiay/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVHaWF5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/DeGiay/ShowAllDG.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVHaWF5XFNob3dBbGxERy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/GiamGia/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhbUdpYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/GiamGia/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhbUdpYVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/GiamGia/ShowAllGG.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhbUdpYVxTaG93QWxsR0cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/MauSac/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWF1U2FjXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/MauSac/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWF1U2FjXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/MauSac/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWF1U2FjXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/MauSac/ShowAllMS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWF1U2FjXFNob3dBbGxNUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/QLSanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUUxTYW5QaGFtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Views/Home/Index.cshtml]
@@ -47,6 +127,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-ra2wy0z9j5
 
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
