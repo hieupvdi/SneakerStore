@@ -134,7 +134,7 @@ namespace AppData.Services
                SoLuongTon = x.a.SoLuongTon,
                NhaSanXuat = x.a.NhaSanXuat,
                TenSP = x.b.TenSP,
-               sizeNumber = x.c.sizeNumber,
+               SizeNumber = x.c.SizeNumber,
                Mau = x.d.TenMauSac,
                TenDanhMuc = x.f.Ten,
                De = x.g.Name,

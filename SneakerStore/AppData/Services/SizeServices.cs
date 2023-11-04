@@ -26,7 +26,7 @@ namespace AppData.Services
                 {
 
                     Id = Guid.NewGuid(),
-                    sizeNumber = obj.sizeNumber,
+                    SizeNumber = obj.SizeNumber,
                     TrangThai = obj.TrangThai,
                 };
 
@@ -75,7 +75,7 @@ namespace AppData.Services
                 {
                     //mapper
                     kc.Id = obj.Id;
-                    kc.sizeNumber = obj.sizeNumber;
+                    kc.SizeNumber = obj.SizeNumber;
                     kc.TrangThai = obj.TrangThai;
 
                     _dbcontext.Update(kc);
@@ -100,7 +100,7 @@ namespace AppData.Services
                         select new SizeVM
                         {
                             Id = c.Id,
-                            sizeNumber = c.sizeNumber,
+                            SizeNumber = c.SizeNumber,
                             TrangThai = c.TrangThai
                         };
 
@@ -121,7 +121,7 @@ namespace AppData.Services
             var k = new SizeVM
             {
                 Id = kc.Id,
-                sizeNumber =kc.sizeNumber,
+                SizeNumber =kc.SizeNumber,
                 TrangThai = kc.TrangThai,
             };
 

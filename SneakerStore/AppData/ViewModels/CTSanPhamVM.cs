@@ -24,7 +24,7 @@ namespace AppData.ViewModels
         public Guid IdGiamGia { get; set; }
         //thuoc tính join
         public string TenSP { get; set; }
-        public int sizeNumber { get; set; }
+        public int SizeNumber { get; set; }
         public string Mau { get; set; }
         public string TenDanhMuc { get; set; }
         public string De { get; set; }

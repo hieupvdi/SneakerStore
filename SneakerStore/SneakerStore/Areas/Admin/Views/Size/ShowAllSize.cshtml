@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AppData.ViewModels.SizeVM>
+
+@{
+    ViewData["Title"] = "ShowAllSize";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Quản Lý Size</h3>
+            <div class="d-flex justify-content-end">
+
+                <a href="@Url.Action("Create","Size")">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"> Thêm</i>
+                    </button>
+                </a>
+
+            </div>
+        </div>
+        <div class="card-body">
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.SizeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+                        @if (item.TrangThai != 0)
+                        {
+                            <tr>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SizeNumber)
+                                </td>
+                                <td>
+                                    @if (item.TrangThai == 1)
+                                    {
+                                        <p>Còn hoạt động</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Không hoạt động</p>
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="@Url.Action("Edit","Size",new{id=item.Id})">Sửa</a>
+                                    <a class="btn btn-warning" href="@Url.Action("Delete","Size",new{id=item.Id})">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+    </tbody>
+</table>
+        </div>
+
+
+<div class="card-footer">
+</div>
+
+    </div>
+
+</section>
