@@ -199,7 +199,7 @@
 											<div class="product_image">
 												@foreach (var image in ViewBag.AnhData)
 												{
-													if (item.Id == image.IdCTSP && image.AnhSo==1)
+													if (item.Id == image.IdCTSP)
 													{
 														<img src="@image.URlAnh" alt="@item.TenSP">
 													}

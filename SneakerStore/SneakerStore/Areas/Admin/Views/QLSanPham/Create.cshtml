@@ -5,6 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
 <section class="content">
 
     <div class="card">
@@ -14,255 +15,177 @@
         </div>
 
 
-        <div class="col-md-11">
-            <div class="card">
-                <div class="card-header p-2">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông Tin</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình Ảnh</a></li>
-
-                    </ul>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
-
-                            @*noidung 1*@
 
 
-                            <div class="card-body">
-                                @using (Html.BeginForm("Create", "QLSanPham", FormMethod.Post))
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "QLSanPham", FormMethod.Post))
+            {
+                @Html.HiddenFor(p => p.Id)
+                <div class="bs-stepper-content">
+                    <!-- your steps content here -->
+                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sản phẩm</label>
+                            <select class="form-control" name="IdSP" asp-for="IdSP">
+                                @if (ViewBag.SanPhamData != null)
                                 {
-                                    @Html.HiddenFor(p => p.Id)
-                                    <div class="bs-stepper-content">
-                                        <!-- your steps content here -->
-                                        <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                                <select class="form-control" name="IdSP" asp-for="IdSP">
-                                                    @if (ViewBag.SanPhamData != null)
-                                                    {
-                                                        @foreach (var item in ViewBag.SanPhamData)
-                                                        {
-                                                            <option value="@item.Id">@item.TenSP</option>
-                                                        }
-
-                                                    }
-                                                </select>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Size</label>
-                                                <select class="form-control" name="IdSize" asp-for="IdSize">
-                                                    @if (ViewBag.SizeData != null)
-                                                    {
-                                                        @foreach (var item in ViewBag.SizeData)
-                                                        {
-                                                            <option value="@item.Id">@item.SizeNumber</option>
-                                                        }
-
-                                                    }
-                                                </select>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Danh Mục</label>
-                                                <select class="form-control" name="IdDanhMuc" asp-for="IdDanhMuc">
-                                                    @if (ViewBag.DanhMucData != null)
-                                                    {
-                                                        @foreach (var item in ViewBag.DanhMucData)
-                                                        {
-                                                            <option value="@item.Id">@item.Ten</option>
-                                                        }
-                                                    }
-                                                </select>
-
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Đế Giày</label>
-                                                <select class="form-control" name="IdDanhMuc" asp-for="IdDanhMuc">
-                                                    @if (ViewBag.DanhMucData != null)
-                                                    {
-                                                        @foreach (var item in ViewBag.DanhMucData)
-                                                        {
-                                                            <option value="@item.Id">@item.Ten</option>
-                                                        }
-                                                    }
-                                                </select>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Giảm Gía</label>
-                                                <select class="form-control" name="IdGiamGia" asp-for="IdGiamGia">
-                                                    @if (ViewBag.GiamGiaData != null)
-                                                    {
-                                                        @foreach (var item in ViewBag.GiamGiaData)
-                                                        {
-                                                            <option value="@item.Id">@item.TenMaGiamGia</option>
-                                                        }
-                                                    }
-                                                </select>
-
-                                            </div>
-
-
-
-
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Gía Nhập</label>
-                                                @Html.TextBoxFor(p => p.Gianhap, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.Gianhap, "", new { @class = "text-danger" })
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Gía Bán</label>
-                                                @Html.TextBoxFor(p => p.Giaban, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.Giaban, "", new { @class = "text-danger" })
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Chất Liệu</label>
-                                                @Html.TextBoxFor(p => p.ChatLieu, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.ChatLieu, "", new { @class = "text-danger" })
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Số Lượng</label>
-                                                @Html.TextBoxFor(p => p.SoLuongTon, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.SoLuongTon, "", new { @class = "text-danger" })
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Nhà Sản Xuất</label>
-                                                @Html.TextBoxFor(p => p.NhaSanXuat, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.NhaSanXuat, "", new { @class = "text-danger" })
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Mô Tả</label>
-                                                @Html.TextBoxFor(p => p.MoTa, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(Model => Model.MoTa, "", new { @class = "text-danger" })
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Trạng Thái</label>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai1" value="1" checked>
-                                                    <label class="form-check-label" for="TrangThai1">
-                                                        còn hoạt động
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai2" value="2">
-                                                    <label class="form-check-label" for="TrangThai2">
-                                                        không hoạt động
-                                                    </label>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <a href="/Admin/QLSanPham/ShowAllQLSP" class="btn btn-primary">Quay Lại</a>
-                                                <button type="Submit" class="btn btn-danger">Thêm</button>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                }
-
-                            </div>
-
-
-                            @*noidung 1*@
-
-
-
-
-
-
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="timeline">
-
-                            @*noidung 2*@
-                  
-                            <div class="card-body">
-                                @using (Html.BeginForm("CreateAnh", "QLSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    @Html.HiddenFor(p => p.Id)
-                                    <div class="form-group">
-                                        <label>Tải ảnh lên</label>
-                                        <input type="file" id="URlAnh" name="URlAnh" class="form-control-file" />
-
-                                    </div>
-                                    <div class="form-group">
-                                       
-                                        <button type="Submit" class="btn btn-danger">Thêm</button>
-                                    </div>
-                                }
-
-                            </div>
-
-
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <p>STT</p>
-                                        </th>
-                                        <th>
-                                           <p>Hình Ảnh</p>
-                                        </th>                                     
-                                        <th>Thao Tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (ViewBag.AnhData != null)
+                                    @foreach (var sp in ViewBag.SanPhamData)
                                     {
-                                        @foreach (var item in ViewBag.AnhData)
-                                        {
-                                            @if (item.TrangThai != 0)
-                                            {
-
-                                                <tr>
-
-                                                    <td>
-                                                        <p>i++</p>
-                                                    </td>
-                                                    <td>
-                                                        <img src="@item.URlAnh" alt="@item.AnhSo">
-
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-warning" href="@Url.Action("Delete","QLSanPham",new{id=item.Id})">Xóa</a>
-                                                    </td>
-                                                </tr>
-                                            }
-
-                                        }
-
+                                        <option value="@sp.Id">@sp.TenSP</option>
                                     }
-                                </tbody>
-                            </table>
-                            @*noidung 2*@
+
+                                }
+                            </select>
 
                         </div>
 
-                        <!-- /.tab-pane -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Size</label>
+                            <select class="form-control" name="IdSize" asp-for="IdSize">
+                                @if (ViewBag.SizeData != null)
+                                {
+                                    @foreach (var size in ViewBag.SizeData)
+                                    {
+                                        <option value="@size.Id">@size.SizeNumber</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Màu</label>
+                            <select class="form-control" name="IdMauSac" asp-for="IdMauSac">
+                                @if (ViewBag.MauSacData != null)
+                                {
+                                    @foreach (var size in ViewBag.MauSacData)
+                                    {
+                                        <option value="@size.Id">@size.TenMauSac</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Danh Mục</label>
+                            <select class="form-control" name="IdDanhMuc" asp-for="IdDanhMuc">
+                                @if (ViewBag.DanhMucData != null)
+                                {
+                                    @foreach (var dm in ViewBag.DanhMucData)
+                                    {
+                                        <option value="@dm.Id">@dm.Ten</option>
+                                    }
+                                }
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Đế Giày</label>
+                            <select class="form-control" name="IdDeGiay" asp-for="IdDeGiay">
+                                @if (ViewBag.DeGiayData != null)
+                                {
+                                    @foreach (var item in ViewBag.DeGiayData)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giảm Gía</label>
+                            <select class="form-control" name="IdGiamGia" asp-for="IdGiamGia">
+                                @if (ViewBag.GiamGiaData != null)
+                                {
+                                    @foreach (var item in ViewBag.GiamGiaData)
+                                    {
+                                        <option value="@item.Id">@item.TenMaGiamGia</option>
+                                    }
+                                }
+                            </select>
+
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Gía Nhập</label>
+                            @Html.TextBoxFor(p => p.Gianhap, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Gianhap, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Gía Bán</label>
+                            @Html.TextBoxFor(p => p.Giaban, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Giaban, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Chất Liệu</label>
+                            @Html.TextBoxFor(p => p.ChatLieu, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.ChatLieu, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Số Lượng</label>
+                            @Html.TextBoxFor(p => p.SoLuongTon, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.SoLuongTon, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nhà Sản Xuất</label>
+                            @Html.TextBoxFor(p => p.NhaSanXuat, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.NhaSanXuat, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mô Tả</label>
+                            @Html.TextBoxFor(p => p.MoTa, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.MoTa, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Trạng Thái</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai1" value="1" checked>
+                                <label class="form-check-label" for="TrangThai1">
+                                    còn hàng
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai2" value="2">
+                                <label class="form-check-label" for="TrangThai2">
+                                    Hết hàng
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <a href="/Admin/QLSanPham/ShowAllQLSP" class="btn btn-primary">Quay Lại</a>
+                            <button type="Submit" class="btn btn-danger">Thêm</button>
+                        </div>
+
+
                     </div>
-                    <!-- /.tab-content -->
-                </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+
+                </div>
+
+            }
+
         </div>
+
+
+
+
+
 
         <div class="card-footer">
         </div>
@@ -270,6 +193,29 @@
     </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

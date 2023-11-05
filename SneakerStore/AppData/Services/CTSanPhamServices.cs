@@ -137,7 +137,7 @@ namespace AppData.Services
                SizeNumber = x.c.SizeNumber,
                Mau = x.d.TenMauSac,
                TenDanhMuc = x.f.Ten,
-               De = x.g.Name,
+               DeGiay = x.g.Name,
                GiamGia = x.h.TenMaGiamGia,
                TrangThai = x.a.TrangThai,
            }

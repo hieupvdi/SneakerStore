@@ -28,7 +28,7 @@ namespace AppData.Services
                     Id = Guid.NewGuid(),
                     IdCTSP=obj.IdCTSP,
                     URlAnh = obj.URlAnh,
-					AnhSo = obj.AnhSo,
+					AnhSo = 1,
                     TrangThai = obj.TrangThai,
                 };
 
