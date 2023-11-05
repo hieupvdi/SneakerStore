@@ -1,0 +1,143 @@
+﻿@model AppData.ViewModels.UserVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thêm User</h3>
+
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(p => p.Id)
+                <div class="bs-stepper-content">
+                    <!-- your steps content here -->
+                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên Người Dùng</label>
+                            @Html.TextBoxFor(p => p.HoTen, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.HoTen, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tải ảnh lên</label>
+                            <input type="file" id="Url" name="Url" class="form-control-file" />
+
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên Tài Khoản</label>
+                            @Html.TextBoxFor(p => p.TenTaiKhoan, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.TenTaiKhoan, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mật Khẩu</label>
+                            @Html.TextBoxFor(p => p.MatKhau, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">SĐT</label>
+                            @Html.TextBoxFor(p => p.SDT, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.SDT, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Giới Tính</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh" value="0" checked>
+                                <label class="form-check-label" for="GioiTinh">
+                                    Nam
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh1" value="1">
+                                <label class="form-check-label" for="GioiTinh1">
+                                    Nữ
+                                </label>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Chức Vụ</label>
+                            <select class="form-control" name="IdCV" asp-for="IdCV">
+                                @if (ViewBag.ChucVuData != null)
+                                {
+                                    @foreach (var cv in ViewBag.ChucVuData)
+                                    {
+                                        <option value="@cv.Id">@cv.Ten</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Địa Chỉ</label>
+                            <select class="form-control" name="IdDiaChi" asp-for="IdDiaChi">
+                                @if (ViewBag.DiaChiData != null)
+                                {
+                                    @foreach (var dichi in ViewBag.DiaChiData)
+                                    {
+                                        <option value="@dichi.Id">@dichi.Ten</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+
+       
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Trạng Thái</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai1" value="1" checked>
+                                <label class="form-check-label" for="TrangThai1">
+                                    còn hoạt động
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TrangThai" id="TrangThai2" value="2">
+                                <label class="form-check-label" for="TrangThai2">
+                                    không hoạt động
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <a href="/Admin/User/ShowAllUser" class="btn btn-primary">Quay Lại</a>
+                            <button type="Submit" class="btn btn-danger">Thêm</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+
+        <div class="card-footer">
+        </div>
+
+    </div>
+
+</section>

@@ -15,7 +15,7 @@ namespace SneakerStore.Areas.Admin.Controllers
         {
             
         }
-
+        #region CTSP
         public async Task<IActionResult> ShowAllQLSP()
         {
             var httpClient = new HttpClient();
@@ -144,11 +144,100 @@ namespace SneakerStore.Areas.Admin.Controllers
 
 
 
+        #endregion
+
+
+        #region ANH
+
+        public async Task<IActionResult> ShowAllAnh()
+        {
+            var httpClient = new HttpClient();
+            string apiURL = "https://localhost:7001/api/AnhSanPham/AnhSanPham/get-all";
+            var response = await httpClient.GetAsync(apiURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData);
+            ViewBag.AnhData = result;
+            return View();
+        }
+
+        public async Task<IActionResult> CreateAnh()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAnh(AnhSanPhamVM Anh)
+        {
+            //if (!ModelState.IsValid)
+            //    return View(cv);
+
+            var httpClient = new HttpClient();
+
+            string apiURL = "https://localhost:7001/api/AnhSanPham/AnhSanPham/create";
+
+            var json = JsonConvert.SerializeObject(Anh);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync(apiURL, content);
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    return RedirectToAction("ShowAllAnh");
+            //}
+            //ModelState.AddModelError("", "Create Sai roi");
+
+            return View(Anh);
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditAnh(Guid id)
+        {
+            var httpClient = new HttpClient();
+            string apiURL = $"https://localhost:7001/api/AnhSanPham/AnhSanPham/{id}";
+
+            var response = await httpClient.GetAsync(apiURL);
+
+            string apiData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<AnhSanPhamVM>(apiData);
+            return View(result);
+        }
+
+        public async Task<IActionResult> EditAnh(AnhSanPhamVM Anh)
+        {
+            if (!ModelState.IsValid) return View(Anh);
+
+            var httpClient = new HttpClient();
+            string apiURL = $"https://localhost:7001/api/AnhSanPham/AnhSanPham/update/{Anh.Id}";
+
+            var json = JsonConvert.SerializeObject(Anh);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PutAsync(apiURL, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ShowAllAnh");
+            }
+            ModelState.AddModelError("", "Edit sai r");
+
+            return View(Anh);
+        }
+        public async Task<IActionResult> DeleteAnh(Guid id)
+        {
+            var httpClient = new HttpClient();
+            string apiURL = $"https://localhost:7001/api/AnhSanPham/AnhSanPham/delete/{id}";
+
+            var response = await httpClient.DeleteAsync(apiURL);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ShowAllAnh");
+            }
+            ModelState.AddModelError("", "Delete sai R");
+            return BadRequest();
+        }
 
 
 
 
 
+        #endregion
 
 
     }

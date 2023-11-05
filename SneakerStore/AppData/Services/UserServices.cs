@@ -35,7 +35,7 @@ namespace AppData.Services
                     SDT =obj.SDT,
                     IdDiaChi=obj.IdDiaChi, 
                     GioiTinh =obj.GioiTinh,
-                    SoDiem =obj.SoDiem,
+                    SoDiem =0,
                     TrangThai =obj.TrangThai,
                 };
 
