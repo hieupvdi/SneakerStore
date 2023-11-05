@@ -1,0 +1,278 @@
+﻿@model IEnumerable<AppData.ViewModels.UserVM>
+
+@{
+    ViewData["Title"] = "ShowAllUser";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+       
+        <div class="card-header">
+            <h3 class="card-title">Quản Lý Người Dùng</h3>
+            <div class="d-flex justify-content-end">
+
+                <a href="@Url.Action("Create","User")">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"> Thêm</i>
+                    </button>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Quản lý</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Danh sách người dùng</a></li>
+
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+
+                            @*noidung 1*@
+
+
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @*   <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                        </th>*@
+                       @* <th>
+                            @Html.DisplayNameFor(model => model.IdCV)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoTen)
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Url)*@
+                            <spam>Ảnh</spam>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TenTaiKhoan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MatKhau)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SDT)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.IdDiaChi)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.GioiTinh)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoDiem)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiaChi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ChucVu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TrangThai)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.TrangThai != 0)
+                        {
+                            <tr>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>*@
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.IdCV)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoTen)
+                                </td>
+                                <td>
+                                    <img src="@item.Url" alt="@item.TenTaiKhoan"  style="width: 100px; height: 100px;"> 
+                                    
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenTaiKhoan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MatKhau)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SDT)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.IdDiaChi)
+                                </td>*@
+                                <td>
+                                                        @if (item.GioiTinh == 0)
+                                                        {
+                                                            <p>Nam</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>Nữ</p>
+                                                        }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoDiem)
+                                </td>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ChucVu)
+                                </td>
+                                <td>
+                                                        @if (item.TrangThai == 1)
+                                                        {
+                                                            <p>Còn hoạt động</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>Không hoạt động</p>
+                                                        }
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="@Url.Action("Edit","User",new{id=item.Id})">Sửa</a>
+                                    <a class="btn btn-warning" href="@Url.Action("Delete","User",new{id=item.Id})">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+                            @*noidung 1*@
+
+
+
+
+
+
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="timeline">
+
+                            @*noidung 2*@
+
+
+                            <!-- Main content -->
+                            <section class="content">
+
+                                <!-- Default box -->
+                                <div class="card card-solid">
+                                    <div class="card-body pb-0">
+                                        <div class="row">
+
+
+
+
+                                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                <div class="card bg-light d-flex flex-fill">
+                                                    <div class="card-header text-muted border-bottom-0">
+                                                        Digital Strategist
+                                                    </div>
+                                                    <div class="card-body pt-0">
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <h2 class="lead"><b>Nicole Pearson</b></h2>
+                                                                <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-5 text-center">
+                                                                <img src="~/Admin/../../dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="text-right">
+                                                            <a href="#" class="btn btn-sm bg-teal">
+                                                                <i class="fas fa-comments"></i>
+                                                            </a>
+                                                            <a href="#" class="btn btn-sm btn-primary">
+                                                                <i class="fas fa-user"></i> View Profile
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <nav aria-label="Contacts Page Navigation">
+                                            <ul class="pagination justify-content-center m-0">
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card -->
+
+                            </section>
+
+
+                            @*noidung 2*@
+
+                        </div>
+
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+
+        <div class="card-footer">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+

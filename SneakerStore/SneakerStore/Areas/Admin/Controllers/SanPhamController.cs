@@ -44,7 +44,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.PostAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllPTTT");
+                return RedirectToAction("ShowAllSP");
             }
             ModelState.AddModelError("", "Create Sai roi");
 
@@ -76,7 +76,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.PutAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllPTTT");
+                return RedirectToAction("ShowAllSP");
             }
             ModelState.AddModelError("", "Edit sai r");
 
@@ -90,7 +90,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.DeleteAsync(apiURL);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllPTTT");
+                return RedirectToAction("ShowAllSP");
             }
             ModelState.AddModelError("", "Delete sai R");
             return BadRequest();

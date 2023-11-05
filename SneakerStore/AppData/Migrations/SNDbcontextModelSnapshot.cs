@@ -441,10 +441,10 @@ namespace AppData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TrangThai")
+                    b.Property<int>("SizeNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("sizeNumber")
+                    b.Property<int>("TrangThai")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

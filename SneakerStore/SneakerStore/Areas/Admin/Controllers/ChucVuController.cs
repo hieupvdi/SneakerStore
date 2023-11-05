@@ -13,7 +13,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             
         }
 
-        public async Task<IActionResult> ShowCV()
+        public async Task<IActionResult> ShowAllCV()
         {
             var httpClient = new HttpClient();
             string apiURL = "https://localhost:7001/api/ChucVu/ChucVu/get-all";
@@ -45,7 +45,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.PostAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowCV");
+                return RedirectToAction("ShowAllCV");
             }
             ModelState.AddModelError("", "Create Sai roi");
 
@@ -79,7 +79,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.PutAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowCV");
+                return RedirectToAction("ShowAllCV");
             }
             ModelState.AddModelError("", "Edit sai r");
 
@@ -93,7 +93,7 @@ namespace SneakerStore.Areas.Admin.Controllers
             var response = await httpClient.DeleteAsync(apiURL);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowCV");
+                return RedirectToAction("ShowAllCV");
             }
             ModelState.AddModelError("", "Delete sai R");
             return BadRequest();

@@ -24,7 +24,7 @@ namespace AppData.ViewModels
         public int TrangThai { get; set; }
 
         //join
-        public string DiaChi {get; set; }
-        public string ChucVu { get; set; }  
+        public string ?DiaChi {get; set; }
+        public string ?ChucVu { get; set; }  
     }
 }
