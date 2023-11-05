@@ -25,6 +25,7 @@ namespace AppApi
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IDiaChiServices, DiaChiServices>();
             services.AddScoped<IVoucherServices, VoucherServices>();
+            services.AddScoped<IBogServices, BogServices>();
            
        
 

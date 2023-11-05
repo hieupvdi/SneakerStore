@@ -33,6 +33,7 @@ namespace AppData.SneakerDbContext
         public DbSet<User> Users { get; set; }
         public DbSet<DiaChi> DiaChis { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<Bog> Bogs { get; set; }
 
         public SNDbcontext(DbContextOptions options) : base(options)
         {

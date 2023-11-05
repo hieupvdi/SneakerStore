@@ -17,15 +17,15 @@ namespace AppData.Models
         public string MatKhau { get; set; }
         public string SDT { get; set; }
 
-        public Guid IdDiaChi { get; set; }
         public int GioiTinh { get; set; }
         public int SoDiem { get; set; }
 
         public int TrangThai { get; set; }
         public virtual ChucVu? ChucVu { get; set; }
-        public virtual DiaChi? DiaChi { get; set; }
         public virtual GioHang? GioHang { get; set; }
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<Bog> Bogs { get; set; }
+        public virtual ICollection<DiaChi> DiaChis { get; set; }
 
     }
 }

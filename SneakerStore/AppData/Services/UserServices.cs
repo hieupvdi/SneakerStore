@@ -33,7 +33,7 @@ namespace AppData.Services
                     TenTaiKhoan =obj.TenTaiKhoan,
                     MatKhau =obj.MatKhau,
                     SDT =obj.SDT,
-                    IdDiaChi=obj.IdDiaChi, 
+               
                     GioiTinh =obj.GioiTinh,
                     SoDiem =0,
                     TrangThai =obj.TrangThai,
@@ -89,7 +89,7 @@ namespace AppData.Services
                     us.TenTaiKhoan = obj.TenTaiKhoan;
                     us.MatKhau = obj.MatKhau;
                     us.SDT = obj.SDT;
-                    us.IdDiaChi = obj.IdDiaChi;
+                 
                     us.GioiTinh = obj.GioiTinh;
                     us.SoDiem = obj.SoDiem;
                     us.TrangThai = obj.TrangThai;
@@ -112,8 +112,8 @@ namespace AppData.Services
         {
             var query = from a in _dbcontext.Users
                         join b in _dbcontext.ChucVus on a.IdCV equals b.Id
-                        join c in _dbcontext.DiaChis on a.IdDiaChi equals c.Id
-                        select new { a, b, c };
+                        
+                        select new { a, b };
             var data = await query
            .Select(x => new UserVM()
            {
@@ -126,7 +126,7 @@ namespace AppData.Services
                TenTaiKhoan = x.a.TenTaiKhoan,
                MatKhau = x.a.MatKhau,
                SDT = x.a.SDT,
-               DiaChi = x.c.Ten,
+              
                GioiTinh = x.a.GioiTinh,
                SoDiem = x.a.SoDiem,
                TrangThai = x.a.TrangThai,
@@ -153,7 +153,7 @@ namespace AppData.Services
                 TenTaiKhoan = us.TenTaiKhoan,
                 MatKhau = us.MatKhau,
                 SDT = us.SDT,
-                IdDiaChi = us.IdDiaChi,
+               
                 GioiTinh = us.GioiTinh,
                 SoDiem = us.SoDiem,
                 TrangThai = us.TrangThai,

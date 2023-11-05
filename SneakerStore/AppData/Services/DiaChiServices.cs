@@ -26,6 +26,7 @@ namespace AppData.Services
                 {
 
                     Id = Guid.NewGuid(),
+                    IdUser = obj.IdUser,
                     Ten = obj.Ten,
                     TrangThai = obj.TrangThai,
                 };
@@ -73,7 +74,7 @@ namespace AppData.Services
 
                 if (dc != null)
                 {
-
+                    dc.IdUser = obj.IdUser;
                     dc.Ten = obj.Ten;
                     dc.TrangThai = obj.TrangThai;
 
@@ -95,17 +96,20 @@ namespace AppData.Services
         {
 
 
-            var query = from c in _dbcontext.DiaChis
-                        select new DiaChiVM
-                        {
-                            Id = c.Id,
-                            Ten = c.Ten,
-                            TrangThai = c.TrangThai
-                        };
+            var query = from a in _dbcontext.DiaChis
+                        join b in _dbcontext.Users on a.IdUser equals b.Id
+                        select new { a, b };
+            var data = await query
+           .Select(x => new DiaChiVM()
+           {
+               Id = x.a.Id,
+               IdUser = x.b.Id,
+               Ten = x.a.Ten,     
+               TrangThai = x.a.TrangThai,
 
-            var result = await query.ToListAsync();
-
-            return result;
+           }
+            ).ToListAsync();
+            return data;
 
         }
 
@@ -120,6 +124,7 @@ namespace AppData.Services
             var d = new DiaChiVM
             {
                 Id = dc.Id,
+                IdUser = dc.IdUser,
                 Ten = dc.Ten,
                 TrangThai = dc.TrangThai,
             };
