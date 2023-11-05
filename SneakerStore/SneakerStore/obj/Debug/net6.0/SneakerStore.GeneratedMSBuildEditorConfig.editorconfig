@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW5oU1BcU2hvd0FsbEFuaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/Bog/ShowAllBog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQm9nXFNob3dBbGxCb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/ChucVu/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1Y1Z1XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
