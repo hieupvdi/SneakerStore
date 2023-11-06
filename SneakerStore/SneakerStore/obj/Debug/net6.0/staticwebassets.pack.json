@@ -9985,6 +9985,10 @@
       "PackagePath": "staticwebassets\\Client\\styles\\single_styles.css"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\LoginAndRegister\\style.css",
+      "PackagePath": "staticwebassets\\LoginAndRegister\\style.css"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

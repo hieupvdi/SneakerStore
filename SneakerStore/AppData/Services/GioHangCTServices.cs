@@ -107,6 +107,8 @@ namespace AppData.Services
            .Select(x => new GioHangCTVM()
            {
                Id = x.a.Id,
+               IdCTSP = x.b.Id,
+               IdUser= x.c.Id,
                TenTK = x.c.TenTaiKhoan,
                SoLuong = x.a.SoLuong,
                DonGia = x.a.DonGia,
@@ -119,25 +121,27 @@ namespace AppData.Services
 
         }
 
-        public async Task<GioHangCTVM> GetGioHangCTById(Guid id)
+        public async Task<List<GioHangCTVM>> GetGioHangCTById(Guid id)
         {
-            var ghct = await _dbcontext.GioHangCTs.AsQueryable().FirstOrDefaultAsync(c => c.IdUser == id && c.TrangThai != 0);
+            var ghct = await _dbcontext.GioHangCTs.Where(c => c.IdUser == id).ToListAsync();
 
-            if (ghct == null)
+            var lst = new List<GioHangCTVM>();
+            foreach (var item in ghct)
             {
-                return null;
+                var gh = new GioHangCTVM
+                {
+                    Id = item.Id,
+                    IdUser = item.IdUser,
+                    SoLuong = item.SoLuong,
+                    DonGia = item.DonGia,
+                    IdCTSP = item.IdCTSP,
+                    TrangThai = item.TrangThai,
+                };
+                lst.Add( gh );
             }
-            var gh = new GioHangCTVM
-            {
-                Id = ghct.Id,
-                IdUser = ghct.IdUser,
-                SoLuong = ghct.SoLuong,
-                DonGia = ghct.DonGia,
-                IdCTSP = ghct.IdCTSP,
-                TrangThai = ghct.TrangThai,
-            };
+     
 
-            return gh;
+            return lst;
         }
     }
 }

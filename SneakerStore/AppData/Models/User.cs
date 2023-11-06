@@ -24,7 +24,7 @@ namespace AppData.Models
         public virtual ChucVu? ChucVu { get; set; }
         public virtual GioHang? GioHang { get; set; }
         public virtual ICollection<HoaDon> HoaDons { get; set; }
-        public virtual ICollection<Bog> Bogs { get; set; }
+        public virtual ICollection<Blog> Blogs { get; set; }
         public virtual ICollection<DiaChi> DiaChis { get; set; }
 
     }

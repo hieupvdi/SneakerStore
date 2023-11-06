@@ -16,7 +16,7 @@ namespace AppData.ViewModels
         public int TrangThai { get; set; }
         //THUOC TINH JOIN
 
-        public string MaHD { get; set; }
-        public string TenSP { get; set; }
+        public string? MaHD { get; set; }
+        public string? TenSP { get; set; }
     }
 }

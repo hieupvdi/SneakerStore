@@ -59,8 +59,12 @@ namespace AppApi.Controllers
 		[HttpPost("User/DangNhap")]
 		public async Task<IActionResult> DangNhap(string TenTaiKhoan, string MatKhau)
 		{
-			var result = await _userServices.Dangnhap(TenTaiKhoan,MatKhau);
-			return Ok(result);
-		}
+            var result = await _userServices.Dangnhap(TenTaiKhoan, MatKhau);
+            if (result == Guid.Empty)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
+        }
 	}
 }

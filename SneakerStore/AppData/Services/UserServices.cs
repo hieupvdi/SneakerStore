@@ -163,17 +163,17 @@ namespace AppData.Services
             return u;
         }
 
-		public async Task<bool> Dangnhap(string TenTaiKhoan, string MatKhau)
+		public async Task<Guid> Dangnhap(string TenTaiKhoan, string MatKhau)
 		{
 			var x = await GetUserAll();
 			foreach (var i in await GetUserAll())
 			{
 				if (i.TenTaiKhoan == TenTaiKhoan && i.MatKhau == MatKhau)
 				{
-					return true;
-				}
+                    return (Guid)i.Id;
+                }
 			}
-			return false;
-		}
+            return Guid.Empty;
+        }
 	}
 }

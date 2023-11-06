@@ -14,8 +14,8 @@ namespace AppData.ViewModels
         public Guid IdPTTT { get; set; }
         public int TrangThai { get; set; }
         //join
-        public string MaHD { get; set; }
-        public string TenPT { get; set;}
+        public string ?MaHD { get; set; }
+        public string ?TenPT { get; set;}
 
     }
 }

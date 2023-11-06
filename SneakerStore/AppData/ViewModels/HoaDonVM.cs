@@ -24,8 +24,8 @@ namespace AppData.ViewModels
         public decimal TongTien { get; set; }
         public int TrangThai { get; set; }
         //thuoc tinh join
-        public string TenTK { get; set; }
-        public string TenVoucher { get; set; }
+        public string ?TenTK { get; set; }
+        public string ?TenVoucher { get; set; }
 
     }
 }

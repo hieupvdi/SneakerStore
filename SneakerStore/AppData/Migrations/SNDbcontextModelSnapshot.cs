@@ -48,7 +48,7 @@ namespace AppData.Migrations
                     b.ToTable("AnhSanPhams");
                 });
 
-            modelBuilder.Entity("AppData.Models.Bog", b =>
+            modelBuilder.Entity("AppData.Models.Blog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace AppData.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("Bogs");
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("AppData.Models.ChucVu", b =>
@@ -98,6 +98,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ChucVus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e26fa84e-3019-4a14-862f-9fafc6014dfe"),
+                            Ten = "Người Dùng",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.CTSanPham", b =>
@@ -593,10 +601,10 @@ namespace AppData.Migrations
                     b.Navigation("CTSanPham");
                 });
 
-            modelBuilder.Entity("AppData.Models.Bog", b =>
+            modelBuilder.Entity("AppData.Models.Blog", b =>
                 {
                     b.HasOne("AppData.Models.User", "User")
-                        .WithMany("Bogs")
+                        .WithMany("Blogs")
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -823,7 +831,7 @@ namespace AppData.Migrations
 
             modelBuilder.Entity("AppData.Models.User", b =>
                 {
-                    b.Navigation("Bogs");
+                    b.Navigation("Blogs");
 
                     b.Navigation("DiaChis");
 

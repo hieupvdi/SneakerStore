@@ -1,4 +1,5 @@
-﻿using AppData.Models;
+﻿using AppData.Extensions;
+using AppData.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace AppData.SneakerDbContext
         public DbSet<User> Users { get; set; }
         public DbSet<DiaChi> DiaChis { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
-        public DbSet<Bog> Bogs { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
         public SNDbcontext(DbContextOptions options) : base(options)
         {
@@ -61,7 +62,7 @@ namespace AppData.SneakerDbContext
                 .HasOne(a => a.GioHang)
                 .WithOne(b => b.User)
                 .HasForeignKey<GioHang>(b => b.IdUser);
-            //modelBuilder.Seed();
+            modelBuilder.Seed();
         }
 
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aL7YTXqIg834qov5xd+Dli452NRiMUitnSweWIMJuIU=",
+  "Hash": "ZYoVXbjUcF3s1lmRzHSMgjLFClAAs/blL+6QzZCc9+Q=",
   "Source": "SneakerStore",
   "BasePath": "_content/SneakerStore",
   "Mode": "Default",
@@ -43484,6 +43484,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\LoginAndRegister\\style.css",
+      "SourceId": "SneakerStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\",
+      "BasePath": "_content/SneakerStore",
+      "RelativePath": "LoginAndRegister/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LoginAndRegister\\style.css"
     }
   ]
 }
