@@ -3,6 +3,7 @@ using AppData.Models;
 using AppData.SneakerDbContext;
 using AppData.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,5 +162,18 @@ namespace AppData.Services
 
             return u;
         }
-    }
+
+		public async Task<bool> Dangnhap(string TenTaiKhoan, string MatKhau)
+		{
+			var x = await GetUserAll();
+			foreach (var i in await GetUserAll())
+			{
+				if (i.TenTaiKhoan == TenTaiKhoan && i.MatKhau == MatKhau)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+	}
 }

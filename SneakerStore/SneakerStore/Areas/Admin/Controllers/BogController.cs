@@ -44,8 +44,9 @@ namespace SneakerStore.Areas.Admin.Controllers
                     UrlAnh.CopyTo(stream);
                 }
                 // Lưu đường dẫn đến ảnh vào đối tượng User
-
+                bog.IdUser = new Guid("4e80228c-98ec-4cd0-ab99-8027922bd49e");
                 bog.UrlAnh = "/images/" + fileName;
+                bog.NgayTao = DateTime.Now;
 
                 //if (!ModelState.IsValid)
                 //    return View(cv);

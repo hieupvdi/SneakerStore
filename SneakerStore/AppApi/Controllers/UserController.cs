@@ -56,5 +56,11 @@ namespace AppApi.Controllers
             var result = await _userServices.DeleteUser(id);
             return Ok(result);
         }
-    }
+		[HttpPost("User/DangNhap")]
+		public async Task<IActionResult> DangNhap(string TenTaiKhoan, string MatKhau)
+		{
+			var result = await _userServices.Dangnhap(TenTaiKhoan,MatKhau);
+			return Ok(result);
+		}
+	}
 }

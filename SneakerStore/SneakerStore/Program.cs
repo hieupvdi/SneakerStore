@@ -2,6 +2,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromSeconds(3600);
+}); 
+
 builder.Services.AddScoped(sp => new HttpClient()
 {
     BaseAddress = new Uri("https://localhost:7055/")
@@ -18,7 +24,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

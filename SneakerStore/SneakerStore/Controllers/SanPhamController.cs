@@ -38,7 +38,7 @@ namespace SneakerStore.Controllers
 
 
 			string apiURL4 = "https://localhost:7001/api/AnhSanPham/AnhSanPham/get-all";
-			var response4 = await httpClient.GetAsync(apiURL3);
+			var response4 = await httpClient.GetAsync(apiURL4);
 			string apiData4 = await response4.Content.ReadAsStringAsync();
 			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
 			var result4 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData4);
@@ -56,5 +56,33 @@ namespace SneakerStore.Controllers
 
 		}
 
-	}
+
+
+		public async Task<IActionResult> Details(Guid id)
+		{
+
+			var httpClient = new HttpClient();
+			string apiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/{id}";
+
+			var response = await httpClient.GetAsync(apiURL);
+
+			string apiData = await response.Content.ReadAsStringAsync();
+			var result = JsonConvert.DeserializeObject<CTSanPhamVM>(apiData);
+
+
+			string apiURL4 = "https://localhost:7001/api/AnhSanPham/AnhSanPham/get-all";
+			var response4 = await httpClient.GetAsync(apiURL4);
+			string apiData4 = await response4.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result4 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData4);
+
+			//ViewBag.CTSanPhamData = result;
+			ViewBag.AnhData = result4;
+
+
+			return View(result);
+			
+		}
+
+    }
 }

@@ -145,36 +145,76 @@ namespace AppData.Services
             return data;
         }
 
-        public async Task<CTSanPhamVM> GetCTSanPhamById(Guid id)
-        {
-            var ctsp = await _dbcontext.CTSanPhams.AsQueryable().FirstOrDefaultAsync(c => c.Id == id && c.TrangThai !=0);
+		//public async Task<CTSanPhamVM> GetCTSanPhamById(Guid id)
+		//{
+		//    var ctsp = await _dbcontext.CTSanPhams.AsQueryable().FirstOrDefaultAsync(c => c.Id == id && c.TrangThai !=0);
 
-            if (ctsp == null)
-            {
-                return null;
-            }
-            var sp = new CTSanPhamVM
-            {
-                Id = ctsp.Id,
-                MoTa = ctsp.MoTa,
-                Gianhap = ctsp.Gianhap,
-                Giaban = ctsp.Giaban,
-                ChatLieu = ctsp.ChatLieu,
-                SoLuongTon = ctsp.SoLuongTon,
-                NhaSanXuat = ctsp.NhaSanXuat,
-                IdSP = ctsp.IdSP,
-                IdSize = ctsp.IdSize,
-                IdMauSac = ctsp.IdMauSac,
-                IdDanhMuc = ctsp.IdDanhMuc,
-                IdDeGiay = ctsp.IdDeGiay,
-                IdGiamGia = ctsp.IdGiamGia,
-                TrangThai = ctsp.TrangThai,
-            };
+		//    if (ctsp == null)
+		//    {
+		//        return null;
+		//    }
+		//    var sp = new CTSanPhamVM
+		//    {
+		//        Id = ctsp.Id,
+		//        MoTa = ctsp.MoTa,
+		//        Gianhap = ctsp.Gianhap,
+		//        Giaban = ctsp.Giaban,
+		//        ChatLieu = ctsp.ChatLieu,
+		//        SoLuongTon = ctsp.SoLuongTon,
+		//        NhaSanXuat = ctsp.NhaSanXuat,
+		//        IdSP = ctsp.IdSP,
+		//        IdSize = ctsp.IdSize,
+		//        IdMauSac = ctsp.IdMauSac,
+		//        IdDanhMuc = ctsp.IdDanhMuc,
+		//        IdDeGiay = ctsp.IdDeGiay,
+		//        IdGiamGia = ctsp.IdGiamGia,
+		//        TrangThai = ctsp.TrangThai,
 
-            return sp;
-        }
 
-       
-    }
+
+
+		//    };
+
+		//    return sp;
+		//}
+
+		public async Task<CTSanPhamVM> GetCTSanPhamById(Guid id)
+		{
+			var query = from a in _dbcontext.CTSanPhams
+						join b in _dbcontext.SanPhams on a.IdSP equals b.Id
+						join c in _dbcontext.Sizes on a.IdSize equals c.Id
+						join d in _dbcontext.MauSacs on a.IdMauSac equals d.Id
+						join f in _dbcontext.DanhMucs on a.IdDanhMuc equals f.Id
+						join g in _dbcontext.DeGiays on a.IdDeGiay equals g.Id
+						join h in _dbcontext.GiamGias on a.IdGiamGia equals h.Id
+						where a.Id == id && a.TrangThai != 0
+						select new { a, b, c, d, f, g, h };
+
+			var data = query
+				.Select(x => new CTSanPhamVM()
+				{
+					Id = x.a.Id,
+					MoTa = x.a.MoTa,
+					Gianhap = x.a.Gianhap,
+					Giaban = x.a.Giaban,
+					ChatLieu = x.a.ChatLieu,
+					SoLuongTon = x.a.SoLuongTon,
+					NhaSanXuat = x.a.NhaSanXuat,
+					TenSP = x.b.TenSP,
+					SizeNumber = x.c.SizeNumber,
+					Mau = x.d.TenMauSac,
+					TenDanhMuc = x.f.Ten,
+					DeGiay = x.g.Name,
+					GiamGia = x.h.TenMaGiamGia,
+					TrangThai = x.a.TrangThai,
+				}).FirstOrDefault();
+
+			return data;
+		}
+
+
+
+
+	}
 }
 
