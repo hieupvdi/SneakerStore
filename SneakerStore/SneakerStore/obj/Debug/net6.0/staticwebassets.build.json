@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZYoVXbjUcF3s1lmRzHSMgjLFClAAs/blL+6QzZCc9+Q=",
+  "Hash": "DHfunuisQ+5v6FoedL6h8O81K/XOizsHKiDcXFpqoGY=",
   "Source": "SneakerStore",
   "BasePath": "_content/SneakerStore",
   "Mode": "Default",
@@ -42483,6 +42483,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\Ảnh chụp màn hình 2023-04-26 003300.png",
+      "SourceId": "SneakerStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\",
+      "BasePath": "_content/SneakerStore",
+      "RelativePath": "images/Ảnh chụp màn hình 2023-04-26 003300.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Ảnh chụp màn hình 2023-04-26 003300.png"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\anh-anime-chibi-2.jpg",
       "SourceId": "SneakerStore",
       "SourceType": "Discovered",
@@ -42515,6 +42532,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\cute.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\maboock.jpg",
+      "SourceId": "SneakerStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\",
+      "BasePath": "_content/SneakerStore",
+      "RelativePath": "images/maboock.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\maboock.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

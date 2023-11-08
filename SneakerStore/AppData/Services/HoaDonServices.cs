@@ -40,7 +40,7 @@ namespace AppData.Services
                     TienShip = obj.TienShip,
                     TongTien=obj.TongTien,
                    
-                    TrangThai = 1,
+                    TrangThai = obj.TrangThai,
                 };
                 //0 xoa 1 hoa don cho 2 chua thanh toan   3 da thanh toan
                 await _dbcontext.AddAsync(hd);
@@ -156,27 +156,26 @@ namespace AppData.Services
             {
                 return null;
             }
-            var h = new HoaDonVM
+            var hoadon = new HoaDonVM
             {
-                Id = hd.Id,
-                IdUser = hd.IdUser,
-                IdVoucher = hd.IdVoucher,
-                MaHD = hd.MaHD,
-                NgayTao = hd.NgayTao,
-                NgayNhan = hd.NgayNhan,
-                NgayThanhToan = hd.NgayThanhToan,
-                NgayShip = hd.NgayShip,
-                NguoiNhan = hd.NguoiNhan,
-                DiaChi = hd.DiaChi,
-                SDT = hd.SDT,
-                SoDiemSD = hd.SoDiemSD,
-                TienShip = hd.TienShip,
-                TongTien = hd.TongTien,
+                    Id = hd.Id,
+                    IdUser = hd.IdUser,
+                    IdVoucher = hd.IdVoucher,
+                    MaHD = hd.MaHD,
+                    NgayTao = hd.NgayTao,
+                    NgayNhan = hd.NgayNhan,
+                    NgayThanhToan = hd.NgayThanhToan,
+                    NgayShip = hd.NgayShip,
+                    NguoiNhan = hd.NguoiNhan,
+                    DiaChi = hd.DiaChi,
+                    SDT = hd.SDT,
+                    SoDiemSD = hd.SoDiemSD,
+                    TienShip = hd.TienShip,
+                    TongTien = hd.TongTien,
 
-                TrangThai = hd.TrangThai,
+                    TrangThai = hd.TrangThai,
             };
-
-            return h;
+            return hoadon;
         }
     }
 }

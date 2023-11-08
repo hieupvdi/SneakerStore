@@ -73,9 +73,7 @@ namespace SneakerStore.Areas.Admin.Controllers
 
             var json = JsonConvert.SerializeObject(cv);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //var content = new StringContent(JsonConvert.SerializeObject(capBacVM, Encoding.UTF8, "application/json");
-
+   
             var response = await httpClient.PutAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {

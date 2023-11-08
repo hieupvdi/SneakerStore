@@ -9993,12 +9993,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\Ảnh chụp màn hình 2023-04-26 003300.png",
+      "PackagePath": "staticwebassets\\images\\Ảnh chụp màn hình 2023-04-26 003300.png"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\anh-anime-chibi-2.jpg",
       "PackagePath": "staticwebassets\\images\\anh-anime-chibi-2.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\cute.png",
       "PackagePath": "staticwebassets\\images\\cute.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\maboock.jpg",
+      "PackagePath": "staticwebassets\\images\\maboock.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\lib\\bootstrap\\LICENSE",

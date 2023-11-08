@@ -42,10 +42,17 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GioHangCT/{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        [HttpGet("GioHangCT/ById/")]
+        public async Task<IActionResult> GetById(Guid iduser,Guid idctsp)
         {
-            var ghct = await _gioHangCTServices.GetGioHangCTById(id);
+            var ghct = await _gioHangCTServices.GetGioHangCTById(iduser,idctsp);
+            return Ok(ghct);
+        }
+
+        [HttpGet("GioHangCT/{id}")]
+        public async Task<IActionResult> GetGHUser(Guid id)
+        {
+            var ghct = await _gioHangCTServices.GetGioHangCTUser(id);
             return Ok(ghct);
         }
 

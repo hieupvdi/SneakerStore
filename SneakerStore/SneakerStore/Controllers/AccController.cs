@@ -11,12 +11,7 @@ namespace SneakerStore.Controllers
 	{
 
 		public AccController() {
-			////lưu session
-			//HttpContext.Session.SetString("userId", result);
-			////lấy 
-			//var userIdinSession = HttpContext.Session.GetString("userId");
-
-			//Guid userId = Guid.Parse(userIdinSession);
+			
 		}
 		public async Task<IActionResult> DangNhap()
 		{
@@ -45,13 +40,7 @@ namespace SneakerStore.Controllers
 
         }
 
-        public async Task<IActionResult> DangKy()
-        {
-            return View();
-
-        }
-
-        [HttpPost]
+       
         public async Task<IActionResult> DangKy(string Email, string TenTaiKhoan, string MatKhau)
         {
             var httpClient = new HttpClient();
@@ -86,7 +75,11 @@ namespace SneakerStore.Controllers
         }
 
 
-
+        public IActionResult DangXuat()
+        {
+            HttpContext.Session.Remove("userId");
+            return RedirectToAction("Index","Home");
+        }
 
 
 

@@ -24,12 +24,12 @@ namespace AppData.Services
             {
                 var ghct = new GioHangCT
                 {
-                    Id=Guid.NewGuid(),
+                    Id = Guid.NewGuid(),
                     IdUser = obj.IdUser,
-                    SoLuong = 1,
+                    SoLuong = obj.SoLuong,
                     DonGia=obj.DonGia,
                     IdCTSP=obj.IdCTSP,
-                    TrangThai = 1,
+                    TrangThai =obj.TrangThai,
                 };
 
                 await _dbcontext.AddAsync(ghct);
@@ -48,11 +48,11 @@ namespace AppData.Services
             try
             {
                 // Kiểm tra xem KhachHang có tồn tại không
-                var ghct = await _dbcontext.GioHangCTs.FirstOrDefaultAsync(c => c.IdUser == id);
+                var ghct = await _dbcontext.GioHangCTs.FirstOrDefaultAsync(c => c.Id == id);
                 if (ghct != null)
                 {
-                    ghct.TrangThai = 0;
-                    _dbcontext.Update(ghct);
+                    ////ghct.TrangThai = 0;
+                    _dbcontext.Remove(ghct);
                     await _dbcontext.SaveChangesAsync();
                     return true;
                 }
@@ -71,16 +71,13 @@ namespace AppData.Services
             try
             {
                 // Kiểm tra xem khachhang có tồn tại không
-                var ghct = await _dbcontext.GioHangCTs.FirstOrDefaultAsync(c => c.IdUser == obj.IdUser);
+                var ghct = await _dbcontext.GioHangCTs.FindAsync(obj.Id);
 
                 if (ghct != null)
                 {
-                    ghct.IdUser = obj.IdUser;
+    
                     ghct.SoLuong = obj.SoLuong;
-                    ghct.DonGia = obj.DonGia;
-                    ghct.IdCTSP = obj.IdCTSP;
-                    ghct.TrangThai = obj.TrangThai;
-
+                               
                     _dbcontext.Update(ghct);
                     await _dbcontext.SaveChangesAsync();
                     return true;
@@ -102,6 +99,7 @@ namespace AppData.Services
             var query = from a in _dbcontext.GioHangCTs
                         join b in _dbcontext.CTSanPhams on a.IdCTSP equals b.Id
                         join c in _dbcontext.Users on a.IdUser equals c.Id
+                        where a.TrangThai != 0
                         select new { a, b,c };
             var data = await query
            .Select(x => new GioHangCTVM()
@@ -121,7 +119,29 @@ namespace AppData.Services
 
         }
 
-        public async Task<List<GioHangCTVM>> GetGioHangCTById(Guid id)
+        public async Task<GioHangCTVM> GetGioHangCTById(Guid iduser,Guid idctsp)
+        {
+            var ghct = await _dbcontext.GioHangCTs.Where(c => c.IdUser == iduser && c.IdCTSP == idctsp && c.TrangThai != 0).FirstOrDefaultAsync();
+
+            if (ghct == null)
+            {
+                return null;
+            }
+            var gh = new GioHangCTVM
+            {
+                Id = ghct.Id,
+                IdUser = ghct.IdUser,
+                SoLuong = ghct.SoLuong,
+                DonGia = ghct.DonGia,
+                IdCTSP = ghct.IdCTSP,
+                TrangThai = ghct.TrangThai,
+            };
+
+            return gh;
+        }
+
+
+        public async Task<List<GioHangCTVM>> GetGioHangCTUser(Guid id)
         {
             var ghct = await _dbcontext.GioHangCTs.Where(c => c.IdUser == id).ToListAsync();
 
@@ -142,6 +162,11 @@ namespace AppData.Services
      
 
             return lst;
+        }
+
+        public Task<List<GioHangCTVM>> GetGioHangCTUser(Guid iduser, Guid idctsp)
+        {
+            throw new NotImplementedException();
         }
     }
 }

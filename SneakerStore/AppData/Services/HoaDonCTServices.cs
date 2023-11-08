@@ -30,7 +30,7 @@ namespace AppData.Services
                     IdCTSP = obj.IdCTSP,
                     SoLuong = obj.SoLuong,
                     DonGia= obj.DonGia,        
-                    TrangThai = 1,
+                    TrangThai = obj.TrangThai,
                 };
                 
                 await _dbcontext.AddAsync(hdct);
