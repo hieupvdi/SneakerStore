@@ -43,16 +43,17 @@
             <div class="container">
 
                 <div class="row">
-                    <main class="col-md-9">
+                    <main class="col-md-12">
                         <div class="card">
 
                             <table class="table table-borderless table-shopping-cart">
                                 <thead class="text-muted">
                                     <tr class="small text-uppercase">
-                                        <th scope="col">Mã HD </th>
+                                        <th scope="col" width="120">Mã HD </th>
                                         <th scope="col" width="120">Ngày Mua Hàng</th>
                                         <th scope="col" width="120">Tổng Tiền</th>
-                                        <th scope="col" width="120">Địa Chỉ</th>
+                                        <th scope="col" width="320">Địa Chỉ</th>
+                                        <th scope="col" width="120">Trạng Thái</th>
                                         <th scope="col" class="text-right" width="200"> </th>
                                     </tr>
                                 </thead>
@@ -60,11 +61,11 @@
 
                                     @foreach (var item in Model)
                                     {
+
                                         foreach (var user in ViewBag.UserData)
                                         {
 
-
-                                            if (item.IdUser == user.Id && item.TrangThai != 0)
+                                            if ( item.TrangThai != 0)
                                             {
 
                                                 <tr>
@@ -89,8 +90,7 @@
                                                     <td>
                                                         <div class="price-wrap">
                                                             <var class="price">@(
-                                                    string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
-                                                    )</var>
+                                                             string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))</var>
 
                                                         </div>
                                                         <!-- price-wrap .// -->
@@ -102,8 +102,16 @@
                                                         </div>
                                                         <!-- price-wrap .// -->
                                                     </td>
+                                                    <td>
+                                                        <div class="price-wrap">
+                                                            <span id="quantity_value">@item.TrangThai</span>
+
+                                                        </div>
+                                                        <!-- price-wrap .// -->
+                                                    </td>
                                                     <td class="text-right">
-                                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+
+                                                        <a class="btn btn-warning" href="@Url.Action("ShowAllHDCT","HoaDon",new{id=item.Id})">Hóa ĐơnCT</a>
                                                         <a class="btn btn-warning" href="@Url.Action("Delete","HoaDon",new{id=item.Id})">Hủy Đơn Hàng</a>
 
                                                     </td>

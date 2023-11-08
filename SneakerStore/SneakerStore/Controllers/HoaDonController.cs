@@ -129,6 +129,28 @@ namespace SneakerStore.Controllers
 
 
 
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var httpClient = new HttpClient();
+            string apiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/delete/{id}";
+
+            var response = await httpClient.DeleteAsync(apiURL);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ShowAllHD");
+            }
+            ModelState.AddModelError("", "Delete sai R");
+            return BadRequest();
+        }
+
+
+
+
+
+
+
+
+
 
     }
 }
