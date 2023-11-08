@@ -1,9 +1,11 @@
 ﻿@using System.Globalization;
+@using AppData.ViewModels;
 @model IEnumerable<AppData.ViewModels.GioHangCTVM>
 
 @{
     ViewData["Title"] = "ShowAllGHCT";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CTSanPhamVM> listCTSP = ViewBag.CTSanPhamData;
 
 }
 
@@ -106,7 +108,7 @@
                                                     <td class="text-right">
                                                         <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
                                                         <a class="btn btn-warning" href="@Url.Action("Delete","GioHang",new{id=item.Id})">Xóa</a>
-                                                        @* <a href="@Url.Action("Delete","GioHang",new{id=item.Id})" class="btn btn-light btn-round">Xóa</a>*@
+                                                    
                                                     </td>
                                                 </tr>
                                             
@@ -135,7 +137,7 @@
                             <div class="card-body">
                                 <dl class="dlist-align">
                                    
-                                    @*<dt>Gía: @Model.Sum(c => c.SoLuong * (ViewBag.CTSanPhamData .FirstOrDefault(x=>x.Id == c.IdSP)?.Price ?? 0))</dt>*@
+                                    <dt>Đơn Gía: @(string.Format(new CultureInfo("vi-VN"), "{0:C0}",Model.Sum(c => c.SoLuong * (listCTSP .FirstOrDefault(x=>x.Id == c.IdCTSP)?.Giaban ?? 0))))</dt>
 
                                 </dl>
                                 <dl class="dlist-align">
@@ -143,13 +145,11 @@
 
                                 </dl>
                                 <dl class="dlist-align">
-                                    @*<dt>Tổng Tiền: @Model.Sum(c => c.SoLuong * (listProduct.FirstOrDefault(x=>x.Id == c.IdSP)?.Price ?? 0))</dt>*@
+                                    <dt>Tổng Tiền:@(string.Format(new CultureInfo("vi-VN"), "{0:C0}", @Model.Sum(c => c.SoLuong * (listCTSP .FirstOrDefault(x=>x.Id == c.IdCTSP)?.Giaban ?? 0))))</dt>
 
                                 </dl>
                                 <hr>
-                                <p class="text-center mb-3">
-                                    <img src="/images/payments.png" height="26">
-                                </p>
+                               
                                 @using (Html.BeginForm("CreateDiachi", "DiaChi", FormMethod.Post))
                                 {
 

@@ -107,7 +107,7 @@ namespace SneakerStore.Controllers
                     var hdct = new HoaDonCTVM
                     {
                         Id = Guid.NewGuid(),
-                        IdHD = userId,
+                        IdHD = hd.Id,
                         IdCTSP = gioHangCT.IdCTSP,
                         SoLuong = gioHangCT.SoLuong,
                         DonGia = gioHangCT.DonGia,
@@ -142,6 +142,45 @@ namespace SneakerStore.Controllers
             ModelState.AddModelError("", "Delete sai R");
             return BadRequest();
         }
+
+
+
+
+
+        public async Task<IActionResult> ShowAllHDCT(Guid idhd)
+        {
+
+            var httpClient = new HttpClient();
+
+            var userIdinSession = HttpContext.Session.GetString("userId");
+
+
+            if (!string.IsNullOrEmpty(userIdinSession))
+            {
+                Guid userId = Guid.Parse(userIdinSession);
+                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
+             
+
+                var response3 = await httpClient.GetAsync(apiURL3);
+                string apiData3 = await response3.Content.ReadAsStringAsync();
+                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+                ViewBag.UserData = new List<UserVM> { result3 };
+
+
+                string apiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/{idhd}";
+
+                var response = await httpClient.GetAsync(apiURL);
+
+                string apiData = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<HoaDonCTVM>(apiData);
+                return View(result);
+
+            }
+
+            return RedirectToAction("DangNhap", "Acc");
+
+        }
+
 
 
 

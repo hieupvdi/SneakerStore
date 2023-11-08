@@ -75,7 +75,7 @@ namespace SneakerStore.Controllers
 
 
 
-        public async Task<IActionResult> CreateGH(Guid idctsp)
+        public async Task<IActionResult> CreateGH(Guid idctsp,decimal giaban)
         {
             var httpClient = new HttpClient();
 
@@ -104,7 +104,7 @@ namespace SneakerStore.Controllers
             {
                 IdUser = userId,
                 SoLuong = 0,
-                DonGia = 1,
+                DonGia = giaban,
                 IdCTSP = idctsp,
                 TrangThai = 1,
             };
