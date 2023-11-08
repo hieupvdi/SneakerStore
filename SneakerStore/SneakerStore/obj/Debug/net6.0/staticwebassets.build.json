@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DHfunuisQ+5v6FoedL6h8O81K/XOizsHKiDcXFpqoGY=",
+  "Hash": "diQt2ndwVDnRMiCACA2GEpUvgi+zEcpSEjgBvsNzoOI=",
   "Source": "SneakerStore",
   "BasePath": "_content/SneakerStore",
   "Mode": "Default",
@@ -42515,6 +42515,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\anh-anime-chibi-2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\avta.png",
+      "SourceId": "SneakerStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\",
+      "BasePath": "_content/SneakerStore",
+      "RelativePath": "images/avta.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avta.png"
     },
     {
       "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\cute.png",

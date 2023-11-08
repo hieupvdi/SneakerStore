@@ -78,7 +78,7 @@
                                                     </figure>
                                                 </td>
                                                 <td>
-                                                    <div class="quantity_selector">
+                                                    <div class="price-wrap">
 
                                                         <span id="quantity_value">@item.NgayTao</span>
 
@@ -111,10 +111,9 @@
                                                     <!-- price-wrap .// -->
                                                 </td>
                                                 <td class="text-right">
-
-                                                    <a class="btn btn-warning" href="@Url.Action("ShowAllHDCT","HoaDon",new{id=item.Id})">Hóa ĐơnCT</a>
-                                                    <a class="btn btn-warning" href="@Url.Action("Delete","HoaDon",new{id=item.Id})">Hủy Đơn Hàng</a>
-
+                                                    <div class="btn btn-warning"><a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">Hóa ĐơnCT</a></div>
+                                                    <div class="btn btn-warning"><a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })">Hủy Đơn Hàng</a></div>
+                                                   
                                                 </td>
                                             </tr>
 

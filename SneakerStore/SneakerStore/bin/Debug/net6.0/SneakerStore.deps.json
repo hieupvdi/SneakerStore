@@ -12,8 +12,7 @@
           "Microsoft.EntityFrameworkCore": "6.0.22",
           "Microsoft.EntityFrameworkCore.Design": "6.0.22",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16",
-          "Newtonsoft.Json": "13.0.3",
-          "X.PagedList": "8.4.7"
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "SneakerStore.dll": {}
@@ -556,14 +555,6 @@
         "resources": {
           "lib/net6.0/zh-Hant/Humanizer.resources.dll": {
             "locale": "zh-Hant"
-          }
-        }
-      },
-      "JetBrains.Annotations/2022.3.1": {
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "assemblyVersion": "4242.42.42.42",
-            "fileVersion": "2022.3.1.0"
           }
         }
       },
@@ -2476,17 +2467,6 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "X.PagedList/8.4.7": {
-        "dependencies": {
-          "JetBrains.Annotations": "2022.3.1"
-        },
-        "runtime": {
-          "lib/net6.0/X.PagedList.dll": {
-            "assemblyVersion": "8.4.7.0",
-            "fileVersion": "8.4.7.0"
-          }
-        }
-      },
       "AppData/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.22",
@@ -2853,13 +2833,6 @@
       "sha512": "sha512-VIXB7HCUC34OoaGnO3HJVtSv2/wljPhjV7eKH4+TFPgQdJj2lvHNKY41Dtg0Bphu7X5UaXFR4zrYYyo+GNOjbA==",
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
-    },
-    "JetBrains.Annotations/2022.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-11nsS3+lFICGkztVs9PP2NRItxf9fF+qD6xEW/T0YGto52zj07wseUeBdMAU1ah9HNVTDZyRC1u4NWdtJScwhw==",
-      "path": "jetbrains.annotations/2022.3.1",
-      "hashPath": "jetbrains.annotations.2022.3.1.nupkg.sha512"
     },
     "MessagePack/2.1.152": {
       "type": "package",
@@ -4008,13 +3981,6 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
-    },
-    "X.PagedList/8.4.7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZA1WcyNviMUhivCgwKAm/5/YsNP3Yf/n81SzrPaHSJOcFzavA9MrXTT8M+ZX4fvHwLCL1bY6BPXvwZF5pRtgTg==",
-      "path": "x.pagedlist/8.4.7",
-      "hashPath": "x.pagedlist.8.4.7.nupkg.sha512"
     },
     "AppData/1.0.0": {
       "type": "project",

@@ -82,8 +82,7 @@ namespace SneakerStore.Controllers
                 //tạo Hóa đơn ct
                 string gioHangApiUrl = $"https://localhost:7001/api/GioHangCT/GioHangCT/{userIdinSession}";
                 var gioHangResponse = await httpClient.GetAsync(gioHangApiUrl);
-                if (gioHangResponse.IsSuccessStatusCode)
-                {
+            
                    
                     string gioHangData = await gioHangResponse.Content.ReadAsStringAsync();
                     var gioHangDataList = JsonConvert.DeserializeObject<List<GioHangCTVM>>(gioHangData);
@@ -91,29 +90,60 @@ namespace SneakerStore.Controllers
 
                     foreach (var gioHangCT in gioHangDataList)
                     {
-                        string hoaDonApiUrl = "https://localhost:7001/api/HoaDonCT/HoaDonCT/create";
+                        
                         var hdct = new HoaDonCTVM
                         {
-                            Id = Guid.NewGuid(),
-                            IdHD = hd.Id,
+                           
+                            IdHD =hd.Id,
                             IdCTSP = gioHangCT.IdCTSP,
                             SoLuong = gioHangCT.SoLuong,
                             DonGia = gioHangCT.DonGia,
                             TrangThai = 1,
                         };
+                        //Thêm gh vào hóa đon
+                        string hoaDonApiUrl = "https://localhost:7001/api/HoaDonCT/HoaDonCT/create";
                         var json1 = JsonConvert.SerializeObject(hdct);
                         var content1 = new StringContent(json1, Encoding.UTF8, "application/json");
                         var createHoaDonResponse = await httpClient.PostAsync(hoaDonApiUrl, content1);
-                      
+
+
+
+
+
+                        // cập nhật số lượng
+                    
+                        string CTSPApiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all"; 
+                        var CTSPResponse = await httpClient.GetAsync(CTSPApiURL);
+                        var CTSPResponseData = await CTSPResponse.Content.ReadAsStringAsync();
+                        var lstCtspVM = JsonConvert.DeserializeObject<List<CTSanPhamVM>>(CTSPResponseData);
+
+                        var ctsp = lstCtspVM.FirstOrDefault(x => x.Id == gioHangCT.IdCTSP);
+                        ctsp.Id = gioHangCT.IdCTSP;
+                        ctsp.SoLuongTon -= gioHangCT.SoLuong;
+
+
+                        var updateProductdetailApiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/{gioHangCT.IdCTSP}";
+                        var updateProductdetailJson = JsonConvert.SerializeObject(ctsp);
+                        var updateProductdetailContent = new StringContent(updateProductdetailJson, Encoding.UTF8, "application/json");
+                        var updateProductdetailResponse = await httpClient.PutAsync(updateProductdetailApiURL, updateProductdetailContent);
+
+                        // xóa SP giỏ hàng
+                        var deleteGHCTApiURL = $"https://localhost:7001/api/GioHangCT/GioHangCT/Delete/{gioHangCT.Id}"; 
+                        var deleteGHCTReponse = await httpClient.DeleteAsync(deleteGHCTApiURL);
+
                     }
-                   
-                        return RedirectToAction("ShowAllHD");
-                  
 
-                }
+                    return RedirectToAction("ShowAllHD", new { id = hd.Id });
+
+
+                
+
+
             }
-
-            return BadRequest();
+            else
+            {
+                return BadRequest("Không tạo được hóa đơn");
+            }
 
 
         }
@@ -142,43 +172,29 @@ namespace SneakerStore.Controllers
         {
 
             var httpClient = new HttpClient();
-
-            var userIdinSession = HttpContext.Session.GetString("userId");
-
-
-            if (!string.IsNullOrEmpty(userIdinSession))
-            {
-                Guid userId = Guid.Parse(userIdinSession);
-                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
-             
-
-                var response3 = await httpClient.GetAsync(apiURL3);
-                string apiData3 = await response3.Content.ReadAsStringAsync();
-                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
-                ViewBag.UserData = new List<UserVM> { result3 };
+            string apiURL1 = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all";
+            var response1 = await httpClient.GetAsync(apiURL1);
+            string apiData1 = await response1.Content.ReadAsStringAsync();
+            var result1 = JsonConvert.DeserializeObject<List<CTSanPhamVM>>(apiData1);
+            ViewBag.CTSanPhamData = result1;
+            string apiURL2 = "https://localhost:7001/api/AnhSanPham/AnhSanPham/get-all";
+            var response2 = await httpClient.GetAsync(apiURL2);
+            string apiData2 = await response2.Content.ReadAsStringAsync();
+            var result2 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData2);
+            ViewBag.AnhData = result2;
 
 
-                string apiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/{idhd}";
+            string apiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/GetHDCTUser/{idhd}";
 
-                var response = await httpClient.GetAsync(apiURL);
+            var response = await httpClient.GetAsync(apiURL);
 
-                string apiData = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<HoaDonCTVM>(apiData);
-                return View(result);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<List<HoaDonCTVM>>(apiData);
+            return View(result);
 
-            }
 
-            return RedirectToAction("DangNhap", "Acc");
 
         }
-
-
-
-
-
-
-
-
 
 
 

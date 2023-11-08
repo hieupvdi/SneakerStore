@@ -25,7 +25,7 @@ namespace AppData.Services
                 var hd = new HoaDon
                 {
 
-                    Id = Guid.NewGuid(),
+                    Id = obj.Id,
                     IdUser = obj.IdUser,
                     IdVoucher = obj.IdVoucher,
                     MaHD = obj.MaHD,
