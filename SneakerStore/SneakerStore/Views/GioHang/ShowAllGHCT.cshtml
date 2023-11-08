@@ -202,11 +202,9 @@
                                         <H5>SĐT:@user.SDT</H5>
                                     </div>
                                     <div class="input-group mb-3">
-
-                                        <dt>Địa chỉ</dt>
-                                        
+                                                                            
                                         <select class="form-control" name="DiaChi" placeholder="Địa Chỉ">
-                                         
+                                            <option value="" disabled selected>Chọn Địa Chỉ</option>
                                             @if (ViewBag.DiaChiData != null)
                                             {
                                                 @foreach (var dc in ViewBag.DiaChiData)
@@ -225,10 +223,9 @@
                                         <!-- Button trigger modal -->
                              
                                     <div class="input-group mb-3">
-
-                                        <dt>Voucher</dt>
-                                      
+ 
                                         <select class="form-control" name="IdVoucher">
+                                            <option value="" disabled selected>Chọn Voucher</option>
                                             @if (ViewBag.VoucherData != null)
                                             {
                                                 @foreach (var vo in ViewBag.VoucherData)
@@ -242,11 +239,9 @@
 
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <dt>Phương Thức Thanh Toán</dt>
-                                        
+                                    <div class="input-group mb-3">                                        
                                         <select class="form-select" size="3" aria-label="Size 3 select example">
-                                            
+                                            <option value="" disabled selected>Chọn PT Thanh Toán</option>
                                             <option value="1">Thanh Toán Khi Nhận Hàng</option>
                                             <option value="1">Thanh Toán online</option>
                                            

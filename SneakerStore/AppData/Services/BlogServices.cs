@@ -110,6 +110,7 @@ namespace AppData.Services
            .Select(x => new BlogVM()
            {
                Id = x.a.Id,
+               IdUser = x.b.Id,
                NguoiDang = x.b.TenTaiKhoan,
                TieuDe = x.a.TieuDe,
                NoiDung = x.a.NoiDung,

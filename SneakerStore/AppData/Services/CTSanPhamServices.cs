@@ -127,6 +127,12 @@ namespace AppData.Services
            .Select(x => new CTSanPhamVM()
            {
                Id = x.a.Id,
+               IdSP = x.b.Id,
+               IdSize = x.c.Id,
+               IdMauSac = x.d.Id,
+               IdDanhMuc = x.f.Id,
+               IdDeGiay=x.g.Id,
+               IdGiamGia=x.h.Id,
                MoTa = x.a.MoTa,
                Gianhap = x.a.Gianhap,
                Giaban = x.a.Giaban,

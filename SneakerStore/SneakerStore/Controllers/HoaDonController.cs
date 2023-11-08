@@ -18,14 +18,8 @@ namespace SneakerStore.Controllers
             if (!string.IsNullOrEmpty(userIdinSession))
             {
                 Guid userId = Guid.Parse(userIdinSession);
-                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
                 string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
-
-                var response3 = await httpClient.GetAsync(apiURL3);
-                string apiData3 = await response3.Content.ReadAsStringAsync();
-                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
-                ViewBag.UserData = new List<UserVM> { result3 };
-
+                ViewBag.UserId = userId;
                 var response = await httpClient.GetAsync(apiURL);
                 string apiData = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
@@ -43,7 +37,7 @@ namespace SneakerStore.Controllers
 
         public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
         {
-
+            //Tạo Hóa đơn
             var userIdinSession = HttpContext.Session.GetString("userId");
             if (string.IsNullOrEmpty(userIdinSession)) return RedirectToAction("DangNhap", "Acc");
 
@@ -58,9 +52,6 @@ namespace SneakerStore.Controllers
             string apiData3 = await response3.Content.ReadAsStringAsync();
             var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
             
-
-          
-
             var hd = new HoaDonVM
             {
                 Id=Guid.NewGuid(),
@@ -86,45 +77,45 @@ namespace SneakerStore.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var Response = await httpClient.PostAsync(ApiURL, content);
 
-
-
-            string gioHangApiUrl = $"https://localhost:7001/api/GioHangCT/GioHangCT/{userIdinSession}";
-            var gioHangResponse = await httpClient.GetAsync(gioHangApiUrl);
-            if (gioHangResponse.IsSuccessStatusCode)
+            if (Response.IsSuccessStatusCode)//check hóa đơn tạo thành c
             {
-                // Read the response content
-                string gioHangData = await gioHangResponse.Content.ReadAsStringAsync();
-                var gioHangDataList = JsonConvert.DeserializeObject<List<GioHangCTVM>>(gioHangData);
-
-                if (gioHangDataList.Count > 0)
+                //tạo Hóa đơn ct
+                string gioHangApiUrl = $"https://localhost:7001/api/GioHangCT/GioHangCT/{userIdinSession}";
+                var gioHangResponse = await httpClient.GetAsync(gioHangApiUrl);
+                if (gioHangResponse.IsSuccessStatusCode)
                 {
                    
-                    var gioHangCT = gioHangDataList[0];
+                    string gioHangData = await gioHangResponse.Content.ReadAsStringAsync();
+                    var gioHangDataList = JsonConvert.DeserializeObject<List<GioHangCTVM>>(gioHangData);
 
-                    string hoaDonApiUrl = "https://localhost:7001/api/HoaDonCT/HoaDonCT/create";
 
-                   
-                    var hdct = new HoaDonCTVM
+                    foreach (var gioHangCT in gioHangDataList)
                     {
-                        Id = Guid.NewGuid(),
-                        IdHD = hd.Id,
-                        IdCTSP = gioHangCT.IdCTSP,
-                        SoLuong = gioHangCT.SoLuong,
-                        DonGia = gioHangCT.DonGia,
-                        TrangThai = 1,
-                    };
-
-                    var json1 = JsonConvert.SerializeObject(hdct);
-                    var content1 = new StringContent(json1, Encoding.UTF8, "application/json");                
-                    var createHoaDonResponse = await httpClient.PostAsync(hoaDonApiUrl, content1);
-
-                    if (createHoaDonResponse.IsSuccessStatusCode)
-                    {
-                        return RedirectToAction("ShowAllHD");
+                        string hoaDonApiUrl = "https://localhost:7001/api/HoaDonCT/HoaDonCT/create";
+                        var hdct = new HoaDonCTVM
+                        {
+                            Id = Guid.NewGuid(),
+                            IdHD = hd.Id,
+                            IdCTSP = gioHangCT.IdCTSP,
+                            SoLuong = gioHangCT.SoLuong,
+                            DonGia = gioHangCT.DonGia,
+                            TrangThai = 1,
+                        };
+                        var json1 = JsonConvert.SerializeObject(hdct);
+                        var content1 = new StringContent(json1, Encoding.UTF8, "application/json");
+                        var createHoaDonResponse = await httpClient.PostAsync(hoaDonApiUrl, content1);
+                      
                     }
+                   
+                        return RedirectToAction("ShowAllHD");
+                  
+
                 }
             }
+
             return BadRequest();
+
+
         }
 
 

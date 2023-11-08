@@ -110,6 +110,8 @@ namespace AppData.Services
            .Select(x => new HoaDonCTVM()
            {
                Id = x.a.Id,
+               IdHD = x.b.Id,
+               IdCTSP= x.c.Id,
                MaHD = x.b.MaHD,
                TenSP = x.c.SanPham.TenSP,
                SoLuong = x.a.SoLuong,

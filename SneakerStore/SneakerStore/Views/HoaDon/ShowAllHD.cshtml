@@ -62,62 +62,64 @@
                                     @foreach (var item in Model)
                                     {
 
-                                        foreach (var user in ViewBag.UserData)
+
+
+                                        if (item.IdUser == ViewBag.UserId && item.TrangThai != 0)
                                         {
 
-                                            if ( item.TrangThai != 0)
-                                            {
-
-                                                <tr>
-                                                    <td>
-                                                        <figure class="itemside">
+                                            <tr>
+                                                <td>
+                                                    <figure class="itemside">
 
 
-                                                            <figcaption class="info">
-                                                                <a href="#" class="title text-dark">@item.MaHD</a>
+                                                        <figcaption class="info">                                                      
+                                                            <a href="#" class="title text-dark">@item.MaHD</a>
+                                                        </figcaption>
+                                                    </figure>
+                                                </td>
+                                                <td>
+                                                    <div class="quantity_selector">
 
-                                                            </figcaption>
-                                                        </figure>
-                                                    </td>
-                                                    <td>
-                                                        <div class="quantity_selector">
+                                                        <span id="quantity_value">@item.NgayTao</span>
 
-                                                            <span id="quantity_value">@item.NgayTao</span>
+                                                    </div>
 
-                                                        </div>
+                                                </td>
+                                                <td>
+                                                    <div class="price-wrap">
+                                                        <var class="price">
+                                                            @(
+                                                                string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
+                                                                )
+                                                        </var>
 
-                                                    </td>
-                                                    <td>
-                                                        <div class="price-wrap">
-                                                            <var class="price">@(
-                                                             string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))</var>
+                                                    </div>
+                                                    <!-- price-wrap .// -->
+                                                </td>
+                                                <td>
+                                                    <div class="price-wrap">
+                                                        <span id="quantity_value">@item.DiaChi</span>
 
-                                                        </div>
-                                                        <!-- price-wrap .// -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="price-wrap">
-                                                            <span id="quantity_value">@item.DiaChi</span>
+                                                    </div>
+                                                    <!-- price-wrap .// -->
+                                                </td>
+                                                <td>
+                                                    <div class="price-wrap">
+                                                        <span id="quantity_value">@item.TrangThai</span>
 
-                                                        </div>
-                                                        <!-- price-wrap .// -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="price-wrap">
-                                                            <span id="quantity_value">@item.TrangThai</span>
+                                                    </div>
+                                                    <!-- price-wrap .// -->
+                                                </td>
+                                                <td class="text-right">
 
-                                                        </div>
-                                                        <!-- price-wrap .// -->
-                                                    </td>
-                                                    <td class="text-right">
+                                                    <a class="btn btn-warning" href="@Url.Action("ShowAllHDCT","HoaDon",new{id=item.Id})">Hóa ĐơnCT</a>
+                                                    <a class="btn btn-warning" href="@Url.Action("Delete","HoaDon",new{id=item.Id})">Hủy Đơn Hàng</a>
 
-                                                        <a class="btn btn-warning" href="@Url.Action("ShowAllHDCT","HoaDon",new{id=item.Id})">Hóa ĐơnCT</a>
-                                                        <a class="btn btn-warning" href="@Url.Action("Delete","HoaDon",new{id=item.Id})">Hủy Đơn Hàng</a>
+                                                </td>
+                                            </tr>
 
-                                                    </td>
-                                                </tr>
-                                            }
                                         }
+
                                     }
 
                                 </tbody>
@@ -135,7 +137,7 @@
                         </div>
 
                     </main>
-         
+
                 </div>
 
             </div>

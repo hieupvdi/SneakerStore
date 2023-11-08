@@ -127,6 +127,8 @@ namespace AppData.Services
            .Select(x => new HoaDonVM()
            {
                Id=x.a.Id,
+               IdUser=x.b.Id,
+               IdVoucher=x.c.Id,
                TenTK = x.b.TenTaiKhoan,
                TenVoucher = x.c.Ten,
                MaHD = x.a.MaHD,

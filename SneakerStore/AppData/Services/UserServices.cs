@@ -120,6 +120,7 @@ namespace AppData.Services
            {
 
                Id = x.a.Id,
+               IdCV= x.b.Id,
                ChucVu = x.b.Ten,
                HoTen = x.a.HoTen,
                Url = x.a.Url,
