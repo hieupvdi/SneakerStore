@@ -56,7 +56,7 @@ namespace SneakerStore.Controllers
                 var response5 = await httpClient.GetAsync(apiURL5);
                 string apiData5 = await response5.Content.ReadAsStringAsync();
                 var result5 = JsonConvert.DeserializeObject<List<VoucherVM>>(apiData5);
-                ViewBag.VoucheriData = result5;
+                ViewBag.VoucherData = result5;
 
 
                 var response = await httpClient.GetAsync(apiURL);
