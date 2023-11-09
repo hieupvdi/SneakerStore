@@ -18,7 +18,7 @@ namespace AppData.ViewModels
         public DateTime? NgayNhan { get; set; }
         public string NguoiNhan { get; set; }
         public string DiaChi { get; set; }
-        public string SDT { get; set; }
+        public int SDT { get; set; }
         public int SoDiemSD { get; set; }
         public decimal TienShip { get; set; }
         public decimal TongTien { get; set; }

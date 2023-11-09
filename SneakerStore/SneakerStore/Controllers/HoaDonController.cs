@@ -122,7 +122,7 @@ namespace SneakerStore.Controllers
                         ctsp.SoLuongTon -= gioHangCT.SoLuong;
 
 
-                        var updateProductdetailApiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/{gioHangCT.IdCTSP}";
+                        var updateProductdetailApiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/update/{gioHangCT.IdCTSP}";
                         var updateProductdetailJson = JsonConvert.SerializeObject(ctsp);
                         var updateProductdetailContent = new StringContent(updateProductdetailJson, Encoding.UTF8, "application/json");
                         var updateProductdetailResponse = await httpClient.PutAsync(updateProductdetailApiURL, updateProductdetailContent);

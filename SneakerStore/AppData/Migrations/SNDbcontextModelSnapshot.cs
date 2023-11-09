@@ -346,9 +346,8 @@ namespace AppData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SDT")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SDT")
+                        .HasColumnType("int");
 
                     b.Property<int>("SoDiemSD")
                         .HasColumnType("int");
@@ -523,9 +522,8 @@ namespace AppData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SDT")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SDT")
+                        .HasColumnType("int");
 
                     b.Property<int>("SoDiem")
                         .HasColumnType("int");

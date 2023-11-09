@@ -39,21 +39,21 @@ namespace SneakerStore.Controllers
             return View();
 
         }
+	
 
-       
-        public async Task<IActionResult> DangKy(string Email, string TenTaiKhoan, string MatKhau)
+		public async Task<IActionResult> DangKy(string Email, string TenTaiKhoan, string MatKhau)
         {
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/User/User/create";
             var us = new UserVM
             {
                 IdCV = new Guid("e26fa84e-3019-4a14-862f-9fafc6014dfe"),
-                HoTen = null,
-                Url = null,
+                HoTen = "Chưa Cập Nhập",
+                Url = "/images/avta_tr.jpg",
                 Email = Email,
                 TenTaiKhoan = TenTaiKhoan,
                 MatKhau = MatKhau,
-                SDT = null,
+                SDT = 0,
                 GioiTinh = 0,
                 SoDiem = 0,
                 TrangThai = 1,
@@ -69,7 +69,7 @@ namespace SneakerStore.Controllers
             }
             ModelState.AddModelError("", "Đăng ký k thành công");
 
-            return View("DangKy");
+            return View("DangNhap");
 
 
         }

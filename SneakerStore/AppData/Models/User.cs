@@ -15,7 +15,7 @@ namespace AppData.Models
         public string Email { get; set; }
         public string TenTaiKhoan { get; set; }
         public string MatKhau { get; set; }
-        public string SDT { get; set; }
+        public int SDT { get; set; }
 
         public int GioiTinh { get; set; }
         public int SoDiem { get; set; }
