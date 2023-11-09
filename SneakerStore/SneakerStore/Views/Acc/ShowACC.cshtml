@@ -1,0 +1,209 @@
+﻿@using AppData.ViewModels;
+@model AppData.ViewModels.UserVM
+@{
+    ViewData["Title"] = "ShowACC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<DiaChiVM> listDiaChi = ViewBag.DiaChiDaTe;
+    List<VoucherVM> listVoucher = ViewBag.VouCherDaTe;
+    int stt = 0;
+}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+<div class="row">
+    <p>Fix lỗi  nav rộng</p>
+    <p></p>
+    <p></p>
+</div>
+<div class="row">
+
+    <div class="col">
+
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs d-flex flex-row align-items-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs d-flex flex-row align-items-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+@*bắt đầu *@
+<div class="container contact_container">
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                 src="@Model.Url"
+                                 alt="User profile picture">
+                        </div>
+
+                        <h4 class="profile-username text-center">Người dùng:@Model.HoTen</h4>
+
+                        <p class="text-muted text-center">Tài Khoản:@Model.TenTaiKhoan</p>
+                        <p class="text-muted text-center">Chức Vụ:@Model.ChucVu</p>
+                     
+                        <a href="#" class="btn btn-primary btn-block"><b>Cập Nhập Thông Tin</b></a>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông Tin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Địa Chỉ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Vorcher Shop</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <h4>Thông Tin Người Dùng</h4>
+                                    <h5>Email: @Model.Email</h5>
+                                    <h5>SĐT: @Model.SDT</h5>
+                                    <dev>
+                                        
+                                        @if (Model.GioiTinh == 0)
+                                        {
+                                            <h5>giới Tính: Nam</h5>
+                                        }
+                                        else if (Model.GioiTinh == 1)
+                                        {
+                                            <h5>giới Tính: Nữ</h5>
+                                        }
+                                        else
+                                        {
+                                            <h5>giới Tính: Chưa Câp Nhật</h5>
+                                        }
+
+
+                                    </dev>
+                                    <h5>Số Điểm: @Model.SoDiem</h5>
+
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="timeline">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">STT</th>
+                                                <th scope="col">Đia Chỉ</th>
+                                                <th scope="col"></th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in listDiaChi)
+                                            {
+                                                @if (item.TrangThai != 0)
+                                                {
+                                                    <tr>
+                                                        <th scope="row">@(stt + 1)</th>
+                                                        <td><span>@item.Ten</span></td>
+                                                        <td>
+                                                            <a class="btn btn-primary" href="@Url.Action("Create","DiaChi",new{id=item.Id})">Thêm</a>
+                                                            <a class="btn btn-primary" href="@Url.Action("Edit","DiaChi",new{id=item.Id})">Sửa</a>
+                                                            <a class="btn btn-warning" href="@Url.Action("Delete","DiaChi",new{id=item.Id})">Xóa</a>
+                                                        </td>
+
+                                                    </tr>
+                                                }
+
+                                            }
+                                       
+                                       
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="settings">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">STT</th>
+                                                <th scope="col">Voucher</th>
+                                                <th scope="col">Điều Kiện</th>
+                                                <th scope="col">Số Tiền Giảm</th>
+                                                <th scope="col">Phần Trăm</th>
+                                                <th scope="col">Ngày Bắt Đầu</th>
+                                                <th scope="col">Ngày Kết Thúc</th>
+                                                <th scope="col">Số Lượng</th>
+                                                <th scope="col">Mô Tả</th>
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in listVoucher)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@(stt+1)</th>
+                                                    <td><span>@item.Ten</span></td>
+                                                    <td><span>@item.DieuKien</span></td>
+                                                    <td><span>@item.SoTienGiam</span></td>
+                                                    <td><span>@item.PhanTram</span></td>
+                                                    <td><span>@item.NgayBatDau</span></td>
+                                                    <td><span>@item.NgayKetThuc</span></td>
+                                                    <td><span>@item.SoLuong</span></td>
+                                                    <td><span>@item.MoTa</span></td>
+                                                                                                   
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+</div>
+
+
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>

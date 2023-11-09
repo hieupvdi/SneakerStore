@@ -1,4 +1,5 @@
-﻿using AppData.ViewModels;
+﻿using AppData.Models;
+using AppData.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -54,7 +55,7 @@ namespace SneakerStore.Controllers
                 TenTaiKhoan = TenTaiKhoan,
                 MatKhau = MatKhau,
                 SDT = 0,
-                GioiTinh = 0,
+                GioiTinh = 2,
                 SoDiem = 0,
                 TrangThai = 1,
 
@@ -67,12 +68,11 @@ namespace SneakerStore.Controllers
             {
                 return RedirectToAction("DangNhap", "Acc");
             }
-            ModelState.AddModelError("", "Đăng ký k thành công");
+			ModelState.AddModelError("", "Đăng Ký k thành công");
+			return View();
 
-            return View("DangNhap");
 
-
-        }
+		}
 
 
         public IActionResult DangXuat()
@@ -82,7 +82,46 @@ namespace SneakerStore.Controllers
         }
 
 
+        public async Task<IActionResult> ShowACC()
+        {
+            var httpClient = new HttpClient();
+            var userIdinSession = HttpContext.Session.GetString("userId");
 
+
+            if (!string.IsNullOrEmpty(userIdinSession))
+            {
+                Guid userId = Guid.Parse(userIdinSession);
+
+                string DCApiURL = "https://localhost:7001/api/DiaChi/DiaChi/get-all";
+                var DCresponse = await httpClient.GetAsync(DCApiURL);
+                string DCapiData = await DCresponse.Content.ReadAsStringAsync();
+                var DCresult = JsonConvert.DeserializeObject<List<DiaChiVM>>(DCapiData);
+                ViewBag.DiaChiDaTe = DCresult;
+
+
+                string VoApiURL = "https://localhost:7001/api/Voucher/Voucher/get-all";
+                var Voresponse = await httpClient.GetAsync(VoApiURL);
+                string VoapiData = await Voresponse.Content.ReadAsStringAsync();
+                var Voresult = JsonConvert.DeserializeObject<List<VoucherVM>>(VoapiData);
+                ViewBag.VouCherDaTe = Voresult;
+
+
+
+
+
+
+                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
+
+
+            var response3 = await httpClient.GetAsync(apiURL3);
+            string apiData3 = await response3.Content.ReadAsStringAsync();
+            var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+                return View(result3);
+
+            }
+
+            return RedirectToAction("DangNhap", "Acc");
+        }
 
 
 

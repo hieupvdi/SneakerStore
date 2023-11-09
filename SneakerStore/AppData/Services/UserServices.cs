@@ -139,29 +139,29 @@ namespace AppData.Services
 
         public async Task<UserVM> GetUserById(Guid id)
         {
-            var us = await _dbcontext.Users.AsQueryable().FirstOrDefaultAsync(c => c.Id == id && c.TrangThai != 0);
-
-            if (us == null)
-            {
-                return null;
-            }
-            var u = new UserVM
-            {
-                Id = us.Id,
-                IdCV = us.IdCV,
-                HoTen = us.HoTen,
-                Url = us.Url,
-                Email = us.Email,
-                TenTaiKhoan = us.TenTaiKhoan,
-                MatKhau = us.MatKhau,
-                SDT = us.SDT,
+            var query = from a in _dbcontext.Users
+                        join b in _dbcontext.ChucVus on a.IdCV equals b.Id
+                        where a.Id == id && a.TrangThai != 0
+                        select new { a, b };
+            var data = query
+                .Select(x => new UserVM()
+                {
+                    Id = x.a.Id,
+                    IdCV = x.b.Id,
+                    HoTen = x.a.HoTen,
+                    ChucVu = x.b.Ten,
+                    Url = x.a.Url,
+                    Email = x.a.Email,
+                    TenTaiKhoan = x.a.TenTaiKhoan,
+                    MatKhau = x.a.MatKhau,
+                    SDT = x.a.SDT,
                
-                GioiTinh = us.GioiTinh,
-                SoDiem = us.SoDiem,
-                TrangThai = us.TrangThai,
-            };
+                    GioiTinh = x.a.GioiTinh,
+                    SoDiem = x.a.SoDiem,
+                    TrangThai = x.a.TrangThai,
+                }).FirstOrDefault();
 
-            return u;
+            return data;
         }
 
         public async Task<Guid> Dangnhap(string TenTaiKhoan, string MatKhau)

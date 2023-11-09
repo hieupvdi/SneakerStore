@@ -8,20 +8,7 @@ namespace SneakerStore.Controllers
 {
     public class DiaChiController : Controller
     {
-        public async Task<IActionResult> ShowAllDC()
-        {
-            var httpClient = new HttpClient();
-            string apiURL = "https://localhost:7001/api/DiaChi/DiaChi/get-all";
-            var response = await httpClient.GetAsync(apiURL);
-            string apiData = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<List<DiaChiVM>>(apiData);
-            return View(result);
-        }
 
-
-       
-
-  
         public async Task<IActionResult> CreateDiachi(string diachi)
         {
             var userIdinSession = HttpContext.Session.GetString("userId");
@@ -36,9 +23,6 @@ namespace SneakerStore.Controllers
                 TrangThai = 1,
             };
          
-
-
-
             var httpClient = new HttpClient();
 
             string apiURL = "https://localhost:7001/api/DiaChi/DiaChi/create";
@@ -94,7 +78,7 @@ namespace SneakerStore.Controllers
             var response = await httpClient.PutAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllDC");
+                return RedirectToAction("ShowACC","Acc");
             }
             ModelState.AddModelError("", "Edit sai r");
 
@@ -108,7 +92,7 @@ namespace SneakerStore.Controllers
             var response = await httpClient.DeleteAsync(apiURL);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllDC");
+                return RedirectToAction("ShowACC","Acc");
             }
             ModelState.AddModelError("", "Delete sai R");
             return BadRequest();
