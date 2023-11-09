@@ -18,8 +18,9 @@ namespace SneakerStore.Controllers
             if (!string.IsNullOrEmpty(userIdinSession))
             {
                 Guid userId = Guid.Parse(userIdinSession);
-                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
                 ViewBag.UserId = userId;
+                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
+          
                 var response = await httpClient.GetAsync(apiURL);
                 string apiData = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);

@@ -37,7 +37,7 @@ namespace SneakerStore.Controllers
                 return RedirectToAction("Index","Home");
             }
             ModelState.AddModelError("", "Đăng nhập k thành công");
-            return View();
+            return BadRequest();
 
         }
 	
@@ -91,7 +91,7 @@ namespace SneakerStore.Controllers
             if (!string.IsNullOrEmpty(userIdinSession))
             {
                 Guid userId = Guid.Parse(userIdinSession);
-
+                ViewBag.UserIdData = userId;
                 string DCApiURL = "https://localhost:7001/api/DiaChi/DiaChi/get-all";
                 var DCresponse = await httpClient.GetAsync(DCApiURL);
                 string DCapiData = await DCresponse.Content.ReadAsStringAsync();
@@ -124,7 +124,55 @@ namespace SneakerStore.Controllers
         }
 
 
+        public async Task<IActionResult> EditAcc(UserVM us, IFormFile Url)
+        {
 
+            var httpClient = new HttpClient();
+
+            if (Url != null && Url.Length > 0)
+            {
+                var fileName = Path.GetFileName(Url.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", Url.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    Url.CopyTo(stream);
+                }
+              
+                //if (!ModelState.IsValid) return View(us);
+                var user = new UserVM
+                {
+                    Id= us.Id,
+                    IdCV = new Guid("e26fa84e-3019-4a14-862f-9fafc6014dfe"),
+                    HoTen = us.HoTen,
+                    Url = "/images/" + fileName,
+                    Email = us.Email,                 
+                    MatKhau = us.MatKhau,
+                    SDT = us.SDT,
+                    GioiTinh = us.GioiTinh,
+                    SoDiem = 0,
+                    TrangThai = 1,
+
+                };
+
+                string apiURL = $"https://localhost:7001/api/User/User/update/{us.Id}";
+
+                var json = JsonConvert.SerializeObject(user);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PutAsync(apiURL, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ShowACC","Acc");
+                }
+                ModelState.AddModelError("", "Edit sai r");
+
+                return BadRequest();
+
+
+            }
+            return BadRequest();
+        }
 
     }
 }

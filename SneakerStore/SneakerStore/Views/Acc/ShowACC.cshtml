@@ -9,10 +9,14 @@
 }
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Font Awesome -->
 <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-<!-- Theme style -->
 <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+@*link bootstrap dùng để gọi hộp thoại*@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
 
 <div class="row">
     <p>Fix lỗi  nav rộng</p>
@@ -68,8 +72,76 @@
 
                         <p class="text-muted text-center">Tài Khoản:@Model.TenTaiKhoan</p>
                         <p class="text-muted text-center">Chức Vụ:@Model.ChucVu</p>
-                     
-                        <a href="#" class="btn btn-primary btn-block"><b>Cập Nhập Thông Tin</b></a>
+
+
+
+                            @using (Html.BeginForm("EditAcc", "Acc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Cập Nhập Thông Tin
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Thông Tin</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @Html.HiddenFor(p => p.Id)
+
+                                                <div class="form-group">
+                                                    <label for="HoTen">Tên Người Dùng</label>
+                                                    @Html.TextBoxFor(p => p.HoTen, new { @class = "form-control", id = "HoTen" })
+                                                    @Html.ValidationMessageFor(Model => Model.HoTen, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="Url">Tải ảnh lên</label>
+                                                    <input type="file" id="Url" name="Url" class="form-control-file" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="Email">Email</label>
+                                                    @Html.TextBoxFor(p => p.Email, new { @class = "form-control", id = "Email" })
+                                                    @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="MatKhau">Mật Khẩu</label>
+                                                    @Html.TextBoxFor(p => p.MatKhau, new { @class = "form-control", id = "MatKhau" })
+                                                    @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="SDT">SĐT</label>
+                                                    @Html.TextBoxFor(p => p.SDT, new { @class = "form-control", id = "SDT" })
+                                                    @Html.ValidationMessageFor(Model => Model.SDT, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="GioiTinh">Giới Tính</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh" value="0" @(Model.GioiTinh == 0 ? "checked" : "")>
+                                                        <label class="form-check-label" for="GioiTinh">Nam</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh1" value="1" @(Model.GioiTinh == 1 ? "checked" : "")>
+                                                        <label class="form-check-label" for="GioiTinh1">Nữ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay Về</button>
+                                                <button type="submit" class="btn btn-primary btn-block">Cập Nhật Thông Tin</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -126,14 +198,15 @@
                                         <tbody>
                                             @foreach (var item in listDiaChi)
                                             {
-                                                @if (item.TrangThai != 0)
+                                                
+                                               @if (item.IdUser == ViewBag.UserIdData && item.TrangThai != 0)
                                                 {
                                                     <tr>
                                                         <th scope="row">@(stt + 1)</th>
                                                         <td><span>@item.Ten</span></td>
                                                         <td>
-                                                            <a class="btn btn-primary" href="@Url.Action("Create","DiaChi",new{id=item.Id})">Thêm</a>
-                                                            <a class="btn btn-primary" href="@Url.Action("Edit","DiaChi",new{id=item.Id})">Sửa</a>
+                                                           @* <a class="btn btn-primary" href="@Url.Action("Create","DiaChi",new{id=item.Id})">Thêm</a>
+                                                            <a class="btn btn-primary" href="@Url.Action("Edit","DiaChi",new{id=item.Id})">Sửa</a>*@
                                                             <a class="btn btn-warning" href="@Url.Action("Delete","DiaChi",new{id=item.Id})">Xóa</a>
                                                         </td>
 
@@ -207,3 +280,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

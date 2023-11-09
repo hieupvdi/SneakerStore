@@ -127,11 +127,15 @@
                                                         {
                                                             <p>Nam</p>
                                                         }
-                                                        else
+                                                        else if(item.TrangThai==1)
                                                         {
                                                             <p>Nữ</p>
                                                         }
-                                </td>
+                                                        else
+                                                        {
+                                                          <p>Chưa Cập Nhập</p>
+                                                        }
+                                                    </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.SoDiem)
                                 </td>
