@@ -48,7 +48,12 @@ namespace AppApi.Controllers
             var hdct = await _hoaDonCTServices.GetHoaDonCTById(id);
             return Ok(hdct);
         }
-
+        [HttpGet("HoaDonCT/GetHDCTUser/{id}")]
+        public async Task<IActionResult> GetHDCTUser(Guid id)
+        {
+            var hdct = await _hoaDonCTServices.GetHDCTUser(id);
+            return Ok(hdct);
+        }
 
         [HttpDelete("HoaDonCT/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)

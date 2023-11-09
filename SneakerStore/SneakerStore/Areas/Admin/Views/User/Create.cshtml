@@ -89,20 +89,7 @@
                             </select>
 
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Địa Chỉ</label>
-                            <select class="form-control" name="IdDiaChi" asp-for="IdDiaChi">
-                                @if (ViewBag.DiaChiData != null)
-                                {
-                                    @foreach (var dichi in ViewBag.DiaChiData)
-                                    {
-                                        <option value="@dichi.Id">@dichi.Ten</option>
-                                    }
-
-                                }
-                            </select>
-
-                        </div>
+               
 
        
                         <div class="form-group">

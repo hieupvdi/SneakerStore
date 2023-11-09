@@ -14,6 +14,7 @@ namespace AppData.Configuration
         public void Configure(EntityTypeBuilder<DiaChi> builder)
         {
             builder.HasKey(c => c.Id);
+            builder.HasOne(p => p.User).WithMany(p => p.DiaChis).HasForeignKey(p => p.IdUser);
         }
     }
 }

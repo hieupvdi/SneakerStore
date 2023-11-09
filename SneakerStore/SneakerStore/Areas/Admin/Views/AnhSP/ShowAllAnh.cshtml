@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AppData.ViewModels.AnhSanPhamVM>
+
+@{
+    ViewData["Title"] = "ShowAllAnh";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Quản Lý Anh</h3>
+      
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    @* <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.IdCTSP)
+                    </th>*@
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.URlAnh)*@
+                        <spam>Ảnh</spam>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tensp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnhSo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TrangThai)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.IdCTSP)
+                    </td>*@
+                        <td>
+                            <img src="@item.URlAnh" alt="@item.IdCTSP" style="width: 100px; height: 100px;">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tensp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnhSo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TrangThai)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="@Url.Action("Edit","AnhSP",new{id=item.Id})">Sửa</a>
+                            <a class="btn btn-warning" href="@Url.Action("Delete","AnhSP",new{id=item.Id})">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="card-footer">
+    </div>
+
+    </div>
+
+</section>

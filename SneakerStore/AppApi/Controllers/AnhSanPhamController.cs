@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AnhSanPhamController : Controller
     {
         private IAnhSanPhamServices _anhSanPhamServices;
@@ -14,7 +16,7 @@ namespace AppApi.Controllers
             _anhSanPhamServices = anhSanPhamServices;
         }
 
-        [HttpGet("AnhSP/get-all")]
+        [HttpGet("AnhSanPham/get-all")]
         public async Task<IActionResult> GetAll()
         {
 
@@ -24,14 +26,14 @@ namespace AppApi.Controllers
 
 
 
-        [HttpPost("AnhSP/create")]
+        [HttpPost("AnhSanPham/create")]
         public async Task<IActionResult> Create([FromBody] AnhSanPhamVM asp)
         {
             var result = await _anhSanPhamServices.CreateASP(asp);
             return Ok(result);
         }
 
-        [HttpPut("AnhSP/update/{id}")]
+        [HttpPut("AnhSanPham/update/{id}")]
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] AnhSanPhamVM asp)
         {
@@ -40,7 +42,7 @@ namespace AppApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("AnhSP/{id}")]
+        [HttpGet("AnhSanPham/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var sp = await _anhSanPhamServices.GetASPById(id);      
@@ -48,7 +50,7 @@ namespace AppApi.Controllers
         }
 
 
-        [HttpDelete("AnhSP/Delete/{id}")]
+        [HttpDelete("AnhSanPham/Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _anhSanPhamServices.DeleteASP(id);

@@ -25,12 +25,12 @@ namespace AppData.Services
                 var hdct = new HoaDonCT
                 {
 
-                    Id = Guid.NewGuid(),
+                    Id = obj.Id,
                     IdHD = obj.IdHD,
                     IdCTSP = obj.IdCTSP,
                     SoLuong = obj.SoLuong,
                     DonGia= obj.DonGia,        
-                    TrangThai = 1,
+                    TrangThai = obj.TrangThai,
                 };
                 
                 await _dbcontext.AddAsync(hdct);
@@ -110,6 +110,8 @@ namespace AppData.Services
            .Select(x => new HoaDonCTVM()
            {
                Id = x.a.Id,
+               IdHD = x.b.Id,
+               IdCTSP= x.c.Id,
                MaHD = x.b.MaHD,
                TenSP = x.c.SanPham.TenSP,
                SoLuong = x.a.SoLuong,
@@ -140,6 +142,30 @@ namespace AppData.Services
             };
 
             return hd;
+        }
+
+
+        public async Task<List<HoaDonCTVM>> GetHDCTUser(Guid id)
+        {
+            var gh = await _dbcontext.HoaDonCTs.Where(c => c.IdHD == id).ToListAsync();
+
+            var lst = new List<HoaDonCTVM>();
+            foreach (var hdct in gh)
+            {
+                var ghc = new HoaDonCTVM
+                {
+                    Id = hdct.Id,
+                    IdHD = hdct.IdHD,
+                    IdCTSP = hdct.IdCTSP,
+                    SoLuong = hdct.SoLuong,
+                    DonGia = hdct.DonGia,
+                    TrangThai = hdct.TrangThai,
+                };
+                lst.Add(ghc);
+            }
+
+
+            return lst;
         }
     }
 }

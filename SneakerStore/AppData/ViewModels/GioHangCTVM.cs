@@ -17,7 +17,7 @@ namespace AppData.ViewModels
 
 
         //thuộc tính join
-        public  string TenTK { get; set; }
-        public string TenSP { get; set;}
+        public  string? TenTK { get; set; }
+        public string? TenSP { get; set;}
     }
 }

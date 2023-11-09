@@ -14,5 +14,6 @@ namespace AppData.IServices
         public Task<bool> EditHoaDonCT(HoaDonCTVM obj);
         public Task<bool> DeleteHoaDonCT(Guid id);
         public Task<HoaDonCTVM> GetHoaDonCTById(Guid id);
+        public Task<List<HoaDonCTVM>> GetHDCTUser(Guid id);
     }
 }

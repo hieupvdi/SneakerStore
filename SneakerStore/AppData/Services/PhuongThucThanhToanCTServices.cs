@@ -105,6 +105,8 @@ namespace AppData.Services
            .Select(x => new PhuongThucThanhToanCTVM()
            {
                Id =x.a.Id,
+               IdPTTT=x.b.Id,
+               IdHD= x.c.Id,
                MaHD = x.c.MaHD,
                TenPT = x.b.Ten,
                SoTien = x.a.SoTien,

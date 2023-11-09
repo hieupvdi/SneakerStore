@@ -16,6 +16,9 @@
     <link rel="stylesheet" type="text/css" href="~/client/styles/categories_responsive.css">
 
 
+   
+
+
 </head>
 
 <body>
@@ -71,9 +74,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="account_selection">
-                                            <li><a asp-area="" asp-controller="Acc" asp-action="DangNhap"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng Nhập</a></li>
-                                            <li><a asp-area="" asp-controller="Acc" asp-action="DangKy"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng Ký</a></li>
-                                            <li><a asp-area="" asp-controller="" asp-action=""><i class="fa fa-user-plus" aria-hidden="true"></i>Cài Đặt</a></li>
+                                            <li><a asp-area="" asp-controller="Acc" asp-action="DangNhap"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng Nhập  Đăng Ký</a></li>                                          
                                             <li><a asp-area="" asp-controller="Acc" asp-action="DangXuat"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng xuất</a></li>
                                         </ul>
                                     </li>
@@ -96,8 +97,9 @@
                             <nav class="navbar">
                                 <ul class="navbar_menu">
                                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
-                                    <li><a asp-area="" asp-controller="SanPham" asp-action="ShowAllSanPham">Cửa Hàng</a></li>                               
-                                    <li><a asp-area="" asp-controller="Bill" asp-action="ShowAllBill">Đơn Hàng</a></li>
+                                    <li><a asp-area="" asp-controller="SanPham" asp-action="ShowAllSanPham">Cửa Hàng</a></li>
+                                    <li><a asp-area="" asp-controller="Blog" asp-action="ShowAllBlog">Blog</a></li>
+                                    <li><a asp-area="" asp-controller="HoaDon" asp-action="ShowAllHD">Đơn Hàng</a></li>
 
                                 </ul>
                                 <ul class="navbar_user">
@@ -105,10 +107,10 @@
                                         <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a asp-area="" asp-controller="User" asp-action="ShowACC"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                        <a asp-area="" asp-controller="Acc" asp-action="ShowACC"><i class="fa fa-user" aria-hidden="true"></i></a>
                                     </li>
                                     <li class="checkout">
-                                        <a asp-area="" asp-controller="Cart" asp-action="ShowallCartDetails">
+                                        <a asp-area="" asp-controller="GioHang" asp-action="ShowAllGHCT">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                             <span id="checkout_items" class="checkout_items">2</span>
                                         </a>
@@ -215,6 +217,8 @@
     <script src="~/client/plugins/easing/easing.js"></script>
     <script src="~/client/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="~/client/js/categories_custom.js"></script>
+
+   
 </body>
 
 </html>

@@ -13,6 +13,6 @@ namespace AppData.IServices
         public Task<bool> CreateHoaDon(HoaDonVM obj);
         public Task<bool> EditHoaDon(HoaDonVM obj);
         public Task<bool> DeleteHoaDon(Guid id);
-        public Task<HoaDonVM> GetHoaDonById(Guid id);
+        public Task<HoaDonVM>GetHoaDonById(Guid id);
     }
 }

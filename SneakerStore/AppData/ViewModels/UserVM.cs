@@ -15,16 +15,15 @@ namespace AppData.ViewModels
         public string Email { get; set; }
         public string TenTaiKhoan { get; set; }
         public string MatKhau { get; set; }
-        public string SDT { get; set; }
+        public int SDT { get; set; }
 
-        public Guid IdDiaChi { get; set; }
         public int GioiTinh { get; set; }
         public int SoDiem { get; set; }
 
         public int TrangThai { get; set; }
 
         //join
-        public string ?DiaChi {get; set; }
+        
         public string ?ChucVu { get; set; }  
     }
 }

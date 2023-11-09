@@ -14,5 +14,6 @@ namespace AppData.IServices
         public Task<bool> EditUser(UserVM obj);
         public Task<bool> DeleteUser(Guid id);
         public Task<UserVM> GetUserById(Guid id);
+        public Task<Guid> Dangnhap(string TenTaiKhoan ,string MatKhau);
     }
 }

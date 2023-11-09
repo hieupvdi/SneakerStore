@@ -13,6 +13,7 @@ namespace AppData.IServices
         public Task<bool> CreateGioHangCT(GioHangCTVM obj);
         public Task<bool> EditGioHangCT(GioHangCTVM obj);
         public Task<bool> DeleteGioHangCT(Guid id);
-        public Task<GioHangCTVM> GetGioHangCTById(Guid id);
+        public Task<GioHangCTVM> GetGioHangCTById(Guid iduser, Guid idctsp);
+        public Task<List<GioHangCTVM>> GetGioHangCTUser(Guid id);
     }
 }

@@ -28,7 +28,7 @@ namespace AppData.Services
                     Id = Guid.NewGuid(),
                     IdCTSP=obj.IdCTSP,
                     URlAnh = obj.URlAnh,
-					AnhSo = obj.AnhSo,
+					AnhSo = 1,
                     TrangThai = obj.TrangThai,
                 };
 
@@ -75,8 +75,7 @@ namespace AppData.Services
 
                 if (asp != null)
                 {
-                    //mapper
-                    asp.Id = obj.Id;
+                    
                     asp.IdCTSP=obj.IdCTSP;
                     asp.URlAnh = obj.URlAnh;
                     asp.AnhSo=obj.AnhSo;
@@ -126,6 +125,7 @@ namespace AppData.Services
             var Anhsp = new AnhSanPhamVM
             {
                 Id = asp.Id,
+                IdCTSP = asp.IdCTSP,
                 URlAnh = asp.URlAnh,
                 TrangThai = asp.TrangThai,
             };

@@ -31,6 +31,9 @@
                             @Html.DisplayNameFor(model => model.TenSP)
                         </th>
                         <th>
+                           <span>Ảnh</span>
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.SizeNumber)
                         </th>
                         <th>
@@ -40,7 +43,7 @@
                             @Html.DisplayNameFor(model => model.TenDanhMuc)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.De)
+                            @Html.DisplayNameFor(model => model.DeGiay)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.GiamGia)
@@ -101,6 +104,17 @@
                                     @Html.DisplayFor(modelItem => item.TenSP)
                                 </td>
                                 <td>
+                                    @foreach (var image in ViewBag.AnhData)
+                                    {
+                                        if (item.Id == image.IdCTSP && image.TrangThai!=0)
+                                        {
+                                            <img src="@image.URlAnh" alt="@image.AnhSo" style="width: 100px; height: 100px;">
+                                        }
+                                 
+                                    }
+                             
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.SizeNumber)
                                 </td>
                                 <td>
@@ -110,7 +124,7 @@
                                     @Html.DisplayFor(modelItem => item.TenDanhMuc)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.De)
+                                    @Html.DisplayFor(modelItem => item.DeGiay)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.GiamGia)
@@ -156,8 +170,8 @@
                                 </td>*@
 
                                 <td>
-                                    <a class="btn btn-primary" href="@Url.Action("Edit","QLSanPham",new{id=item.Id})">Sửa</a>
-                                   @* <a class="btn btn-primary" href="@Url.Action("Edit","ChucVu",new{id=item.Id})">Sửa</a>*@
+                                    <a class="btn btn-primary" href="@Url.Action("Create","AnhSP",new{idctsp=item.Id})">Thêm Ảnh</a>
+                                    <a class="btn btn-primary" href="@Url.Action("Edit","QLSanPham",new{id=item.Id})">Sửa</a>                               
                                     <a class="btn btn-warning" href="@Url.Action("Delete","QLSanPham",new{id=item.Id})">Xóa</a>
                                 </td>
                             </tr>

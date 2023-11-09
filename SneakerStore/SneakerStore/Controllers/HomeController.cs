@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AppData.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SneakerStore.Models;
 using System.Diagnostics;
 
@@ -6,27 +8,59 @@ namespace SneakerStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public async Task<IActionResult> Index()
+		{
+			var httpClient = new HttpClient();
+			string apiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all";
+			var response = await httpClient.GetAsync(apiURL);
+			string apiData = await response.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result = JsonConvert.DeserializeObject<List<CTSanPhamVM>>(apiData);
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+			string apiURL1 = "https://localhost:7001/api/MauSac/MauSac/get-all";
+			var response1 = await httpClient.GetAsync(apiURL1);
+			string apiData1 = await response1.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result1 = JsonConvert.DeserializeObject<List<MauSacVM>>(apiData1);
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+			string apiURL2 = "https://localhost:7001/api/Size/Size/get-all";
+			var response2 = await httpClient.GetAsync(apiURL2);
+			string apiData2 = await response2.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result2 = JsonConvert.DeserializeObject<List<SizeVM>>(apiData2);
+
+
+			string apiURL3 = "https://localhost:7001/api/DanhMuc/DanhMuc/get-all";
+			var response3 = await httpClient.GetAsync(apiURL3);
+			string apiData3 = await response3.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result3 = JsonConvert.DeserializeObject<List<DanhMucVM>>(apiData3);
+
+
+			string apiURL4 = "https://localhost:7001/api/AnhSanPham/AnhSanPham/get-all";
+			var response4 = await httpClient.GetAsync(apiURL4);
+			string apiData4 = await response4.Content.ReadAsStringAsync();
+			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
+			var result4 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData4);
+
+			ViewBag.CTSanPhamData = result;
+			ViewBag.MauSacData = result1;
+			ViewBag.SizeData = result2;
+			ViewBag.DanhMucData = result3;
+			ViewBag.AnhData = result4;
+
+			return View();
+
+
+
+
+		}
+
+
+	}
 }
