@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AppData.ViewModels.HoaDonCTVM>
+
+@{
+    ViewData["Title"] = "ShowAllHDCT";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content">
+
+    <div class="card">
+       
+        <div class="card-body">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               <span>Sản Phẩm</span>
+            </th>
+            <th>
+               <span>Ảnh</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonGia)
+            </th>
+           
+         
+         
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+        
+                <td>
+                                @foreach (var sp in ViewBag.CTSanPhamData)
+                                {
+                                    if (item.IdCTSP == sp.Id && sp.TrangThai != 0)
+                                    {
+                                        <figcaption class="info">
+                                            <a href="#" class="title text-dark">@sp.TenSP</a>
+
+                                        </figcaption>
+                                    }
+                                }
+                </td>
+                            <td>
+                                @foreach (var anh in ViewBag.AnhData)
+                                {
+                                    if (item.IdCTSP == anh.IdCTSP && anh.TrangThai != 0)
+                                    {
+                                        <img src="@anh.URlAnh" class="img-sm" style="width: 100px; height: 100px;">
+                                    }
+                                }
+                            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+        
+      
+           
+        </tr>
+}
+    </tbody>
+</table>
+        </div>
+
+
+<div class="card-footer">
+</div>
+
+    </div>
+
+</section>

@@ -104,6 +104,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2lhbUdpYVxTaG93QWxsR0cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/HoaDon/ShowAllHD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9hRG9uXFNob3dBbGxIRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/HoaDon/ShowAllHDCT.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9hRG9uXFNob3dBbGxIRENULmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/Desktop/ThucTap/Nhom1/SneakerStore/SneakerStore/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

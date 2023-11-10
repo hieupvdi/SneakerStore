@@ -33,11 +33,30 @@ namespace SneakerStore.Controllers
             {
                 var apiData = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<string>(apiData);
-                HttpContext.Session.SetString("userId", result);
-                return RedirectToAction("Index","Home");
+
+
+
+                string usapiURL = $"https://localhost:7001/api/User/User/{result}";
+
+                var usresponse = await httpClient.GetAsync(usapiURL);
+
+                string usapiData = await usresponse.Content.ReadAsStringAsync();
+                var usresult = JsonConvert.DeserializeObject<UserVM>(usapiData);
+
+                if (usresult.ChucVu== "Người Dùng")
+                {
+                    HttpContext.Session.SetString("userId", result);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("userId", result);
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                }
+                
             }
             ModelState.AddModelError("", "Đăng nhập k thành công");
-            return BadRequest();
+            return View();
 
         }
 	
@@ -167,11 +186,11 @@ namespace SneakerStore.Controllers
                 }
                 ModelState.AddModelError("", "Edit sai r");
 
-                return BadRequest();
+                return View();
 
 
             }
-            return BadRequest();
+            return View();
         }
 
     }
