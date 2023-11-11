@@ -5,17 +5,7 @@
     ViewData["Title"] = "ThongKe";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-
-
-
-<!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
-<!-- Theme style -->
-<link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
-
 
 <section class="content">
 
@@ -23,7 +13,7 @@
         <div class="card-header">
             <h3 class="card-title">Thông Kê</h3>
         </div>
-     <div class="card-body" style="max-width: 100%; overflow-x: auto;">
+        <div class="card-body" style="max-width: 100%; overflow-x: auto;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -51,34 +41,34 @@
                     </div>
                     <div class="col-md-6">
                         <div class="row">
-                        <div class="col-lg-6 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>150</h3>
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3>150</h3>
 
-                                    <p>New Orders</p>
+                                        <p>New Orders</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion ion-bag"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                                    <p>Bounce Rate</p>
+                                        <p>Bounce Rate</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
                         </div>
 
                     </div>
@@ -113,7 +103,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-4">
-                            <form method="post" action="Search" style="margin-top:10px;margin-left:10px">
+                            <form method="post" action="ThongKe" style="margin-top:10px; margin-left:10px">
                                 <div class="form-row">
                                     <div class="form-group col">
                                         <input type="text" name="table_search" class="form-control" placeholder="Search">
@@ -125,6 +115,7 @@
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -132,7 +123,7 @@
 
 
 
-           
+
             <table class="table">
                 <hr />
                 <thead>
@@ -147,32 +138,32 @@
                             <span>Người Nhận</span>
                         </th>
                         <th>
-                          <span>Tổng Tiền</span>
+                            <span>Tổng Tiền</span>
                         </th>
-                       
-                      
+
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    
-                            <tr>
-                                <td>
-                                    <span>@item.MaHD</span>
-                                </td>
-                                <td>
-                                    <span>@item.NgayTao</span>
-                                </td>
-                                <td>
-                                   <span>@item.NguoiNhan</span>
-                                </td>
-                                <td>
-                                    @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))
-                                </td>
-                           
-                            </tr>
-                        
+
+                        <tr>
+                            <td>
+                                <span>@item.MaHD</span>
+                            </td>
+                            <td>
+                                <span>@item.NgayTao</span>
+                            </td>
+                            <td>
+                                <span>@item.NguoiNhan</span>
+                            </td>
+                            <td>
+                                @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))
+                            </td>
+
+                        </tr>
+
                     }
                 </tbody>
             </table>
@@ -185,16 +176,7 @@
 
 </section>
 
-<script src="~/Admin/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="~/Admin/plugins/chart.js/Chart.min.js"></script>
-<!-- AdminLTE App -->
-<script src="~/Admin/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="~/Admin/dist/js/demo.js"></script>
-<!-- Page specific script -->
+
 
 
 

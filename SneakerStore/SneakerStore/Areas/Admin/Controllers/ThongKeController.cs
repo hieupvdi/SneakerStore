@@ -9,7 +9,7 @@ namespace SneakerStore.Areas.Admin.Controllers
     [Area("Admin")]
     public class ThongKeController : Controller
     {
-        public async Task<IActionResult> ThongKe(string tu_ngay, string den_ngay)
+        public async Task<IActionResult> ThongKe(string tu_ngay, string den_ngay, string table_search)
         {
             DateTime? fromDate = null;
             DateTime? toDate = null;
@@ -21,25 +21,46 @@ namespace SneakerStore.Areas.Admin.Controllers
 
             if (!string.IsNullOrWhiteSpace(den_ngay) && DateTime.TryParse(den_ngay, out var toDateParsed))
             {
-                // Add one day to include the entire end day
+                // Include the entire end day
                 toDate = toDateParsed.AddDays(1);
             }
 
-            var httpClient = new HttpClient();
-            string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
-            var response = await httpClient.GetAsync(apiURL);
-            string apiData = await response.Content.ReadAsStringAsync();
-            var allData = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
+            using (var httpClient = new HttpClient())
+            {
+                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
+                var response = await httpClient.GetAsync(apiURL);
 
-            // Filter the data based on the date range
-            var filteredData = allData
-                .Where(item => (!fromDate.HasValue || item.NgayTao >= fromDate)
-                    && (!toDate.HasValue || item.NgayTao < toDate))
-                .ToList();
+                if (response.IsSuccessStatusCode)
+                {
+                    string apiData = await response.Content.ReadAsStringAsync();
+                    var allData = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
 
-            return View(filteredData);
+                    // Filter the data based on the date range
+                    var filteredData = allData
+                        .Where(item => (!fromDate.HasValue || item.NgayTao >= fromDate)
+                            && (!toDate.HasValue || item.NgayTao < toDate))
+                        .ToList();
+
+                    // Filter the data based on the search string if it's not null or empty
+                    if (!string.IsNullOrEmpty(table_search))
+                    {
+                        filteredData = filteredData
+                            .Where(item => item.MaHD != null && item.MaHD.Contains(table_search))
+                            .ToList();
+                    }
+
+                    return View(filteredData);
+                }
+                else
+                {
+                    // Handle the API response error here
+                    return View("ErrorView");
+                }
+            }
         }
-       
+
+
+
 
 
     }
