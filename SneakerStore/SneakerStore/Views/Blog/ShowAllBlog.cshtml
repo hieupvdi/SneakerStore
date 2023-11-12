@@ -1,78 +1,115 @@
-﻿@model IEnumerable<AppData.ViewModels.BlogVM>
-
+﻿@model X.PagedList.IPagedList<AppData.ViewModels.BlogVM>
+@using X.PagedList.Mvc.Core;
 @{
     ViewData["Title"] = "ShowAllBlog";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int pagestt = 1;
 }
 
-<h1>ShowAllBlog</h1>
+<div class="row">
+    <p>Fix lỗi  nav rộng</p>
+    <p></p>
+    <p></p>
+</div>
+<div class="container contact_container">
+    <div class="row">
+        <div class="col">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TieuDe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoiDung)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlAnh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayTao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NguoiDang)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TieuDe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoiDung)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlAnh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayTao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NguoiDang)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+   @* bắt đầu*@
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+            <div class="row">
+
+
+                @foreach (var item in Model)
+                {
+                    @if (item.TrangThai != 0 )
+                    {
+
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">
+                                   Người Đăng: @item.NguoiDang
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                                <h2 class="lead"><b>Tiêu Đề:</b>@item.TieuDe</h2>
+                                                <p class="text-muted text-sm"><b>Ngày Đăng: </b> @item.NgayTao.ToString("dd/mm/yyy") </p>
+                                          
+                                      
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="@item.UrlAnh" alt="user-avatar" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                      
+                                        <a href="@Url.Action("DetailUsers", "User", new { iduser = item.Id })" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> Chi Tiết
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    }}
+
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <nav aria-label="Contacts Page Navigation">
+                <ul class="pagination justify-content-center m-0">
+                    @foreach (var item in Model)
+                        {
+                            <li class="page-item"><a class="page-link" href="@Url.Action("ShowAllBlog","Blog",new{page=pagestt})">@pagestt</a></li>
+                            pagestt++;
+                        }
+                   
+                  @*  <li class="page-item"><a class="page-link" href="#">2</a></li>*@
+                  
+
+                   
+                </ul>
+            </nav>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+
+</section>

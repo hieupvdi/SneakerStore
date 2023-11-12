@@ -28,7 +28,7 @@ namespace AppData.ViewModels
         public string? Mau { get; set; }
         public string? TenDanhMuc { get; set; }
         public string? DeGiay { get; set; }
-        public string? GiamGia { get; set; }
+        public int? GiamGia { get; set; }
 
 
 

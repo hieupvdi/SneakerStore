@@ -35,6 +35,11 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Blog blog, IFormFile UrlAnh)
         {
+
+
+            var userIdinSession = HttpContext.Session.GetString("userId");
+            if (string.IsNullOrEmpty(userIdinSession)) return RedirectToAction("DangNhap", "Acc");
+            Guid userId = Guid.Parse(userIdinSession);
             if (UrlAnh != null && UrlAnh.Length > 0)
             {
                 var fileName = Path.GetFileName(UrlAnh.FileName);
@@ -44,7 +49,7 @@ namespace SneakerStore.Areas.Admin.Controllers
                     UrlAnh.CopyTo(stream);
                 }
                 // Lưu đường dẫn đến ảnh vào đối tượng User
-                blog.IdUser = new Guid("ec0d1eb1-b051-4743-a2e3-e4b6127efa57");
+                blog.IdUser = userId;
                 blog.UrlAnh = "/images/" + fileName;
                 blog.NgayTao = DateTime.Now;
 
@@ -85,6 +90,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(BlogVM blog, IFormFile UrlAnh)
         {
+            var userIdinSession = HttpContext.Session.GetString("userId");
+            Guid userId = Guid.Parse(userIdinSession);
             if (UrlAnh != null && UrlAnh.Length > 0)
             {
                 var fileName = Path.GetFileName(UrlAnh.FileName);
@@ -96,6 +103,7 @@ namespace SneakerStore.Areas.Admin.Controllers
                 // Lưu đường dẫn đến ảnh vào đối tượng User
 
                 blog.UrlAnh = "/images/" + fileName;
+                blog.IdUser = userId;
                 //if (!ModelState.IsValid) return View(bog);
 
                 var httpClient = new HttpClient();

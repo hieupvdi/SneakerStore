@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using X.PagedList;
 
 namespace SneakerStore.Controllers
 {
 	public class SanPhamController : Controller
 	{
 		[HttpGet]
-		public async Task<IActionResult> ShowAllSanPham()
+		public async Task<IActionResult> ShowAllSanPham(int page)
 		{
 			var httpClient = new HttpClient(); 
 			string apiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all";
@@ -43,13 +44,16 @@ namespace SneakerStore.Controllers
 			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
 			var result4 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData4);
 
-			ViewBag.CTSanPhamData = result;
+            page = page < 1 ? 1 : page;
+            int pagesize = 12;
+            var sanpham = result.ToPagedList(page, pagesize);
+
+            ViewBag.CTSanPhamData = sanpham;
 			ViewBag.MauSacData = result1;
 			ViewBag.SizeData = result2;
 			ViewBag.DanhMucData = result3;
 			ViewBag.AnhData = result4;
-
-			return View();
+            return View();
 
 
 

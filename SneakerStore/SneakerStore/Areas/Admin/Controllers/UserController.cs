@@ -194,8 +194,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
 
 
-
-        public async Task<IActionResult> DetailAccs(Guid iduser)
+        [HttpGet]
+        public async Task<IActionResult> DetailUsers(Guid iduser)
         {
             var httpClient = new HttpClient();
             string apiURL1 = "https://localhost:7001/api/ChucVu/ChucVu/get-all";
@@ -208,15 +208,16 @@ namespace SneakerStore.Areas.Admin.Controllers
             string apiData2 = await response2.Content.ReadAsStringAsync();
             var result2 = JsonConvert.DeserializeObject<List<DiaChiVM>>(apiData2);
 
-            string apiURL = $"https://localhost:7001/api/User/User/{iduser}";
-            var response = await httpClient.GetAsync(apiURL);
-            string apiData = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<UserVM>(apiData);
+            string apiURL3 = $"https://localhost:7001/api/User/User/{iduser}";
+            var response3 = await httpClient.GetAsync(apiURL3);
+            string apiData3 = await response3.Content.ReadAsStringAsync();
+            var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+
 
             ViewBag.ChucVuData = result1;
             ViewBag.DiaChiData = result2;
-            ViewBag.UserData = result;
-            return View();
+
+            return View(result3);
         }
 
 

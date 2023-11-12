@@ -144,7 +144,7 @@ namespace AppData.Services
                Mau = x.d.TenMauSac,
                TenDanhMuc = x.f.Ten,
                DeGiay = x.g.Name,
-               GiamGia = x.h.TenMaGiamGia,
+               GiamGia = x.h.PhamTram,
                TrangThai = x.a.TrangThai,
            }
             ).ToListAsync();
@@ -211,7 +211,7 @@ namespace AppData.Services
 					Mau = x.d.TenMauSac,
 					TenDanhMuc = x.f.Ten,
 					DeGiay = x.g.Name,
-					GiamGia = x.h.TenMaGiamGia,
+					GiamGia = x.h.PhamTram,
 					TrangThai = x.a.TrangThai,
 				}).FirstOrDefault();
 
