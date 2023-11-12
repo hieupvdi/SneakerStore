@@ -87,7 +87,7 @@ namespace AppData.Services
                     us.HoTen = obj.HoTen;
                     us.Url = obj.Url;
                     us.Email = obj.Email;
-                    us.TenTaiKhoan = obj.TenTaiKhoan;
+                    ////us.TenTaiKhoan = obj.TenTaiKhoan;
                     us.MatKhau = obj.MatKhau;
                     us.SDT = obj.SDT;
                  

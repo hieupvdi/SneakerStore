@@ -1,6 +1,10 @@
-﻿using AppData.ViewModels;
+﻿using AppData.Models;
+using AppData.SneakerDbContext;
+using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text;
 
 namespace SneakerStore.Controllers
@@ -18,8 +22,9 @@ namespace SneakerStore.Controllers
             if (!string.IsNullOrEmpty(userIdinSession))
             {
                 Guid userId = Guid.Parse(userIdinSession);
-                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
                 ViewBag.UserId = userId;
+                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
+          
                 var response = await httpClient.GetAsync(apiURL);
                 string apiData = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
@@ -32,10 +37,7 @@ namespace SneakerStore.Controllers
 
         }
 
-
-
-
-        public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
+            public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
         {
             //Tạo Hóa đơn
             var userIdinSession = HttpContext.Session.GetString("userId");
@@ -51,13 +53,26 @@ namespace SneakerStore.Controllers
             var response3 = await httpClient.GetAsync(apiURL3);
             string apiData3 = await response3.Content.ReadAsStringAsync();
             var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
-            
+            //mã hd tự tăng=>
+
+            string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
+
+            var response = await httpClient.GetAsync(apiURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
+            var latestInvoice = result.OrderByDescending(h => h.MaHD).FirstOrDefault();
+            int latestInvoiceNumber = latestInvoice != null ? int.Parse(latestInvoice.MaHD.Substring(2)) : 0;
+
+            int newInvoiceNumber = latestInvoiceNumber + 1;
+            string newMaHD = "HD" + newInvoiceNumber.ToString();
+            //<==mã tự tăng
+
             var hd = new HoaDonVM
             {
                 Id=Guid.NewGuid(),
                 IdUser = userId,
                 IdVoucher = hoadon.IdVoucher,
-                MaHD="HD1",
+                MaHD= newMaHD+result3.TenTaiKhoan,
                 NgayTao=DateTime.Now,
                 NgayThanhToan=DateTime.Now,
                 NgayShip=DateTime.Now,
@@ -67,7 +82,7 @@ namespace SneakerStore.Controllers
                 SDT= result3.SDT,
                 SoDiemSD=0,
                 TienShip=0,
-                TongTien=0,
+                TongTien=hoadon.TongTien,
                 TrangThai=1,
 
 
@@ -150,14 +165,43 @@ namespace SneakerStore.Controllers
 
 
 
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid idhd)
         {
             var httpClient = new HttpClient();
-            string apiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/delete/{id}";
-
+            string apiURL = $"https://localhost:7001/api/HoaDon/HoaDon/Delete/{idhd}";
             var response = await httpClient.DeleteAsync(apiURL);
             if (response.IsSuccessStatusCode)
             {
+                string HDapiURL = $"https://localhost:7001/api/HoaDonCT/HoaDonCT/GetHDCTUser/{idhd}";
+                var HDresponse = await httpClient.GetAsync(HDapiURL);
+                string HDapiData = await HDresponse.Content.ReadAsStringAsync();
+                var HDresult = JsonConvert.DeserializeObject<List<HoaDonCTVM>>(HDapiData);
+
+
+
+                // cập nhật số lượng
+
+                string CTSPApiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all";
+                var CTSPResponse = await httpClient.GetAsync(CTSPApiURL);
+                var CTSPResponseData = await CTSPResponse.Content.ReadAsStringAsync();
+                var lstCtspVM = JsonConvert.DeserializeObject<List<CTSanPhamVM>>(CTSPResponseData);
+                foreach (var item in HDresult)
+                {
+
+
+                    var ctsp = lstCtspVM.FirstOrDefault(x => x.Id == item.IdCTSP);
+                    ctsp.Id = item.IdCTSP;
+                    ctsp.SoLuongTon += item.SoLuong;
+
+
+
+                    var updateProductdetailApiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/update/{item.IdCTSP}";
+                    var updateProductdetailJson = JsonConvert.SerializeObject(ctsp);
+                    var updateProductdetailContent = new StringContent(updateProductdetailJson, Encoding.UTF8, "application/json");
+                    var updateProductdetailResponse = await httpClient.PutAsync(updateProductdetailApiURL, updateProductdetailContent);
+                }
+
+
                 return RedirectToAction("ShowAllHD");
             }
             ModelState.AddModelError("", "Delete sai R");

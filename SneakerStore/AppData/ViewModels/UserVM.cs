@@ -13,7 +13,7 @@ namespace AppData.ViewModels
         public string HoTen { get; set; }
         public string Url { get; set; }
         public string Email { get; set; }
-        public string TenTaiKhoan { get; set; }
+        public string? TenTaiKhoan { get; set; }
         public string MatKhau { get; set; }
         public int SDT { get; set; }
 

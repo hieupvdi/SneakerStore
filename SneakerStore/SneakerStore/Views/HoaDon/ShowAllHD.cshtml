@@ -69,7 +69,7 @@
 
 
 
-                                        if (item.IdUser == ViewBag.UserId && item.TrangThai != 0)
+                                        if (item.IdUser == ViewBag.UserId )
                                         {
 
                                             <tr>
@@ -110,15 +110,30 @@
                                                 </td>
                                                 <td>
                                                     <div class="price-wrap">
-                                                        <span id="quantity_value">@item.TrangThai</span>
+                                                        @if(item.TrangThai == 0)
+                                                        {
+                                                            <span id="quantity_value">Hủy Đơn hàng </span>
+                                                        }else if (item.TrangThai == 1)
+                                                        {
+                                                            <span id="quantity_value">Đặt hàng thành công </span>
+                                                        }else if (item.TrangThai == 2)
+                                                        {
+                                                            <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                        }
+
+                                                        
 
                                                     </div>
                                                     <!-- price-wrap .// -->
                                                 </td>
                                                 <td class="text-right">
-                                                    <div class="btn btn-warning"><a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">Hóa ĐơnCT</a></div>
-                                                    <div class="btn btn-warning"><a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })">Hủy Đơn Hàng</a></div>
-                                                   
+                                                    <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
+                                                    @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                    {
+                                                        <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
+                               
+                                                    }
+
                                                 </td>
                                             </tr>
 
@@ -153,4 +168,5 @@
 
 <script src="~/client/js/single_custom.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

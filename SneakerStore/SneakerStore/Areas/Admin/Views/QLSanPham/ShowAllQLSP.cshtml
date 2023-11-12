@@ -20,7 +20,7 @@
 
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="max-width: 100%; overflow-x: auto;">
             <table class="table">
                 <thead>
                     <tr>
@@ -69,26 +69,13 @@
                         <th>
                             @Html.DisplayNameFor(model => model.TrangThai)
                         </th>
-             @*           <th>
-                            @Html.DisplayNameFor(model => model.IdSP)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdSize)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdMauSac)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdDanhMuc)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdDeGiay)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdGiamGia)
-                        </th>*@
-                      
+
+
+                        <th><spam>Thao tác</spam></th>
                         <th></th>
+                      
+                    
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -150,30 +137,16 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TrangThai)
                                 </td>
-                              @*<td>
-                                    @Html.DisplayFor(modelItem => item.IdSP)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdSize)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdMauSac)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdDanhMuc)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdDeGiay)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdGiamGia)
-                                </td>*@
+              
 
-                                <td>
+                                <td >
                                     <a class="btn btn-primary" href="@Url.Action("Create","AnhSP",new{idctsp=item.Id})">Thêm Ảnh</a>
-                                    <a class="btn btn-primary" href="@Url.Action("Edit","QLSanPham",new{id=item.Id})">Sửa</a>                               
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="@Url.Action("Edit","QLSanPham",new{id=item.Id})">Sửa</a>
                                     <a class="btn btn-warning" href="@Url.Action("Delete","QLSanPham",new{id=item.Id})">Xóa</a>
                                 </td>
+                              
                             </tr>
                         }
                     }

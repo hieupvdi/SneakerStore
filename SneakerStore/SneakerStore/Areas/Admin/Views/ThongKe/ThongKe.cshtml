@@ -1,0 +1,289 @@
+﻿@using System.Globalization;
+@model IEnumerable<AppData.ViewModels.HoaDonVM>
+
+@{
+    ViewData["Title"] = "ThongKe";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<section class="content">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thông Kê</h3>
+        </div>
+        <div class="card-body" style="max-width: 100%; overflow-x: auto;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- BAR CHART -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Thông Kê doanh Thu</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>CHART
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h4>Đơn hàng thành công:</h4>
+                                        <h4>@Model.Count(item=>item.TrangThai!=0)</h4>
+                                      
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="@Url.Action("ShowAllHD","HoaDon")" class="small-box-footer">Xem Chi Tiết<i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h4>Doanh Thu</h4>
+                                        <h4>
+                                            @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", Model.Where(item => item.TrangThai != 0).Sum(item => item.TongTien)))
+                                            <sup style="font-size: 20px"></sup></h4>                                    
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h4>Tổng Đơn: @Model.Count(item=>item.TrangThai!=null)</h4>
+                                        <h4>Đơn Hủy: @Model.Count(item=>item.TrangThai==0)</h4>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                    <a href="@Url.Action("ShowAllHD","HoaDon")" class="small-box-footer">Xem Chi Tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h4>Tài Khoản mua Hàng:</h4>
+                                        <h4>@Model.Where(item => item.TenTK != null).Select(item => item.TenTK).Distinct().Count()</h4>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="@Url.Action("ShowAllUser","User")" class="small-box-footer">Xem Chi Tiết<i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                    
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <form method="post" action="ThongKe" style="margin-left:10px">
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label for="tu_ngay">Từ Ngày:</label>
+                                        <input type="date" id="tu_ngay" name="tu_ngay" class="form-control">
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="den_ngay">Đến Ngày:</label>
+                                        <input type="date" id="den_ngay" name "den_ngay" class="form-control">
+                                    </div>
+                                    <div class="form-group col" style="margin-top:32px;margin-left:50px">
+                                        <button class="btn btn-primary" type="submit">Lọc</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <form method="post" action="ThongKe" style="margin-top:10px; margin-left:10px">
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <input type="text" name="table_search" class="form-control" placeholder="Search">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <table class="table">
+                <hr />
+                <thead>
+                    <tr>
+                        <th>
+                            <span>Mã HD</span>
+                        </th>
+                        <th>
+                            <span>Ngày Mua</span>
+                        </th>
+                        <th>
+                            <span>Người Nhận</span>
+                        </th>
+                        <th>
+                            <span>Tổng Tiền</span>
+                        </th>
+                        <th>
+                            <span>Trang Thái</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                      @*  if(item.TrangThai!=0)*@
+                        <tr>
+                            <td>
+                                <span>@item.MaHD</span>
+                            </td>
+                            <td>
+                                <span>@item.NgayTao</span>
+                            </td>
+                            <td>
+                                <span>@item.NguoiNhan</span>
+                            </td>
+                            <td>
+                                @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))
+                            </td>
+                            <th>
+                                @if (item.TrangThai == 0)
+                                {
+                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                }
+                                else if (item.TrangThai == 1)
+                                {
+                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                }
+                                else if (item.TrangThai == 2)
+                                {
+                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                }
+                            </th>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+          
+        </div>
+
+        <div class="card-footer">
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="~/Admin/plugins/jquery/jquery.min.js"></script>
+<script>
+    $(function () {
+
+
+        var areaChartData = {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7'],
+            datasets: [
+                {
+                    label: 'Lơi Nhuận',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                },
+                {
+                    label: 'Doanh Thu',
+                    backgroundColor: 'rgba(210, 214, 222, 1)',
+                    borderColor: 'rgba(210, 214, 222, 1)',
+                    pointRadius: false,
+                    pointColor: 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor: '#c1c7d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+            ]
+        }
+
+
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
+
+        var barChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            datasetFill: false
+        }
+
+        new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+
+
+
+
+
+    })
+</script>
+
+
