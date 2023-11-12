@@ -33,7 +33,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         "Admin",
-		"{area:exists}/{controller=Home}/{action=Index}/{id?}");
+		"{area:exists}/{controller=ThongKe}/{action=ThongKe}/{id?}");
     endpoints.MapControllerRoute(
         "default",
         "{controller=Home}/{action=Index}/{id?}");

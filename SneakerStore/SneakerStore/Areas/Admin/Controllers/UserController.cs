@@ -190,5 +190,40 @@ namespace SneakerStore.Areas.Admin.Controllers
             ModelState.AddModelError("", "Delete sai R");
             return BadRequest();
         }
+
+
+
+
+
+        public async Task<IActionResult> DetailAccs(Guid iduser)
+        {
+            var httpClient = new HttpClient();
+            string apiURL1 = "https://localhost:7001/api/ChucVu/ChucVu/get-all";
+            var response1 = await httpClient.GetAsync(apiURL1);
+            string apiData1 = await response1.Content.ReadAsStringAsync();
+            var result1 = JsonConvert.DeserializeObject<List<ChucVuVM>>(apiData1);
+
+            string apiURL2 = "https://localhost:7001/api/DiaChi/DiaChi/get-all";
+            var response2 = await httpClient.GetAsync(apiURL2);
+            string apiData2 = await response2.Content.ReadAsStringAsync();
+            var result2 = JsonConvert.DeserializeObject<List<DiaChiVM>>(apiData2);
+
+            string apiURL = $"https://localhost:7001/api/User/User/{iduser}";
+            var response = await httpClient.GetAsync(apiURL);
+            string apiData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<UserVM>(apiData);
+
+            ViewBag.ChucVuData = result1;
+            ViewBag.DiaChiData = result2;
+            ViewBag.UserData = result;
+            return View();
+        }
+
+
+
+
+
+
+
     }
 }

@@ -5,7 +5,8 @@
     ViewData["Title"] = "ThongKe";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+
 
 <section class="content">
 
@@ -45,30 +46,59 @@
                                 <!-- small box -->
                                 <div class="small-box bg-info">
                                     <div class="inner">
-                                        <h3>150</h3>
-
-                                        <p>New Orders</p>
+                                        <h4>Đơn hàng thành công:</h4>
+                                        <h4>@Model.Count(item=>item.TrangThai!=0)</h4>
+                                      
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    <a href="@Url.Action("ShowAllHD","HoaDon")" class="small-box-footer">Xem Chi Tiết<i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                                        <p>Bounce Rate</p>
+                                        <h4>Doanh Thu</h4>
+                                        <h4>
+                                            @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", Model.Where(item => item.TrangThai != 0).Sum(item => item.TongTien)))
+                                            <sup style="font-size: 20px"></sup></h4>                                    
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                   
                                 </div>
                             </div>
+                            <!-- ./col -->
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h4>Tổng Đơn: @Model.Count(item=>item.TrangThai!=null)</h4>
+                                        <h4>Đơn Hủy: @Model.Count(item=>item.TrangThai==0)</h4>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                    <a href="@Url.Action("ShowAllHD","HoaDon")" class="small-box-footer">Xem Chi Tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h4>Tài Khoản mua Hàng:</h4>
+                                        <h4>@Model.Where(item => item.TenTK != null).Select(item => item.TenTK).Distinct().Count()</h4>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="@Url.Action("ShowAllUser","User")" class="small-box-footer">Xem Chi Tiết<i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                    
                         </div>
 
                     </div>
@@ -140,14 +170,15 @@
                         <th>
                             <span>Tổng Tiền</span>
                         </th>
-
-
+                        <th>
+                            <span>Trang Thái</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-
+                      @*  if(item.TrangThai!=0)*@
                         <tr>
                             <td>
                                 <span>@item.MaHD</span>
@@ -161,12 +192,26 @@
                             <td>
                                 @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien))
                             </td>
-
+                            <th>
+                                @if (item.TrangThai == 0)
+                                {
+                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                }
+                                else if (item.TrangThai == 1)
+                                {
+                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                }
+                                else if (item.TrangThai == 2)
+                                {
+                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                }
+                            </th>
                         </tr>
 
                     }
                 </tbody>
             </table>
+          
         </div>
 
         <div class="card-footer">
@@ -177,9 +222,7 @@
 </section>
 
 
-
-
-
+<script src="~/Admin/plugins/jquery/jquery.min.js"></script>
 <script>
     $(function () {
 
@@ -242,4 +285,5 @@
 
     })
 </script>
+
 

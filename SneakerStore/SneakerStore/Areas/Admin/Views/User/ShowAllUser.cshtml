@@ -189,46 +189,118 @@
                                         <div class="row">
 
 
+                                            @foreach (var item in Model)
+                                            {
+                                                @if (item.TrangThai != 0)
+                                                {
 
-
-                                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                                                <div class="card bg-light d-flex flex-fill">
-                                                    <div class="card-header text-muted border-bottom-0">
-                                                        Digital Strategist
-                                                    </div>
-                                                    <div class="card-body pt-0">
-                                                        <div class="row">
-                                                            <div class="col-7">
-                                                                <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                                                <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                                                <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                                                </ul>
+                                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                        <div class="card bg-light d-flex flex-fill">
+                                                            <div class="card-header text-muted border-bottom-0">
+                                                                @item.ChucVu
                                                             </div>
-                                                            <div class="col-5 text-center">
-                                                                <img src="~/Admin/../../dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
+                                                            <div class="card-body pt-0">
+                                                                <div class="row">
+                                                                    <div class="col-7">
+                                                                        <h2 class="lead"><b>@item.TenTaiKhoan</b></h2>
+                                                                        <p class="text-muted text-sm"><b>Email: </b> @item.Email </p>
+                                                                        @*   <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                                                </ul>*@
+                                                                    </div>
+                                                                    <div class="col-5 text-center">
+                                                                        <img src="@item.Url" alt="user-avatar" class="img-circle img-fluid">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm bg-teal">
+                                                                        <i class="fas fa-comments"></i>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                                        <i class="fas fa-user"></i> Hồ Sơ
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                        <i class="fas fa-user"></i> Hồ Sơ
+                                                                    </a>
+
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer">
-                                                        <div class="text-right">
-                                                            <a href="#" class="btn btn-sm bg-teal">
-                                                                <i class="fas fa-comments"></i>
-                                                            </a>
-                                                            <a href="#" class="btn btn-sm btn-primary">
-                                                                <i class="fas fa-user"></i> View Profile
-                                                            </a>
+
+
+
+
+                                                }}
+
+                                            @using (Html.BeginForm("DetailAccs", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+
+                                             @*   <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Cập Nhập Thông Tin
+                                                </button>*@
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Thông Tin</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                            @*                    @Html.HiddenFor(p => p.Id)
+
+                                                                <div class="form-group">
+                                                                    <label for="HoTen">Tên Người Dùng</label>
+                                                                    @Html.TextBoxFor(p => p.HoTen, new { @class = "form-control", id = "HoTen" })
+                                                                    @Html.ValidationMessageFor(Model => Model.HoTen, "", new { @class = "text-danger" })
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="Url">Tải ảnh lên</label>
+                                                                    <input type="file" id="Url" name="Url" class="form-control-file" />
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="Email">Email</label>
+                                                                    @Html.TextBoxFor(p => p.Email, new { @class = "form-control", id = "Email" })
+                                                                    @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="MatKhau">Mật Khẩu</label>
+                                                                    @Html.TextBoxFor(p => p.MatKhau, new { @class = "form-control", id = "MatKhau" })
+                                                                    @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="SDT">SĐT</label>
+                                                                    @Html.TextBoxFor(p => p.SDT, new { @class = "form-control", id = "SDT" })
+                                                                    @Html.ValidationMessageFor(Model => Model.SDT, "", new { @class = "text-danger" })
+                                                                </div>*@
+
+                                                       @*         <div class="form-group">
+                                                                    <label for="GioiTinh">Giới Tính</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh" value="0" @(Model.GioiTinh == 0 ? "checked" : "")>
+                                                                        <label class="form-check-label" for="GioiTinh">Nam</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="GioiTinh" id="GioiTinh1" value="1" @(Model.GioiTinh == 1 ? "checked" : "")>
+                                                                        <label class="form-check-label" for="GioiTinh1">Nữ</label>
+                                                                    </div>
+                                                                </div>*@
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay Về</button>
+                                                                <button type="submit" class="btn btn-primary btn-block">Cập Nhật Thông Tin</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-
-
-
-
-
-
+                                            }
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

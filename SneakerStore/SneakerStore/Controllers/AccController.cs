@@ -51,7 +51,7 @@ namespace SneakerStore.Controllers
                 else
                 {
                     HttpContext.Session.SetString("userId", result);
-                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    return RedirectToAction("ThongKe", "ThongKe", new { area = "Admin" });
                 }
                 
             }

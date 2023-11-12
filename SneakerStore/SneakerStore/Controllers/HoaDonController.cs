@@ -72,7 +72,7 @@ namespace SneakerStore.Controllers
                 Id=Guid.NewGuid(),
                 IdUser = userId,
                 IdVoucher = hoadon.IdVoucher,
-                MaHD= newMaHD,
+                MaHD= newMaHD+result3.TenTaiKhoan,
                 NgayTao=DateTime.Now,
                 NgayThanhToan=DateTime.Now,
                 NgayShip=DateTime.Now,

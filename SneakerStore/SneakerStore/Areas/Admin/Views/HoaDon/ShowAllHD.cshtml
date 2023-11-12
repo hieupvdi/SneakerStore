@@ -103,7 +103,18 @@
                 @Html.DisplayFor(modelItem => item.TongTien)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
+                                @if (item.TrangThai == 0)
+                                {
+                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                }
+                                else if (item.TrangThai == 1)
+                                {
+                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                }
+                                else if (item.TrangThai == 2)
+                                {
+                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TenVoucher)

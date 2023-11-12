@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DQQ5PjNu6B5CVU72kzEtlgDpm+CAtHl2B4FQW3vflEs=",
+  "Hash": "SCp7HaAaaB9kTr7RShL8EUvmd8YA0SXTxZBr9Sk4tms=",
   "Source": "SneakerStore",
   "BasePath": "_content/SneakerStore",
   "Mode": "Default",
@@ -42600,6 +42600,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\QuanGiay.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\z4536216591501_8735633e88645c1ba856ef29f69ad831.jpg",
+      "SourceId": "SneakerStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\",
+      "BasePath": "_content/SneakerStore",
+      "RelativePath": "images/z4536216591501_8735633e88645c1ba856ef29f69ad831.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\z4536216591501_8735633e88645c1ba856ef29f69ad831.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
