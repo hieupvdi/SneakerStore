@@ -125,13 +125,7 @@ namespace SneakerStore.Controllers
                 ViewBag.VouCherDaTe = Voresult;
 
 
-
-
-
-
                 string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
-
-
             var response3 = await httpClient.GetAsync(apiURL3);
             string apiData3 = await response3.Content.ReadAsStringAsync();
             var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);

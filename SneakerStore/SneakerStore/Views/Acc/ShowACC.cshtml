@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<DiaChiVM> listDiaChi = ViewBag.DiaChiDaTe;
     List<VoucherVM> listVoucher = ViewBag.VouCherDaTe;
-    int stt = 0;
+    int stt = 1;
+    int stt1 = 1;
 }
 
 <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
@@ -195,7 +196,7 @@
                                                @if (item.IdUser == ViewBag.UserIdData && item.TrangThai != 0)
                                                 {
                                                     <tr>
-                                                        <th scope="row">@(stt + 1)</th>
+                                                        <th scope="row">@stt</th>
                                                         <td><span>@item.Ten</span></td>
                                                         <td>
                                                            @* <a class="btn btn-primary" href="@Url.Action("Create","DiaChi",new{id=item.Id})">Thêm</a>
@@ -204,6 +205,7 @@
                                                         </td>
 
                                                     </tr>
+                                                    stt++;
                                                 }
 
                                             }
@@ -234,7 +236,7 @@
                                             @foreach (var item in listVoucher)
                                             {
                                                 <tr>
-                                                    <th scope="row">@(stt+1)</th>
+                                                    <th scope="row">@stt1</th>
                                                     <td><span>@item.Ten</span></td>
                                                     <td><span>@item.DieuKien</span></td>
                                                     <td><span>@item.SoTienGiam</span></td>
@@ -245,6 +247,7 @@
                                                     <td><span>@item.MoTa</span></td>
                                                                                                    
                                                 </tr>
+                                                stt1++;
                                             }
 
 

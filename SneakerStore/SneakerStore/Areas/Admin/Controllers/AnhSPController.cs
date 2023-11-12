@@ -67,12 +67,16 @@ namespace SneakerStore.Areas.Admin.Controllers
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.PostAsync(apiURL, content);
-                return RedirectToAction("ShowAllQLSP", "QLSanPham");
+                if(response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ShowAllQLSP", "QLSanPham");
+                }
+                return View();
 
 
                
             }
-            return View(Anh);
+            return View();
         }
 
 
