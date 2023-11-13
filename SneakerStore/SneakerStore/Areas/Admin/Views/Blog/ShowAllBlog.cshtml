@@ -36,9 +36,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.TieuDe)
                         </th>
-                        <th>
+                      @*  <th>
                             @Html.DisplayNameFor(model => model.NoiDung)
-                        </th>
+                        </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.UrlAnh)
                         </th>
@@ -70,17 +70,24 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TieuDe)
                                 </td>
-                                <td>
+                               @* <td>
                                     @Html.DisplayFor(modelItem => item.NoiDung)
-                                </td>
+                                </td>*@
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.UrlAnh)
+                                    <img src="@item.UrlAnh" alt="@item.TieuDe" style="width: 100px; height: 100px;">
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.NgayTao)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TrangThai)
+                                    @if (item.TrangThai == 1)
+                                    {
+                                        <p>Còn hoạt động</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Không hoạt động</p>
+                                    }
                                 </td>
 
                                 <td>

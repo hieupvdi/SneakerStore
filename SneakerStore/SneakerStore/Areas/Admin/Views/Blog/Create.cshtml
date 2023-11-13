@@ -28,9 +28,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nôi Dung</label>
-                            @Html.TextBoxFor(p => p.NoiDung, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(Model => Model.NoiDung, "", new { @class = "text-danger" })
-
+                            <dev class="col-md-10">
+                                <textarea class="form-container" name="NoiDung" id="iuputNoiDung"></textarea>
+                                @Html.ValidationMessageFor(Model => Model.NoiDung, "", new { @class = "text-danger" })
+                            </dev>
                         </div>
                         <div class="form-group">
                             <label>Tải ảnh lên</label>
@@ -75,3 +76,8 @@
 
 </section>
 
+@section  HieuJS{
+    <script>
+        CKEDITOR.replace('iuputNoiDung')
+    </script>
+}

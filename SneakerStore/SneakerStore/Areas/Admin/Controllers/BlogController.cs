@@ -2,6 +2,7 @@
 using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -33,6 +34,7 @@ namespace SneakerStore.Areas.Admin.Controllers
         }
 
         [HttpPost]
+     
         public async Task<IActionResult> Create(Blog blog, IFormFile UrlAnh)
         {
 
