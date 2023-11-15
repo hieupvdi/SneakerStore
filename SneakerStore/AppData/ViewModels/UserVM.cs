@@ -11,7 +11,7 @@ namespace AppData.ViewModels
     {
         public Guid Id { get; set; }
         public Guid IdCV { get; set; }
-        [StringLength(25, ErrorMessage = "Họ Tên tối đa 25 ký tự")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Họ Tên tối đa 25 ký tự và tối thiểu 3 ký tự")]
         public string HoTen { get; set; }
         [Required(ErrorMessage = "Url trống")]
         public string Url { get; set; }

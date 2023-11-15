@@ -10,7 +10,7 @@ namespace AppData.ViewModels
     public class DanhMucVM
     {
         public Guid Id { get; set; }
-        [StringLength(25, ErrorMessage = "Danh Mục tối đa 25 ký tự")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Danh Mục tối đa 25 ký tự và tối thiểu 3 ký tự")]
         public string Ten { get; set; }
         public int TrangThai { get; set; }
     }

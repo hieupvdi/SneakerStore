@@ -10,7 +10,7 @@ namespace AppData.ViewModels
     public class DeGiayVM
     {
         public Guid Id { get; set; }
-        [StringLength(25, ErrorMessage = "Đế Giầy tối đa 25 ký tự")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Đế Giầy tối đa 25 ký tự và tối thiểu 3 ký tự")]
         public string Name { get; set; }
         public int TrangThai { get; set; }
     }
