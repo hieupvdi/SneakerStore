@@ -35,7 +35,7 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         [HttpPost]
      
-        public async Task<IActionResult> Create(Blog blog, IFormFile UrlAnh)
+        public async Task<IActionResult> Create(BlogVM blog, IFormFile UrlAnh)
         {
 
 
