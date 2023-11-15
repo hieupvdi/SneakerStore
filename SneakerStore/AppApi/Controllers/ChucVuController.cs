@@ -28,6 +28,8 @@ namespace AppApi.Controllers
         [HttpPost("ChucVu/create")]
         public async Task<IActionResult> Create([FromBody] ChucVuVM cv)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _chucVuServices.CreateChucVu(cv);
             return Ok(result);
         }
@@ -36,6 +38,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ChucVuVM cv)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _chucVuServices.EditChucVu(cv);
 
             return Ok(result);

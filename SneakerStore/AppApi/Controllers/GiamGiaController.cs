@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("GiamGia/create")]
         public async Task<IActionResult> Create([FromBody] GiamGiaVM gg)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _giamGiaServices.CreateGiamGia(gg);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] GiamGiaVM gg)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _giamGiaServices.EditGiamGia(gg);
 
             return Ok(result);

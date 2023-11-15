@@ -37,7 +37,8 @@ namespace SneakerStore.Areas.Admin.Controllers
      
         public async Task<IActionResult> Create(BlogVM blog, IFormFile UrlAnh)
         {
-
+            if (!ModelState.IsValid)
+                return View(blog);
 
             var userIdinSession = HttpContext.Session.GetString("userId");
             if (string.IsNullOrEmpty(userIdinSession)) return RedirectToAction("DangNhap", "Acc");
@@ -55,9 +56,7 @@ namespace SneakerStore.Areas.Admin.Controllers
                 blog.UrlAnh = "/images/" + fileName;
                 blog.NgayTao = DateTime.Now;
 
-                //if (!ModelState.IsValid)
-                //    return View(cv);
-
+             
                 var httpClient = new HttpClient();
 
                 string apiURL = "https://localhost:7001/api/Blog/Blog/create";
@@ -92,6 +91,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(BlogVM blog, IFormFile UrlAnh)
         {
+            if (!ModelState.IsValid)
+                return View(blog);
             var userIdinSession = HttpContext.Session.GetString("userId");
             Guid userId = Guid.Parse(userIdinSession);
             if (UrlAnh != null && UrlAnh.Length > 0)
@@ -106,7 +107,7 @@ namespace SneakerStore.Areas.Admin.Controllers
 
                 blog.UrlAnh = "/images/" + fileName;
                 blog.IdUser = userId;
-                //if (!ModelState.IsValid) return View(bog);
+         
 
                 var httpClient = new HttpClient();
                 string apiURL = $"https://localhost:7001/api/Blog/Blog/update/{blog.Id}";

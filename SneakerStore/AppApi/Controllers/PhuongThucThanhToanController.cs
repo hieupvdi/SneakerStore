@@ -30,6 +30,8 @@ namespace AppApi.Controllers
         [HttpPost("PTTT/create")]
         public async Task<IActionResult> Create([FromBody] PhuongThucThanhToanVM pt)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _phuongThucThanhToanServices.CreatePTTT(pt);
             return Ok(result);
         }
@@ -38,6 +40,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] PhuongThucThanhToanVM pt)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _phuongThucThanhToanServices.EditPTTT(pt);
 
             return Ok(result);

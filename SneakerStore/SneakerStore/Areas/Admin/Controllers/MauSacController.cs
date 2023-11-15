@@ -32,8 +32,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(MauSacVM ms)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(ms);
 
             var httpClient = new HttpClient();
 
@@ -66,7 +66,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(MauSacVM ms)
         {
-            if (!ModelState.IsValid) return View(ms);
+            if (!ModelState.IsValid) 
+                return View(ms);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/MauSac/MauSac/update/{ms.Id}";

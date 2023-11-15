@@ -32,8 +32,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(GiamGiaVM gg)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(gg);
 
             var httpClient = new HttpClient();
 
@@ -66,7 +66,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(GiamGiaVM gg)
         {
-            if (!ModelState.IsValid) return View(gg);
+            if (!ModelState.IsValid) 
+                return View(gg);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/GiamGia/GiamGia/update/{gg.Id}";

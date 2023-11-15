@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("SanPham/create")]
         public async Task<IActionResult> Create([FromBody] SanPhamVM sp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _sanPhamServices.CreateSanPham(sp);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] SanPhamVM sp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _sanPhamServices.EditSanPham(sp);
 
             return Ok(result);

@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("AnhSanPham/create")]
         public async Task<IActionResult> Create([FromBody] AnhSanPhamVM asp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _anhSanPhamServices.CreateASP(asp);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] AnhSanPhamVM asp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _anhSanPhamServices.EditASP(asp);
        
             return Ok(result);

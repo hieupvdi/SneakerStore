@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("DiaChi/create")]
         public async Task<IActionResult> Create([FromBody] DiaChiVM dc)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _diaChiServices.CreateDiaChi(dc);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] DiaChiVM dc)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _diaChiServices.EditDiaChi(dc);
 
             return Ok(result);

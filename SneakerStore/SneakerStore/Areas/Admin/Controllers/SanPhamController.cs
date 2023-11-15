@@ -31,8 +31,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(SanPhamVM sp)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(sp);
 
             var httpClient = new HttpClient();
 
@@ -65,7 +65,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(SanPhamVM sp)
         {
-            if (!ModelState.IsValid) return View(sp);
+            if (!ModelState.IsValid)
+                return View(sp);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/SanPham/SanPham/update/{sp.Id}";

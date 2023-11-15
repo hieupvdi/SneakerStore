@@ -89,8 +89,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CTSanPhamVM ctsp)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(ctsp);
 
             var httpClient = new HttpClient();
 
@@ -172,7 +172,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(CTSanPhamVM ctsp)
         {
-            if (!ModelState.IsValid) return View(ctsp);
+            if (!ModelState.IsValid)
+                return View(ctsp);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/update/{ctsp.Id}";

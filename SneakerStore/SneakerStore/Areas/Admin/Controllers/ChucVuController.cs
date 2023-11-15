@@ -66,7 +66,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(ChucVuVM cv)
         {
-            if (!ModelState.IsValid) return View(cv);
+            if (!ModelState.IsValid)
+                return View(cv);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/ChucVu/ChucVu/update/{cv.Id}";
@@ -85,6 +86,7 @@ namespace SneakerStore.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Delete(Guid id)
         {
+
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/ChucVu/ChucVu/delete/{id}";
 

@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("DeGiay/create")]
         public async Task<IActionResult> Create([FromBody] DeGiayVM dg)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _deGiayServices.CreateDeGiay(dg);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] DeGiayVM dg)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _deGiayServices.EditDeGiay(dg);
 
             return Ok(result);

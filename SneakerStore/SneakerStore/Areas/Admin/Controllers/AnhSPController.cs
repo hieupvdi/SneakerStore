@@ -44,6 +44,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AnhSanPhamVM Anh, IFormFile URlAnh)
         {
+            if (!ModelState.IsValid)
+                return View(Anh);
             if (URlAnh != null && URlAnh.Length > 0)
             {
                 var fileName = Path.GetFileName(URlAnh.FileName);
@@ -56,8 +58,7 @@ namespace SneakerStore.Areas.Admin.Controllers
                
                 Anh.URlAnh = "/images/" + fileName;
                
-                //if (!ModelState.IsValid)
-                //    return View(cv);
+             
               
                 var httpClient = new HttpClient();
 
@@ -108,7 +109,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(AnhSanPhamVM Anh)
         {
-            if (!ModelState.IsValid) return View(Anh);
+            if (!ModelState.IsValid)
+                return View(Anh);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/AnhSanPham/AnhSanPham/update/{Anh.Id}";

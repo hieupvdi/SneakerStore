@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("DanhMuc/create")]
         public async Task<IActionResult> Create([FromBody] DanhMucVM dm)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _danhMucServices.CreateDanhMuc(dm);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] DanhMucVM dm)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _danhMucServices.EditDanhMuc(dm);
 
             return Ok(result);

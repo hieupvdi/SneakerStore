@@ -28,6 +28,8 @@ namespace AppApi.Controllers
         [HttpPost("Blog/create")]
         public async Task<IActionResult> Create([FromBody] BlogVM blog)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _blogServices.CreateBlog(blog);
             return Ok(result);
         }
@@ -36,6 +38,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] BlogVM blog)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _blogServices.EditBlog(blog);
 
             return Ok(result);

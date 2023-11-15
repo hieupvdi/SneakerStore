@@ -33,8 +33,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DanhMucVM dm)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(dm);
 
             var httpClient = new HttpClient();
 
@@ -67,7 +67,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(DanhMucVM dm)
         {
-            if (!ModelState.IsValid) return View(dm);
+            if (!ModelState.IsValid) 
+                return View(dm);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/DanhMuc/DanhMuc/update/{dm.Id}";

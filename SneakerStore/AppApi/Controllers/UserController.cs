@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("User/create")]
         public async Task<IActionResult> Create([FromBody] UserVM u)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _userServices.CreateUser(u);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UserVM u)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _userServices.EditUser(u);
 
             return Ok(result);
