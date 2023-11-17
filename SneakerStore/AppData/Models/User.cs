@@ -18,7 +18,6 @@ namespace AppData.Models
         public string MatKhau { get; set; }
         public int SDT { get; set; }
         public int GioiTinh { get; set; }
-        public int SoDiem { get; set; }
         public int TrangThai { get; set; }
         public virtual ChucVu? ChucVu { get; set; }
         public virtual GioHang? GioHang { get; set; }

@@ -18,10 +18,10 @@ namespace AppData.Models
         public DateTime? NgayThanhToan { get; set; }
         public DateTime? NgayShip { get; set; }
         public DateTime? NgayNhan { get; set; }
+        public string PTThanhToan { get;set; }  
         public string NguoiNhan { get; set; }
         public string DiaChi { get; set; }
         public int SDT { get; set; }
-        public int SoDiemSD { get; set; }
         public decimal TienShip { get; set; }
         public decimal TongTien { get; set; }
         public int TrangThai { get; set; }

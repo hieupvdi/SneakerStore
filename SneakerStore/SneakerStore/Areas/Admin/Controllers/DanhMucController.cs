@@ -2,6 +2,7 @@
 using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -67,9 +68,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(DanhMucVM dm)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return View(dm);
-
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/DanhMuc/DanhMuc/update/{dm.Id}";
 

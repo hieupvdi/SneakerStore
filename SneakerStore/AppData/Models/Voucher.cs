@@ -12,7 +12,6 @@ namespace AppData.Models
         public Guid Id { get; set; }
         public string Ten { get; set; }
         public decimal DieuKien { get; set; }
-        public decimal SoTienGiam { get; set; }
         public DateTime NgayBatDau { get; set; }
         public DateTime NgayKetThuc { get; set; }
         public int PhanTram { get; set; }

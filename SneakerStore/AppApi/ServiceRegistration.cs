@@ -1,5 +1,7 @@
 ﻿using AppData.IServices;
 using AppData.Services;
+using AppData.ViewModels;
+
 
 namespace AppApi
 {
@@ -26,9 +28,9 @@ namespace AppApi
             services.AddScoped<IDiaChiServices, DiaChiServices>();
             services.AddScoped<IVoucherServices, VoucherServices>();
             services.AddScoped<IBlogServices, BlogServices>();
-           
-       
 
-        }
-    }
+
+		
+		}
+	}
 }

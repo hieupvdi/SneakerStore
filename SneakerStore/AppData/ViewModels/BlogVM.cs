@@ -15,8 +15,7 @@ namespace AppData.ViewModels
         public string TieuDe { get; set; }
         [MinLength(150, ErrorMessage = "Nội dung tối thiểu 150 ký tự")]
         public string NoiDung { get; set; }
-        [Required(ErrorMessage = "Url trống")]
-        public string UrlAnh { get; set; }
+        public string ?UrlAnh { get; set; }
         public DateTime NgayTao { get; set; }
         public int TrangThai { get; set; }
         //join

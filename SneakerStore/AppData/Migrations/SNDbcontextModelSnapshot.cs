@@ -66,8 +66,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("TieuDe")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -91,8 +90,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -106,6 +104,12 @@ namespace AppData.Migrations
                         {
                             Id = new Guid("e26fa84e-3019-4a14-862f-9fafc6014dfe"),
                             Ten = "Người Dùng",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("9cfc528c-bac3-4106-a8d9-745512bb0e3b"),
+                            Ten = "Admin",
                             TrangThai = 1
                         });
                 });
@@ -146,13 +150,11 @@ namespace AppData.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NhaSanXuat")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SoLuongTon")
                         .HasColumnType("int");
@@ -185,8 +187,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -204,8 +205,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -226,8 +226,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -247,8 +246,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("NgayBatDau")
                         .HasColumnType("datetime2");
@@ -261,8 +259,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("TenMaGiamGia")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -355,10 +352,11 @@ namespace AppData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<string>("PTThanhToan")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SoDiemSD")
+                    b.Property<int>("SDT")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TienShip")
@@ -417,8 +415,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("TenMauSac")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -436,8 +433,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -482,8 +478,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("TenSP")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -525,8 +520,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("HoTen")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("IdCV")
                         .HasColumnType("uniqueidentifier");
@@ -536,9 +530,6 @@ namespace AppData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SDT")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SoDiem")
                         .HasColumnType("int");
 
                     b.Property<string>("TenTaiKhoan")
@@ -559,6 +550,21 @@ namespace AppData.Migrations
                     b.HasIndex("IdCV");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e37fa96e-3019-4a16-862f-8fafc6017dfe"),
+                            Email = "hieupham12@gmail.com",
+                            GioiTinh = 0,
+                            HoTen = "Phạm Văn Hiếu",
+                            IdCV = new Guid("9cfc528c-bac3-4106-a8d9-745512bb0e3b"),
+                            MatKhau = "1234",
+                            SDT = 337019932,
+                            TenTaiKhoan = "Admin007",
+                            TrangThai = 1,
+                            Url = "imagesvta_tr.jpg"
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.Voucher", b =>
@@ -572,8 +578,7 @@ namespace AppData.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("NgayBatDau")
                         .HasColumnType("datetime2");
@@ -587,13 +592,9 @@ namespace AppData.Migrations
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("SoTienGiam")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");

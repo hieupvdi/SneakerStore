@@ -2,6 +2,7 @@
 using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -66,7 +67,7 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(MauSacVM ms)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return View(ms);
 
             var httpClient = new HttpClient();

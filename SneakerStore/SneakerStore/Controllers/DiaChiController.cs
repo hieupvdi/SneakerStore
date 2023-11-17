@@ -22,7 +22,8 @@ namespace SneakerStore.Controllers
                 Ten = diachi,
                 TrangThai = 1,
             };
-         
+                 if (!ModelState.IsValid)
+                    return View(dc);
             var httpClient = new HttpClient();
 
             string apiURL = "https://localhost:7001/api/DiaChi/DiaChi/create";
@@ -65,15 +66,14 @@ namespace SneakerStore.Controllers
 
         public async Task<IActionResult> Edit(DiaChiVM dc)
         {
-            if (!ModelState.IsValid) return View(dc);
+            if (!ModelState.IsValid)
+                return View(dc);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/DiaChi/DiaChi/update/{dc.Id}";
 
             var json = JsonConvert.SerializeObject(dc);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //var content = new StringContent(JsonConvert.SerializeObject(capBacVM, Encoding.UTF8, "application/json");
 
             var response = await httpClient.PutAsync(apiURL, content);
             if (response.IsSuccessStatusCode)

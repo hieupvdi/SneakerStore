@@ -56,7 +56,9 @@ namespace SneakerStore.Areas.Admin.Controllers
                 blog.UrlAnh = "/images/" + fileName;
                 blog.NgayTao = DateTime.Now;
 
-             
+                
+
+         
                 var httpClient = new HttpClient();
 
                 string apiURL = "https://localhost:7001/api/Blog/Blog/create";
@@ -107,8 +109,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
                 blog.UrlAnh = "/images/" + fileName;
                 blog.IdUser = userId;
-         
 
+         
                 var httpClient = new HttpClient();
                 string apiURL = $"https://localhost:7001/api/Blog/Blog/update/{blog.Id}";
 

@@ -14,8 +14,6 @@ namespace AppData.ViewModels
         public string Ten { get; set; }
         [RegularExpression("^[0-9]+$", ErrorMessage = "Điều kiện phải là số")]
         public decimal DieuKien { get; set; }
-        [RegularExpression("^[0-9]+$", ErrorMessage = "Số tiền giảm phải là số")]
-        public decimal SoTienGiam { get; set; }
         [RegularExpression("^[0-9]+$", ErrorMessage = "Phần trăm phải là số")]
         public int  PhanTram { get; set; }  
         public DateTime NgayBatDau { get; set; }

@@ -16,7 +16,7 @@ namespace AppData.ViewModels
         public decimal Gianhap { get; set; }
         [RegularExpression("^[0-9]+$", ErrorMessage = "Gía Bán phải là số")]
         public decimal Giaban { get; set; }
-        [StringLength(100, MinimumLength = 5,ErrorMessage = "Chất liệu tối đa 100 ký tự và tối thiểu 5 ký tự")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Chất liệu tối đa 100 ký tự và tối thiểu 5 ký tự")]
         public string ChatLieu { get; set; }
         [RegularExpression("^[0-9]+$", ErrorMessage = "số lượng tồn phải là số")]
         public int SoLuongTon { get; set; }
