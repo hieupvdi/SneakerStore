@@ -33,10 +33,8 @@ namespace AppData.Services
                     Email=obj.Email,
                     TenTaiKhoan =obj.TenTaiKhoan,
                     MatKhau =obj.MatKhau,
-                    SDT =obj.SDT,
-               
-                    GioiTinh =obj.GioiTinh,
-                    SoDiem =0,
+                    SDT =obj.SDT,             
+                    GioiTinh =obj.GioiTinh,            
                     TrangThai =obj.TrangThai,
                 };
 
@@ -92,7 +90,7 @@ namespace AppData.Services
                     us.SDT = obj.SDT;
                  
                     us.GioiTinh = obj.GioiTinh;
-                    us.SoDiem = obj.SoDiem;
+               
                     us.TrangThai = obj.TrangThai;
 
                     _dbcontext.Update(us);
@@ -130,7 +128,7 @@ namespace AppData.Services
                SDT = x.a.SDT,
               
                GioiTinh = x.a.GioiTinh,
-               SoDiem = x.a.SoDiem,
+           
                TrangThai = x.a.TrangThai,
            }
             ).ToListAsync();
@@ -154,10 +152,8 @@ namespace AppData.Services
                     Email = x.a.Email,
                     TenTaiKhoan = x.a.TenTaiKhoan,
                     MatKhau = x.a.MatKhau,
-                    SDT = x.a.SDT,
-               
-                    GioiTinh = x.a.GioiTinh,
-                    SoDiem = x.a.SoDiem,
+                    SDT = x.a.SDT,              
+                    GioiTinh = x.a.GioiTinh,                 
                     TrangThai = x.a.TrangThai,
                 }).FirstOrDefault();
 

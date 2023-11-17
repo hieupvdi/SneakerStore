@@ -32,11 +32,11 @@ namespace AppData.Services
                     NgayTao = obj.NgayTao,
                     NgayNhan = obj.NgayNhan,
                     NgayThanhToan = obj.NgayThanhToan,
+                    PTThanhToan=obj.PTThanhToan,
                     NgayShip = obj.NgayShip,
                     NguoiNhan = obj.NguoiNhan,
                     DiaChi = obj.DiaChi,
-                    SDT=obj.SDT,
-                    SoDiemSD = obj.SoDiemSD,
+                    SDT=obj.SDT,             
                     TienShip = obj.TienShip,
                     TongTien=obj.TongTien,
                    
@@ -94,10 +94,10 @@ namespace AppData.Services
                     hd.NgayNhan = obj.NgayNhan;
                     hd.NgayThanhToan = obj.NgayThanhToan;
                     hd.NgayShip = obj.NgayShip;
+                    hd.PTThanhToan=obj.PTThanhToan;
                     hd.NguoiNhan = obj.NguoiNhan;
                     hd.DiaChi = obj.DiaChi;
-                    hd.SDT = obj.SDT;
-                    hd.SoDiemSD = obj.SoDiemSD;
+                    hd.SDT = obj.SDT;        
                     hd.TienShip = obj.TienShip;
                     hd.TongTien = obj.TongTien;
                     hd.TrangThai = obj.TrangThai;
@@ -137,9 +137,9 @@ namespace AppData.Services
                NgayThanhToan = x.a.NgayThanhToan,
                NgayShip = x.a.NgayShip,
                NguoiNhan = x.a.NguoiNhan,
+               PTThanhToan=x.a.PTThanhToan,
                DiaChi = x.a.DiaChi,
                SDT = x.a.SDT,
-               SoDiemSD = x.a.SoDiemSD,
                TienShip = x.a.TienShip,
                TongTien = x.a.TongTien,
 
@@ -168,10 +168,10 @@ namespace AppData.Services
                     NgayNhan = hd.NgayNhan,
                     NgayThanhToan = hd.NgayThanhToan,
                     NgayShip = hd.NgayShip,
+                    PTThanhToan=hd.PTThanhToan,
                     NguoiNhan = hd.NguoiNhan,
                     DiaChi = hd.DiaChi,
                     SDT = hd.SDT,
-                    SoDiemSD = hd.SoDiemSD,
                     TienShip = hd.TienShip,
                     TongTien = hd.TongTien,
 

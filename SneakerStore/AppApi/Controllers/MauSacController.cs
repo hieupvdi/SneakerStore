@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("MauSac/create")]
         public async Task<IActionResult> Create([FromBody] MauSacVM ms)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _mauSacServices.CreateMauSac(ms);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] MauSacVM ms)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _mauSacServices.EditMauSac(ms);
 
             return Ok(result);

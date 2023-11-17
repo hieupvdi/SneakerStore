@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("CTSanPham/create")]
         public async Task<IActionResult> Create([FromBody] CTSanPhamVM ctsp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _ctsanPhamServices.CreateCTSanPham(ctsp);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] CTSanPhamVM ctsp)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _ctsanPhamServices.EditCTSanPham(ctsp);
 
             return Ok(result);

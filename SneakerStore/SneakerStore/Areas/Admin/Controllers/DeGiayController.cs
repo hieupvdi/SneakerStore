@@ -1,7 +1,9 @@
 ﻿using AppData.Models;
 using AppData.ViewModels;
+
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -32,8 +34,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DeGiayVM dg)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(dg);
 
             var httpClient = new HttpClient();
 
@@ -66,7 +68,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(DeGiayVM dg)
         {
-            if (!ModelState.IsValid) return View(dg);
+            if (!ModelState.IsValid)
+                return View(dg);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/DeGiay/DeGiay/update/{dg.Id}";

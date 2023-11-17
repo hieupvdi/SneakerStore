@@ -243,9 +243,15 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
                                     <div class="input-group mb-3">                                        
                                         <select class="form-select" size="3" aria-label="Size 3 select example">
                                             <option value="" disabled selected>Chọn PT Thanh Toán</option>
-                                            <option value="1">Thanh Toán Khi Nhận Hàng</option>
-                                            <option value="1">Thanh Toán online</option>
-                                           
+                                            @if (ViewBag.PTTTData != null)
+                                            {
+                                                @foreach (var pt in ViewBag.PTTTData)
+                                                {
+                                                    <option value="@pt.Ten">@pt.Ten</option>
+                                                }
+
+                                            }
+
                                         </select>
 
                                     </div>

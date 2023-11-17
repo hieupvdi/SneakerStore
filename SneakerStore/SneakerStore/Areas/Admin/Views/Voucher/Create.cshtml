@@ -15,7 +15,7 @@
         <div class="card-body">
             @using (Html.BeginForm("Create", "Voucher", FormMethod.Post))
             {
-                @Html.HiddenFor(p => p.Id)
+               @* @Html.HiddenFor(p => p.Id)*@
                 <div class="bs-stepper-content">
                     <!-- your steps content here -->
                     <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
@@ -33,12 +33,6 @@
 
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Số Tiền Giảm</label>
-                            @Html.TextBoxFor(p => p.SoTienGiam, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(Model => Model.SoTienGiam, "", new { @class = "text-danger" })
-
-                        </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Phần Trăm</label>

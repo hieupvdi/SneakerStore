@@ -59,6 +59,13 @@ namespace SneakerStore.Controllers
                 ViewBag.VoucherData = result5;
 
 
+                string apiURL6 = "https://localhost:7001/api/PhuongThucThanhToan/PTTT/get-all";
+                var response6 = await httpClient.GetAsync(apiURL6);
+                string apiData6 = await response6.Content.ReadAsStringAsync();
+                var result6 = JsonConvert.DeserializeObject<List<PhuongThucThanhToanVM>>(apiData6);
+                ViewBag.PTTTData = result6;
+
+
                 var response = await httpClient.GetAsync(apiURL);
                 string apiData = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<List<GioHangCTVM>>(apiData);

@@ -1,6 +1,9 @@
-﻿using AppData.ViewModels;
+﻿using AppData.Models;
+using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -32,8 +35,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ChucVuVM cv)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(cv);
 
             var httpClient = new HttpClient();
 
@@ -66,7 +69,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(ChucVuVM cv)
         {
-            if (!ModelState.IsValid) return View(cv);
+            if (!ModelState.IsValid)
+                return View(cv);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/ChucVu/ChucVu/update/{cv.Id}";
@@ -85,6 +89,7 @@ namespace SneakerStore.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Delete(Guid id)
         {
+
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/ChucVu/ChucVu/delete/{id}";
 

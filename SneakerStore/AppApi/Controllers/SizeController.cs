@@ -29,6 +29,8 @@ namespace AppApi.Controllers
         [HttpPost("Size/create")]
         public async Task<IActionResult> Create([FromBody] SizeVM si)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _sizeServices.CreateSize(si);
             return Ok(result);
         }
@@ -37,6 +39,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] SizeVM si)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _sizeServices.EditSize(si);
 
             return Ok(result);

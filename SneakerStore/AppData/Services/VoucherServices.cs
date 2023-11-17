@@ -28,7 +28,6 @@ namespace AppData.Services
                     Id = Guid.NewGuid(),
                     Ten = obj.Ten,
                     DieuKien=obj.DieuKien,
-                    SoTienGiam=obj.SoTienGiam,
                     PhanTram =obj.PhanTram, 
                     NgayBatDau=obj.NgayBatDau,
                     NgayKetThuc=obj.NgayKetThuc,
@@ -81,8 +80,7 @@ namespace AppData.Services
                 if (v != null)
                 {
                     v.Ten = obj.Ten;
-                    v.DieuKien = obj.DieuKien;
-                    v.SoTienGiam = obj.SoTienGiam;
+                    v.DieuKien = obj.DieuKien;         
                     v.PhanTram = obj.PhanTram;
                     v.NgayBatDau = obj.NgayBatDau;
                     v.NgayKetThuc = obj.NgayKetThuc;
@@ -114,7 +112,7 @@ namespace AppData.Services
                             Id = c.Id,
                             Ten = c.Ten,
                             DieuKien = c.DieuKien,
-                            SoTienGiam = c.SoTienGiam,
+
                             PhanTram = c.PhanTram,
                             NgayBatDau = c.NgayBatDau,
                             NgayKetThuc = c.NgayKetThuc,
@@ -142,7 +140,6 @@ namespace AppData.Services
                 Id = v.Id,
                 Ten = v.Ten,
                 DieuKien = v.DieuKien,
-                SoTienGiam = v.SoTienGiam,
                 PhanTram = v.PhanTram,
                 NgayBatDau = v.NgayBatDau,
                 NgayKetThuc = v.NgayKetThuc,

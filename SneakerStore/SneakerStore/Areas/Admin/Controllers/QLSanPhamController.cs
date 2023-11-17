@@ -3,6 +3,7 @@ using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -89,12 +90,13 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CTSanPhamVM ctsp)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+        
 
             var httpClient = new HttpClient();
 
             string apiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/create";
+            if (!ModelState.IsValid)
+                return View(ctsp);
 
             var json = JsonConvert.SerializeObject(ctsp);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -172,11 +174,11 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(CTSanPhamVM ctsp)
         {
-            if (!ModelState.IsValid) return View(ctsp);
-
+      
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/CTSanPham/CTSanPham/update/{ctsp.Id}";
-
+            if (!ModelState.IsValid)
+                return View(ctsp);
             var json = JsonConvert.SerializeObject(ctsp);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 

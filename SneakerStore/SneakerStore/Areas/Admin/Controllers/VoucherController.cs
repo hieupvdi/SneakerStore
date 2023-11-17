@@ -2,6 +2,7 @@
 using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
@@ -32,8 +33,8 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(VoucherVM vo)
         {
-            //if (!ModelState.IsValid)
-            //    return View(cv);
+            if (!ModelState.IsValid)
+                return View(vo);
 
             var httpClient = new HttpClient();
 
@@ -66,7 +67,8 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(VoucherVM vo)
         {
-            if (!ModelState.IsValid) return View(vo);
+            if (!ModelState.IsValid)
+                return View(vo);
 
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/Voucher/Voucher/update/{vo.Id}";

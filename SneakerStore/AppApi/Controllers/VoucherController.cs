@@ -30,6 +30,8 @@ namespace AppApi.Controllers
         [HttpPost("Voucher/create")]
         public async Task<IActionResult> Create([FromBody] VoucherVM vo)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _voucherServices.CreateVoucher(vo);
             return Ok(result);
         }
@@ -38,6 +40,8 @@ namespace AppApi.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] VoucherVM vo)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _voucherServices.EditVoucher(vo);
 
             return Ok(result);

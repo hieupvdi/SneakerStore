@@ -75,7 +75,7 @@ namespace SneakerStore.Controllers
                 MatKhau = MatKhau,
                 SDT = 0,
                 GioiTinh = 2,
-                SoDiem = 0,
+             
                 TrangThai = 1,
 
             };
@@ -162,7 +162,6 @@ namespace SneakerStore.Controllers
                     MatKhau = us.MatKhau,
                     SDT = us.SDT,
                     GioiTinh = us.GioiTinh,
-                    SoDiem = 0,
                     TrangThai = 1,
 
                 };

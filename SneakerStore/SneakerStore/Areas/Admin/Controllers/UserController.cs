@@ -48,6 +48,7 @@ namespace SneakerStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(UserVM us, IFormFile Url)
         {
+
             var httpClient = new HttpClient();
             string apiURL1 = "https://localhost:7001/api/ChucVu/ChucVu/get-all";
             var response1 = await httpClient.GetAsync(apiURL1);
@@ -73,10 +74,9 @@ namespace SneakerStore.Areas.Admin.Controllers
                 // Lưu đường dẫn đến ảnh vào đối tượng User
                 us.Url = "/images/" + fileName;
 
-              
 
-                //if (!ModelState.IsValid)
-                //    return View(us);
+                if (!ModelState.IsValid)
+                    return View(us);
 
                 string apiURL = "https://localhost:7001/api/User/User/create";
 
@@ -129,6 +129,7 @@ namespace SneakerStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(UserVM us, IFormFile Url)
         {
+         
             var httpClient = new HttpClient();
             string apiURL1 = "https://localhost:7001/api/ChucVu/ChucVu/get-all";
             var response1 = await httpClient.GetAsync(apiURL1);
@@ -154,10 +155,8 @@ namespace SneakerStore.Areas.Admin.Controllers
                 // Lưu đường dẫn đến ảnh vào đối tượng User
                 us.Url = "/images/" + fileName;
 
-
-
-                //if (!ModelState.IsValid) return View(us);
-
+                if (!ModelState.IsValid)
+                    return View(us);
 
                 string apiURL = $"https://localhost:7001/api/User/User/update/{us.Id}";
 
