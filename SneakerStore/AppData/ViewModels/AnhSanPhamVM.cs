@@ -11,7 +11,6 @@ namespace AppData.ViewModels
     {
         public Guid Id { get; set; }
         public Guid IdCTSP { get; set; }
-        [Required(ErrorMessage = "Url trống")]
         public string URlAnh { get; set; }
         public string? Tensp { get; set; }
         [Range(1, 5, ErrorMessage = "Số ảnh tù 1 => 5")]
