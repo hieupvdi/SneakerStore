@@ -57,7 +57,7 @@ namespace SneakerStore.Areas.Admin.Controllers
                 // Lưu đường dẫn đến ảnh vào đối tượng User
                
                 Anh.URlAnh = "/images/" + fileName;
-               
+                Anh.AnhSo = 1;
              
               
                 var httpClient = new HttpClient();

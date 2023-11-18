@@ -12,7 +12,7 @@ namespace AppData.ViewModels
         public Guid Id { get; set; }
         [StringLength(25, MinimumLength = 3, ErrorMessage = "Voucher tối đa 25 ký tự và tối thiểu 3 ký tự")]
         public string Ten { get; set; }
-        [RegularExpression("^[0-9]+$", ErrorMessage = "Điều kiện phải là số")]
+        [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Điều kiện phải là số")]
         public decimal DieuKien { get; set; }
         [RegularExpression("^[0-9]+$", ErrorMessage = "Phần trăm phải là số")]
         public int  PhanTram { get; set; }  

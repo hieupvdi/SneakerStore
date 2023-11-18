@@ -4,6 +4,7 @@ using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 
@@ -37,7 +38,58 @@ namespace SneakerStore.Controllers
 
         }
 
-            public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
+
+
+        #region TAOHD
+
+
+        public async Task<IActionResult> ThanhToan(HoaDonVM hd)
+        {
+
+            var httpClient = new HttpClient();
+
+            var userIdinSession = HttpContext.Session.GetString("userId");
+
+
+            if (!string.IsNullOrEmpty(userIdinSession))
+            {
+                Guid userId = Guid.Parse(userIdinSession);
+
+                ViewBag.TongTienData = hd.TongTien;
+                ViewBag.DiaChiData = hd.DiaChi;
+
+                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
+                var response3 = await httpClient.GetAsync(apiURL3);
+                string apiData3 = await response3.Content.ReadAsStringAsync();
+                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+                ViewBag.UserData = new List<UserVM> { result3 };
+
+
+                string apiURL5 = "https://localhost:7001/api/Voucher/Voucher/get-all";
+                var response5 = await httpClient.GetAsync(apiURL5);
+                string apiData5 = await response5.Content.ReadAsStringAsync();
+                var result5 = JsonConvert.DeserializeObject<List<VoucherVM>>(apiData5);
+                ViewBag.VoucherData = result5;
+
+
+                string apiURL6 = "https://localhost:7001/api/PhuongThucThanhToan/PTTT/get-all";
+                var response6 = await httpClient.GetAsync(apiURL6);
+                string apiData6 = await response6.Content.ReadAsStringAsync();
+                var result6 = JsonConvert.DeserializeObject<List<PhuongThucThanhToanVM>>(apiData6);
+                ViewBag.PTTTData = result6;
+
+                return View();
+
+            }
+
+            return RedirectToAction("DangNhap", "Acc");
+
+
+
+        }
+
+
+        public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
         {
             //Tạo Hóa đơn
             var userIdinSession = HttpContext.Session.GetString("userId");
@@ -56,15 +108,15 @@ namespace SneakerStore.Controllers
             //mã hd tự tăng=>
 
             string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
-
             var response = await httpClient.GetAsync(apiURL);
             string apiData = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
-            var latestInvoice = result.OrderByDescending(h => h.MaHD).FirstOrDefault();
-            int latestInvoiceNumber = latestInvoice != null ? int.Parse(latestInvoice.MaHD.Substring(2)) : 0;
 
+            var latestInvoice = result.OrderByDescending(h => h.MaHD).FirstOrDefault();
+            int latestInvoiceNumber = latestInvoice != null ? int.Parse(latestInvoice.MaHD.Substring(3)) : 0;
             int newInvoiceNumber = latestInvoiceNumber + 1;
-            string newMaHD = "HD" + newInvoiceNumber.ToString();
+            string newMaHD = "HD:" + newInvoiceNumber.ToString();
+
             //<==mã tự tăng
 
             var hd = new HoaDonVM
@@ -72,7 +124,7 @@ namespace SneakerStore.Controllers
                 Id=Guid.NewGuid(),
                 IdUser = userId,
                 IdVoucher = hoadon.IdVoucher,
-                MaHD= newMaHD+result3.TenTaiKhoan,
+                MaHD= newMaHD,
                 NgayTao=DateTime.Now,
                 NgayThanhToan=DateTime.Now,
                 NgayShip=DateTime.Now,
@@ -81,7 +133,7 @@ namespace SneakerStore.Controllers
                 PTThanhToan=hoadon.PTThanhToan,
                 DiaChi= hoadon.DiaChi,
                 SDT= result3.SDT,             
-                TienShip=0,
+                TienShip=hoadon.TienShip,
                 TongTien=hoadon.TongTien,
                 TrangThai=1,
 
@@ -210,6 +262,9 @@ namespace SneakerStore.Controllers
 
 
 
+
+
+        #endregion
 
 
         public async Task<IActionResult> ShowAllHDCT(Guid idhd)

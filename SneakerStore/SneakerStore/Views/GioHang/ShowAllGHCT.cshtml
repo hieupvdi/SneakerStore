@@ -135,133 +135,77 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
                     <aside class="col-md-3">
                         <!-- card .// -->
                         <div class="card mb-3">
-                            <div class="card-body">
-                                <dl class="dlist-align">
-                                   
-                                    <dt>Đơn Gía: @(string.Format(new CultureInfo("vi-VN"), "{0:C0}",TongTien))</dt>
-
-                                </dl>
-                                <dl class="dlist-align">
-                                    <dt>Phí ship: 0 VNĐ</dt>
-
-                                </dl>
+                            @using (Html.BeginForm("ThanhToan", "HoaDon", FormMethod.Post))
+                            {
+                                <input type="hidden" name="TongTien" value="@TongTien">
+                            <div class="card-body">                                            
                                 <dl class="dlist-align">
                                     <dt>Tổng Tiền: @(string.Format(new CultureInfo("vi-VN"), "{0:C0}", TongTien))</dt>
 
                                 </dl>
                                 <hr>
-                               
-                                @using (Html.BeginForm("CreateDiachi", "DiaChi", FormMethod.Post))
-                                {
-
-
-                                    <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Thêm Địa Chỉ
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Địa Chỉ</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-
-                                                    @Html.TextBox("diachi", null, new { @class = "form-control", @placeholder = "Địa Chỉ" })
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay Về</button>
-                                                    <button type="submit" class="btn btn-primary btn-block">Thêm Địa Chỉ</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                }
-                            </div>
-                            <!-- card-body.// -->
-                        </div>
-                        <!-- card .// -->
-
-                        <div class="card ">
-             
-
-
-                            @using (Html.BeginForm("CreateHD", "HoaDon", FormMethod.Post))
-                            {
                                 @foreach (var user in ViewBag.UserData)
                                 {
-
-                                     <input type="hidden" name="TongTien" value="@TongTien">
                                     <div class="input-group mb-3">
-                                      <h5>Tên KH:@user.HoTen</h5>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <H5>SĐT:@user.SDT</H5>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                                                            
-                                        <select class="form-control" name="DiaChi" placeholder="Địa Chỉ">
+                                        <select class="form-select" name="DiaChi" size="3" aria-label="Size 3 select example">
                                             <option value="" disabled selected>Chọn Địa Chỉ</option>
                                             @if (ViewBag.DiaChiData != null)
                                             {
                                                 @foreach (var dc in ViewBag.DiaChiData)
                                                 {
-                                                    if (user.Id==dc.IdUser&& dc.TrangThai!=0)
+                                                    if (user.Id == dc.IdUser && dc.TrangThai != 0)
                                                     {
                                                         <option value="@dc.Ten">@dc.Ten</option>
                                                     }
-                                                    
                                                 }
-
-                                            }
-                                        </select>
-
-                                    </div>
-                                        <!-- Button trigger modal -->
-                             
-                                    <div class="input-group mb-3">
- 
-                                        <select class="form-control" name="IdVoucher">
-                                            <option value="" disabled selected>Chọn Voucher</option>
-                                            @if (ViewBag.VoucherData != null)
-                                            {
-                                                @foreach (var vo in ViewBag.VoucherData)
-                                                {
-                                                    <option value="@vo.Id">@vo.Ten</option>
-                                                }
-
-                                            }
-                                        </select>
-
-
-                                    </div>
-
-                                    <div class="input-group mb-3">                                        
-                                        <select class="form-select" size="3" aria-label="Size 3 select example">
-                                            <option value="" disabled selected>Chọn PT Thanh Toán</option>
-                                            @if (ViewBag.PTTTData != null)
-                                            {
-                                                @foreach (var pt in ViewBag.PTTTData)
-                                                {
-                                                    <option value="@pt.Ten">@pt.Ten</option>
-                                                }
-
                                             }
 
                                         </select>
 
-                                    </div>
-                              
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-block">Đặt Hàng</button>
                                     </div>
                                 }
+                                <button type="button" class="btn btn-warning btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom:20px">
+                                    Thêm Địa Chỉ
+                                </button>
+
+
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-block">Thanh Toán</button>
+                                    </div>
+                            </div>
+                            
                             }
+
                         </div>
+                        <!-- card .// -->
+                        @using (Html.BeginForm("CreateDiachi", "DiaChi", FormMethod.Post))
+                        {
+
+
+                        
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Địa Chỉ</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            @Html.TextBox("diachi", null, new { @class = "form-control", @placeholder = "Địa Chỉ" })
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay Về</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Thêm Địa Chỉ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+        
 
 
                     </aside>
