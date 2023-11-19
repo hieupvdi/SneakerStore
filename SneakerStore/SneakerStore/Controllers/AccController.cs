@@ -78,23 +78,24 @@ namespace SneakerStore.Controllers
                 Email = user.Email,
                 TenTaiKhoan = user.TenTaiKhoan,
                 MatKhau = user.MatKhau,
-                SDT = "Chưa Cập Nhập",
+                SDT = "0000000000",
                 GioiTinh = 2,          
                 TrangThai = 1,
 
             };
-            
+     
             var json = JsonConvert.SerializeObject(us);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var response = await httpClient.PostAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                ModelState.AddModelError("", "Đăng Ký thành công");
-                //return RedirectToAction("DangNhap", "Acc");
+            
+                return RedirectToAction("DangNhap", "Acc");
             }
-			ModelState.AddModelError("", "Đăng Ký k thành công");
-            return View(us);
+            ModelState.AddModelError("", "Đăng Ký k thành công");
+            return View(user);
+        
+        
 
 
         }
