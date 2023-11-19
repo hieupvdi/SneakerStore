@@ -57,6 +57,7 @@ namespace SneakerStore.Controllers
 
                 ViewBag.TongTienData = hd.TongTien;
                 ViewBag.DiaChiData = hd.DiaChi;
+                ViewBag.IdVoucherData = hd.IdVoucher;
 
                 string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
                 var response3 = await httpClient.GetAsync(apiURL3);
@@ -209,7 +210,7 @@ namespace SneakerStore.Controllers
             }
             else
             {
-                return BadRequest("Không tạo được hóa đơn");
+                return BadRequest("Tạo hóa đơn không thành công do: thiếu địa chỉ hoặc voucher");
             }
 
 

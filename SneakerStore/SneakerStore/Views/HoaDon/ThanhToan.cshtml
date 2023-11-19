@@ -1,8 +1,10 @@
-﻿@model AppData.ViewModels.HoaDonVM
+﻿@using AppData.ViewModels;
+@model AppData.ViewModels.HoaDonVM
 
 @{
     ViewData["Title"] = "ThanhToan";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<VoucherVM> listVoucher = ViewBag.VoucherData;
 }
 
 <link rel="stylesheet" type="text/css" href="~/client/styles/single_styles.css">
@@ -86,26 +88,46 @@
                         </div>
 
 
-                        <div class="input-group mb-3">
+      @*                  <div class="input-group mb-3">
 
                             <select class="form-control" name="IdVoucher">
-                                <option value="" disabled selected>Chọn Voucher</option>
-                                @if (ViewBag.VoucherData != null)
+                                    <div class="input-group mb-3">
+                                        <label>Voucher:</label>
+                                    </div>
+                                
+                                    @if (listVoucher != null)
                                 {
-                                    @foreach (var vo in ViewBag.VoucherData)
+                                    @foreach (var vo in listVoucher)
                                     {
-                                        <option value="@vo.Id">@vo.Ten</option>
+                                            if (@ViewBag.TongTienData >= vo.DieuKien)
+                                            {
+
+                                                <option value="@vo.Id">@vo.Ten</option>
+                                            }
+                              
                                     }
 
                                 }
+                                    @{
+                                        // Đảm bảo khởi tạo các biến bên trong vòng lặp hoặc bên ngoài vòng lặp trước khi sử dụng chúng.
+                                        decimal PhanTram = listVoucher.FirstOrDefault(c => c.Id == @vo.Id)?.PhanTram ?? 0; // Mặc định là 0 nếu không chọn voucher
+                                        decimal totalAmount = ViewBag.TongTienData;
+                                        decimal TongTienGiam = totalAmount - (totalAmount * PhanTram / 100);
+                                    }
                             </select>
 
+                              
+                        </div>*@
 
-                        </div>
+
+
 
                         <div class="input-group mb-3">
+                                <div class="input-group mb-3">
+                                    <label>PT Thanh Toán:</label>
+                                </div>
                             <select class="form-select" name="PTThanhToan" size="3" aria-label="Size 3 select example">
-                                <option value="" disabled selected>Chọn PT Thanh Toán</option>
+                             
                                 @if (ViewBag.PTTTData != null)
                                 {
                                     @foreach (var pt in ViewBag.PTTTData)
@@ -119,8 +141,9 @@
 
                         </div>
 
-                            <input type="hidden" name="TongTien" value="@ViewBag.TongTienData">
+                           @* <input type="hidden" name="TongTien" value="@TongTienGiam">*@
                             <h4>Tổng Tiền: @ViewBag.TongTienData</h4>
+                         @*   <h4>Tổng Tiền Giảm:@TongTienGiam</h4>*@
 
                              
                         <div>
