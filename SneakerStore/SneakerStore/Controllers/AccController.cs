@@ -23,11 +23,11 @@ namespace SneakerStore.Controllers
 		[HttpPost]
 
 
-		public async Task<IActionResult> DangNhap(string TenTaiKhoan,string MatKhau)
+		public async Task<IActionResult> DangNhap(UserVM user)
 		{
            
             var httpClient = new HttpClient();
-            string apiURL = $"https://localhost:7001/api/User/User/DangNhap?TenTaiKhoan={TenTaiKhoan}&MatKhau={MatKhau}";
+            string apiURL = $"https://localhost:7001/api/User/User/DangNhap?TenTaiKhoan={user.TenTaiKhoan}&MatKhau={user.MatKhau}";
             var response = await httpClient.PostAsync(apiURL, new StringContent(""));
 
             if (response.IsSuccessStatusCode)
@@ -57,7 +57,7 @@ namespace SneakerStore.Controllers
                 
             }
             ModelState.AddModelError("", "Đăng nhập k thành công");
-            return View();
+            return View(user);
 
         }
         public async Task<IActionResult> DangKy()
