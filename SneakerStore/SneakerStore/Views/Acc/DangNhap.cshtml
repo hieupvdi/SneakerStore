@@ -21,13 +21,13 @@
                 <h1>Đăng Nhập</h1>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>              
                 <div class="input-box">
-                    <input type="text" placeholder="Tên Tài Khoản" name="TenTaiKhoan" required>
+                    @Html.TextBoxFor(p => p.TenTaiKhoan, new { @class = "form-control", placeholder = "Tên Tài Khoản" })
                     @Html.ValidationMessageFor(Model => Model.TenTaiKhoan, "", new { @class = "text-danger" })
                     <i class='bx bxs-user'></i>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" placeholder="Mật Khẩu" name="MatKhau" id="MatKhau" required>
+                    @Html.TextBoxFor(p => p.MatKhau, new { @class = "form-control", placeholder = "Tên Tài Khoản" })
                     @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
                     <i class='bx bxs-lock-alt'></i>
                 </div>

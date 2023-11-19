@@ -160,6 +160,31 @@ namespace AppData.Services
             return data;
         }
 
+
+        public async Task<UserVM> GetTenTaiKhoan(string TenTaiKhoan)
+        {
+            var us = await _dbcontext.Users.AsQueryable().FirstOrDefaultAsync(c => c.TenTaiKhoan == TenTaiKhoan && c.TrangThai != 0);
+
+            if (us == null)
+            {
+                return null;
+            }
+            var user = new UserVM
+            {
+                Id = us.Id,
+                IdCV = us.Id,
+                HoTen = us.HoTen,          
+                Url = us.Url,
+                Email = us.Email,
+                TenTaiKhoan = us.TenTaiKhoan,
+                MatKhau = us.MatKhau,
+                SDT = us.SDT,
+                GioiTinh = us.GioiTinh,
+                TrangThai = us.TrangThai,
+            };
+
+            return user;
+        }
         public async Task<Guid> Dangnhap(string TenTaiKhoan, string MatKhau)
         {
             var users = await GetUserAll();
