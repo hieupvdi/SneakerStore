@@ -46,6 +46,16 @@ namespace AppData.Migrations
                     b.HasIndex("IdCTSP");
 
                     b.ToTable("AnhSanPhams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ad88a222-3be0-4780-aba9-6097eb0735ff"),
+                            AnhSo = 1,
+                            IdCTSP = new Guid("b24acc5b-1f48-4aed-a28b-a28a46afeb3f"),
+                            TrangThai = 1,
+                            URlAnh = ""
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.Blog", b =>
@@ -177,6 +187,25 @@ namespace AppData.Migrations
                     b.HasIndex("IdSize");
 
                     b.ToTable("CTSanPhams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b24acc5b-1f48-4aed-a28b-a28a46afeb3f"),
+                            ChatLieu = "Vãi tổng hợp",
+                            Giaban = 550000m,
+                            Gianhap = 600000m,
+                            IdDanhMuc = new Guid("c0cf812b-ae5c-4843-b2d8-4221428bdaa2"),
+                            IdDeGiay = new Guid("740da37d-5d41-4bb2-8596-f0db0c000395"),
+                            IdGiamGia = new Guid("af96daff-10c2-4433-9650-b01c4dd9a0b8"),
+                            IdMauSac = new Guid("d5695ca6-672e-47f0-b00f-2d8bf646fd07"),
+                            IdSP = new Guid("1b1ea42e-e45a-4536-b3bb-8819ccf97c25"),
+                            IdSize = new Guid("7098f9a9-d98e-48ef-81d2-5519542889c9"),
+                            MoTa = "hàng mới 100%",
+                            NhaSanXuat = "made in China ",
+                            SoLuongTon = 30,
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.DanhMuc", b =>
@@ -195,6 +224,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DanhMucs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c0cf812b-ae5c-4843-b2d8-4221428bdaa2"),
+                            Ten = "Giày thể thao",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.DeGiay", b =>
@@ -213,6 +250,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeGiays");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("740da37d-5d41-4bb2-8596-f0db0c000395"),
+                            Name = "Đế cao su",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.DiaChi", b =>
@@ -267,6 +312,18 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GiamGias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("af96daff-10c2-4433-9650-b01c4dd9a0b8"),
+                            MoTa = "Nhân ngày shop mới mở bán",
+                            NgayBatDau = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1995),
+                            NgayKetThuc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1996),
+                            PhamTram = 5,
+                            TenMaGiamGia = "Tri ân khách hàng",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.GioHang", b =>
@@ -424,6 +481,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MauSacs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d5695ca6-672e-47f0-b00f-2d8bf646fd07"),
+                            TenMauSac = "beige",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.PhuongThucThanhToan", b =>
@@ -442,6 +507,20 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PhuongThucThanhToans");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a29e87a9-921c-4964-9932-b4d038244a88"),
+                            Ten = "Thanh Toán Khi Nhận Hàng",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("eb546cee-a51f-413b-ae43-456623900bd4"),
+                            Ten = "Thanh Toán VNPAY",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.PhuongThucThanhToanCT", b =>
@@ -487,6 +566,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SanPhams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("1b1ea42e-e45a-4536-b3bb-8819ccf97c25"),
+                            TenSP = "Giày Thời Trang Unisex Converse Chuck Taylor All Star",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.Size", b =>
@@ -504,6 +591,14 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7098f9a9-d98e-48ef-81d2-5519542889c9"),
+                            SizeNumber = 40,
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.User", b =>
@@ -604,6 +699,20 @@ namespace AppData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vouchers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("58d680d9-696f-4de5-93f5-5024b77efec7"),
+                            DieuKien = 50000m,
+                            MoTa = "Shop mới khai trương",
+                            NgayBatDau = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhanTram = 5,
+                            SoLuong = 100,
+                            Ten = "khai trương",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("AppData.Models.AnhSanPham", b =>
