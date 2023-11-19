@@ -54,7 +54,7 @@ namespace AppData.Migrations
                             AnhSo = 1,
                             IdCTSP = new Guid("b24acc5b-1f48-4aed-a28b-a28a46afeb3f"),
                             TrangThai = 1,
-                            URlAnh = ""
+                            URlAnh = "/images/Converse9.jpeg"
                         });
                 });
 

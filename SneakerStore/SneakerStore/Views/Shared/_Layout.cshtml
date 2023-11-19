@@ -137,44 +137,52 @@
                 <ul class="menu_top_nav">
                     <li class="menu_item has-children">
                         <a href="#">
-                            usd
+                            vnđ
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">cad</a></li>
-                            <li><a href="#">aud</a></li>
-                            <li><a href="#">eur</a></li>
-                            <li><a href="#">gbp</a></li>
+                            <li><a href="#">vnđ</a></li>
+                            <li><a href="#">usd</a></li>
                         </ul>
                     </li>
                     <li class="menu_item has-children">
                         <a href="#">
-                            English
+                            Tiếng Việt
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">French</a></li>
-                            <li><a href="#">Italian</a></li>
-                            <li><a href="#">German</a></li>
-                            <li><a href="#">Spanish</a></li>
+                         
+                            <li><a href="#">Tiếng Việt</a></li>
+                            <li><a href="#">English</a></li>
                         </ul>
                     </li>
                     <li class="menu_item has-children">
                         <a href="#">
-                            My Account
+                            Tài khoản Shop
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                          @*<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>*@
+
+                            <li><a asp-area="" asp-controller="Acc" asp-action="DangNhap"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng Nhập</a></li>
+                            <li><a asp-area="" asp-controller="Acc" asp-action="DangKy"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng Ký</a></li>
+                            <li><a asp-area="" asp-controller="Acc" asp-action="DangXuat"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng xuất</a></li>
+                        
                         </ul>
                     </li>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="#">shop</a></li>
-                    <li class="menu_item"><a href="#">promotion</a></li>
-                    <li class="menu_item"><a href="#">pages</a></li>
-                    <li class="menu_item"><a href="#">blog</a></li>
-                    <li class="menu_item"><a href="#">contact</a></li>
+        
+
+                    <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="SanPham" asp-action="ShowAllSanPham">Cửa Hàng</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="ShowAllBlog">Blog</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="HoaDon" asp-action="ShowAllHD">Đơn Hàng</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="GioHang" asp-action="ShowAllGHCT">Giỏ Hàng</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="Acc" asp-action="ShowACC">Hồ Sơ</a></li>
+
+               
+
+
                 </ul>
             </div>
         </div>
