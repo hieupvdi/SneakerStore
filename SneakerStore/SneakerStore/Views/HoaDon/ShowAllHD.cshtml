@@ -51,98 +51,583 @@
                     <main class="col-md-12">
                         <div class="card">
 
-                            <table class="table table-borderless table-shopping-cart">
-                                <thead class="text-muted">
-                                    <tr class="small text-uppercase">
-                                        <th scope="col" width="120">Mã HD </th>
-                                        <th scope="col" width="120">Ngày Mua Hàng</th>
-                                        <th scope="col" width="120">Tổng Tiền</th>
-                                        <th scope="col" width="320">Địa Chỉ</th>
-                                        <th scope="col" width="120">Trạng Thái</th>
-                                        <th scope="col" class="text-right" width="200"> </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach (var item in Model)
-                                    {
-
-
-
-                                        if (item.IdUser == ViewBag.UserId )
-                                        {
-
-                                            <tr>
-                                                <td>
-                                                    <figure class="itemside">
+                            <div class="card">
+                                <div class="card-header p-2">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Tất Cả</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Chờ xác Nhận</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#delivery" data-toggle="tab">Đang Giao</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Đã Hủy</a></li>
+                                    </ul>
+                                </div><!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="activity">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
 
 
-                                                        <figcaption class="info">                                                      
-                                                            <a href="#" class="title text-dark">@item.MaHD</a>
-                                                        </figcaption>
-                                                    </figure>
-                                                </td>
-                                                <td>
-                                                    <div class="price-wrap">
 
-                                                        <span id="quantity_value">@item.NgayTao</span>
+                                                    <table class="table table-borderless table-shopping-cart">
+                                                        <thead class="text-muted">
+                                                            <tr class="small text-uppercase">
+                                                                <th scope="col" width="120">Mã HD </th>
+                                                                <th scope="col" width="120">Ngày Mua Hàng</th>
+                                                                <th scope="col" width="120">PT Thanh Toán</th>
+                                                                <th scope="col" width="120">Tiền Ship</th>
+                                                                <th scope="col" width="120">Tổng Tiền</th>
+                                                                <th scope="col" width="320">Địa Chỉ</th>
+                                                                <th scope="col" width="120">Trạng Thái</th>
+                                                                <th scope="col" class="text-right" width="200"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                    </div>
+                                                            @foreach (var item in Model)
+                                                            {
 
-                                                </td>
-                                                <td>
-                                                    <div class="price-wrap">
-                                                        <var class="price">
-                                                            @(
-                                                                string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
-                                                                )
-                                                        </var>
 
-                                                    </div>
-                                                    <!-- price-wrap .// -->
-                                                </td>
-                                                <td>
-                                                    <div class="price-wrap">
-                                                        <span id="quantity_value">@item.DiaChi</span>
 
-                                                    </div>
-                                                    <!-- price-wrap .// -->
-                                                </td>
-                                                <td>
-                                                    <div class="price-wrap">
-                                                        @if(item.TrangThai == 0)
-                                                        {
-                                                            <span id="quantity_value">Hủy Đơn hàng </span>
-                                                        }else if (item.TrangThai == 1)
-                                                        {
-                                                            <span id="quantity_value">Đặt hàng thành công </span>
-                                                        }else if (item.TrangThai == 2)
-                                                        {
-                                                            <span id="quantity_value">Shop đang chuẩn bị hàng </span>
-                                                        }
+                                                                if (item.IdUser == ViewBag.UserId)
+                                                                {
 
-                                                        
+                                                                    <tr>
+                                                                        <td>
+                                                                            <figure class="itemside">
 
-                                                    </div>
-                                                    <!-- price-wrap .// -->
-                                                </td>
-                                                <td class="text-right">
-                                                    <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                    @if (item.TrangThai != 0 && item.TrangThai != 2)
-                                                    {
-                                                        <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
-                               
-                                                    }
 
-                                                </td>
-                                            </tr>
+                                                                                <figcaption class="info">
+                                                                                    <a href="#" class="title text-dark">@item.MaHD</a>
+                                                                                </figcaption>
+                                                                            </figure>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
 
-                                        }
+                                                                                <span id="quantity_value">@item.NgayTao</span>
 
-                                    }
+                                                                            </div>
 
-                                </tbody>
-                            </table>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.PTThanhToan</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.TienShip</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <var class="price">
+                                                                                    @(
+                                                                                        string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
+                                                                                        )
+                                                                                </var>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <span id="quantity_value">@item.DiaChi</span>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                @if (item.TrangThai == 0)
+                                                                                {
+                                                                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 1)
+                                                                                {
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 2)
+                                                                                {
+                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                }
+
+
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            {
+                                                                                <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
+
+                                                                            }
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                                }
+
+                                                            }
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer clearfix">
+                                                    <ul class="pagination pagination-sm m-0 float-right">
+                                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                                   
+                                        </div>
+                                        <div class="tab-pane" id="timeline">
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+
+
+
+                                                    <table class="table table-borderless table-shopping-cart">
+                                                        <thead class="text-muted">
+                                                            <tr class="small text-uppercase">
+                                                                <th scope="col" width="120">Mã HD </th>
+                                                                <th scope="col" width="120">Ngày Mua Hàng</th>
+                                                                <th scope="col" width="120">PT Thanh Toán</th>
+                                                                <th scope="col" width="120">Tiền Ship</th>
+                                                                <th scope="col" width="120">Tổng Tiền</th>
+                                                                <th scope="col" width="320">Địa Chỉ</th>
+                                                                <th scope="col" width="120">Trạng Thái</th>
+                                                                <th scope="col" class="text-right" width="200"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            @foreach (var item in Model)
+                                                            {
+
+
+
+                                                                if (item.IdUser == ViewBag.UserId)
+                                                                {
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <figure class="itemside">
+
+
+                                                                                <figcaption class="info">
+                                                                                    <a href="#" class="title text-dark">@item.MaHD</a>
+                                                                                </figcaption>
+                                                                            </figure>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.NgayTao</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.PTThanhToan</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.TienShip</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <var class="price">
+                                                                                    @(
+                                                                                        string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
+                                                                                        )
+                                                                                </var>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <span id="quantity_value">@item.DiaChi</span>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                @if (item.TrangThai == 0)
+                                                                                {
+                                                                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 1)
+                                                                                {
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 2)
+                                                                                {
+                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                }
+
+
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            {
+                                                                                <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
+
+                                                                            }
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                                }
+
+                                                            }
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer clearfix">
+                                                    <ul class="pagination pagination-sm m-0 float-right">
+                                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="tab-pane" id="delivery">
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+
+
+
+                                                    <table class="table table-borderless table-shopping-cart">
+                                                        <thead class="text-muted">
+                                                            <tr class="small text-uppercase">
+                                                                <th scope="col" width="120">Mã HD </th>
+                                                                <th scope="col" width="120">Ngày Mua Hàng</th>
+                                                                <th scope="col" width="120">PT Thanh Toán</th>
+                                                                <th scope="col" width="120">Tiền Ship</th>
+                                                                <th scope="col" width="120">Tổng Tiền</th>
+                                                                <th scope="col" width="320">Địa Chỉ</th>
+                                                                <th scope="col" width="120">Trạng Thái</th>
+                                                                <th scope="col" class="text-right" width="200"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            @foreach (var item in Model)
+                                                            {
+
+
+
+                                                                if (item.IdUser == ViewBag.UserId)
+                                                                {
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <figure class="itemside">
+
+
+                                                                                <figcaption class="info">
+                                                                                    <a href="#" class="title text-dark">@item.MaHD</a>
+                                                                                </figcaption>
+                                                                            </figure>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.NgayTao</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.PTThanhToan</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.TienShip</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <var class="price">
+                                                                                    @(
+                                                                                        string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
+                                                                                        )
+                                                                                </var>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <span id="quantity_value">@item.DiaChi</span>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                @if (item.TrangThai == 0)
+                                                                                {
+                                                                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 1)
+                                                                                {
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 2)
+                                                                                {
+                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                }
+
+
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            {
+                                                                                <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
+
+                                                                            }
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                                }
+
+                                                            }
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer clearfix">
+                                                    <ul class="pagination pagination-sm m-0 float-right">
+                                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane" id="settings">
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+
+
+
+                                                    <table class="table table-borderless table-shopping-cart">
+                                                        <thead class="text-muted">
+                                                            <tr class="small text-uppercase">
+                                                                <th scope="col" width="120">Mã HD </th>
+                                                                <th scope="col" width="120">Ngày Mua Hàng</th>
+                                                                <th scope="col" width="120">PT Thanh Toán</th>
+                                                                <th scope="col" width="120">Tiền Ship</th>
+                                                                <th scope="col" width="120">Tổng Tiền</th>
+                                                                <th scope="col" width="320">Địa Chỉ</th>
+                                                                <th scope="col" width="120">Trạng Thái</th>
+                                                                <th scope="col" class="text-right" width="200"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            @foreach (var item in Model)
+                                                            {
+
+
+
+                                                                if (item.IdUser == ViewBag.UserId)
+                                                                {
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <figure class="itemside">
+
+
+                                                                                <figcaption class="info">
+                                                                                    <a href="#" class="title text-dark">@item.MaHD</a>
+                                                                                </figcaption>
+                                                                            </figure>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.NgayTao</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.PTThanhToan</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+
+                                                                                <span id="quantity_value">@item.TienShip</span>
+
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <var class="price">
+                                                                                    @(
+                                                                                        string.Format(new CultureInfo("vi-VN"), "{0:C0}", item.TongTien)
+                                                                                        )
+                                                                                </var>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                <span id="quantity_value">@item.DiaChi</span>
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="price-wrap">
+                                                                                @if (item.TrangThai == 0)
+                                                                                {
+                                                                                    <span id="quantity_value">Hủy Đơn hàng </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 1)
+                                                                                {
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                }
+                                                                                else if (item.TrangThai == 2)
+                                                                                {
+                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                }
+
+
+
+                                                                            </div>
+                                                                            <!-- price-wrap .// -->
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            {
+                                                                                <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
+
+                                                                            }
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                                }
+
+                                                            }
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer clearfix">
+                                                    <ul class="pagination pagination-sm m-0 float-right">
+                                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div><!-- /.card-body -->
+                            </div>
+
 
                             <div class="card-body border-top">
                                 <a href="" class="btn btn-primary float-md-right">Xóa Hết </a>

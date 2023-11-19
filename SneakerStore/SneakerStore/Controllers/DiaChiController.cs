@@ -34,7 +34,7 @@ namespace SneakerStore.Controllers
             var response = await httpClient.PostAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("ShowAllGHCT","GioHang");
+                return RedirectToAction("ShowAllGHCT", "GioHang");
             }
             ModelState.AddModelError("", "Create Sai roi");
 

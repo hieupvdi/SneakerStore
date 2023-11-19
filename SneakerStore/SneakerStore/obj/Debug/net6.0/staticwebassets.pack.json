@@ -9989,6 +9989,186 @@
       "PackagePath": "staticwebassets\\LoginAndRegister\\style.css"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\css\\demo.css",
+      "PackagePath": "staticwebassets\\assets\\css\\demo.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\css\\paper-bootstrap-wizard.css",
+      "PackagePath": "staticwebassets\\assets\\css\\paper-bootstrap-wizard.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\css\\themify-icons-demo.css",
+      "PackagePath": "staticwebassets\\assets\\css\\themify-icons-demo.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\css\\themify-icons.css",
+      "PackagePath": "staticwebassets\\assets\\css\\themify-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\fonts\\themify.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.eot"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\fonts\\themify.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\fonts\\themify.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\fonts\\themify.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.woff"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\apple-icon.png",
+      "PackagePath": "staticwebassets\\assets\\img\\apple-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\default-avatar.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\default-avatar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\new_logo.png",
+      "PackagePath": "staticwebassets\\assets\\img\\new_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\paper-1.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\paper-1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\paper-2.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\paper-2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\paper-3.jpeg",
+      "PackagePath": "staticwebassets\\assets\\img\\paper-3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\tim_80x80.png",
+      "PackagePath": "staticwebassets\\assets\\img\\tim_80x80.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\wizard-create-profile.png",
+      "PackagePath": "staticwebassets\\assets\\img\\wizard-create-profile.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\wizard-find-desk.png",
+      "PackagePath": "staticwebassets\\assets\\img\\wizard-find-desk.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\img\\wizard-list-place.png",
+      "PackagePath": "staticwebassets\\assets\\img\\wizard-list-place.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\demo.js",
+      "PackagePath": "staticwebassets\\assets\\js\\demo.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\jquery-2.2.4.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-2.2.4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\jquery.bootstrap.wizard.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.bootstrap.wizard.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\js\\paper-bootstrap-wizard.js",
+      "PackagePath": "staticwebassets\\assets\\js\\paper-bootstrap-wizard.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_buttons.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_buttons.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_card.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_card.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_footers.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_footers.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_inputs.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_inputs.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_labels-progress-bar.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_labels-progress-bar.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_misc.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_misc.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_mixins.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_navs-pagination.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_navs-pagination.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_responsive.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_responsive.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_tooltips.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_tooltips.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_typography.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_typography.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_variables.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_variables.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\_wizard-card.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\_wizard-card.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_buttons.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_buttons.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_inputs.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_inputs.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_labels.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_labels.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_transparency.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_transparency.scss"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_vendor-prefixes.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\paper-bootstrap-wizard\\mixins\\_vendor-prefixes.scss"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

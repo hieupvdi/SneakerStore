@@ -23,8 +23,9 @@ namespace SneakerStore.Controllers
 		[HttpPost]
 
 
-		public async Task<IActionResult> DangNhap(string TenTaiKhoan, string MatKhau)
+		public async Task<IActionResult> DangNhap(string TenTaiKhoan,string MatKhau)
 		{
+           
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/User/User/DangNhap?TenTaiKhoan={TenTaiKhoan}&MatKhau={MatKhau}";
             var response = await httpClient.PostAsync(apiURL, new StringContent(""));
@@ -61,7 +62,7 @@ namespace SneakerStore.Controllers
         }
 	
 
-		public async Task<IActionResult> DangKy(string Email, string TenTaiKhoan, string MatKhau)
+		public async Task<IActionResult> DangKy(UserVM user)
         {
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/User/User/create";
@@ -70,15 +71,15 @@ namespace SneakerStore.Controllers
                 IdCV = new Guid("e26fa84e-3019-4a14-862f-9fafc6014dfe"),
                 HoTen = "Chưa Cập Nhập",
                 Url = "/images/avta_tr.jpg",
-                Email = Email,
-                TenTaiKhoan = TenTaiKhoan,
-                MatKhau = MatKhau,
-                SDT = 0,
-                GioiTinh = 2,
-             
+                Email = user.Email,
+                TenTaiKhoan = user.TenTaiKhoan,
+                MatKhau = user.MatKhau,
+                SDT = "Chưa Cập Nhập",
+                GioiTinh = 2,          
                 TrangThai = 1,
 
             };
+            
             var json = JsonConvert.SerializeObject(us);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -88,10 +89,10 @@ namespace SneakerStore.Controllers
                 return RedirectToAction("DangNhap", "Acc");
             }
 			ModelState.AddModelError("", "Đăng Ký k thành công");
-			return View();
+            return RedirectToAction("DangNhap", "Acc");
 
 
-		}
+        }
 
 
         public IActionResult DangXuat()

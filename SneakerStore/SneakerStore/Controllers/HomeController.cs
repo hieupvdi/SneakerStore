@@ -48,11 +48,17 @@ namespace SneakerStore.Controllers
 			// Lấy kết quả thu được bằng cách bóc dữ liệu Json
 			var result4 = JsonConvert.DeserializeObject<List<AnhSanPhamVM>>(apiData4);
 
+			string apiURL5 = "https://localhost:7001/api/Blog/Blog/get-all";
+			var response5 = await httpClient.GetAsync(apiURL5);
+			string apiData5 = await response5.Content.ReadAsStringAsync();
+			var result5 = JsonConvert.DeserializeObject<List<BlogVM>>(apiData5);
+
 			ViewBag.CTSanPhamData = result;
 			ViewBag.MauSacData = result1;
 			ViewBag.SizeData = result2;
 			ViewBag.DanhMucData = result3;
 			ViewBag.AnhData = result4;
+			ViewBag.BlogData = result5;
 
 			return View();
 

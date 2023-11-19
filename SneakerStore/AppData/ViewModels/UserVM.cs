@@ -18,9 +18,10 @@ namespace AppData.ViewModels
         public string Email { get; set; }
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$", ErrorMessage = "Tên tài khoản phải chứa ít nhất một chữ thường, một chữ hoa và một số")]
         public string? TenTaiKhoan { get; set; }
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$", ErrorMessage = "Mật khẩu phải chứa ít nhất một chữ thường, một chữ hoa, một số, và một ký tự đặc biệt. Độ dài tối thiểu là 8 ký tự.")]
         public string MatKhau { get; set; }
         [RegularExpression(@"^(\+[0-9]{1,2}\s?)?(\([0-9]{1,4}\))?\s?[0-9]{6,}$", ErrorMessage = "SĐT không hợp lệ")]
-        public int SDT { get; set; }
+        public string SDT { get; set; }
         public int GioiTinh { get; set; }
         public int TrangThai { get; set; }
 

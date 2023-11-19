@@ -12,9 +12,9 @@ namespace AppData.ViewModels
         public Guid Id { get; set; }
         [StringLength(150, MinimumLength = 5, ErrorMessage = "Mô ta tối đa 150 ký tự và tối thiểu 5 ký tự")]
         public string MoTa { get; set; }
-        [RegularExpression("^[0-9]+$", ErrorMessage = "Gía Nhập phải là số")]
+        [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Giá Nhập phải là số")]
         public decimal Gianhap { get; set; }
-        [RegularExpression("^[0-9]+$", ErrorMessage = "Gía Bán phải là số")]
+        [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Gía Bán phải là số")]
         public decimal Giaban { get; set; }
         [StringLength(100, MinimumLength = 5, ErrorMessage = "Chất liệu tối đa 100 ký tự và tối thiểu 5 ký tự")]
         public string ChatLieu { get; set; }

@@ -19,7 +19,7 @@ namespace AppData.ViewModels
         public string PTThanhToan { get; set; }
         public string NguoiNhan { get; set; }
         public string DiaChi { get; set; }
-        public int SDT { get; set; }
+        public string SDT { get; set; }
         public decimal TienShip { get; set; }
         public decimal TongTien { get; set; }
         public int TrangThai { get; set; }

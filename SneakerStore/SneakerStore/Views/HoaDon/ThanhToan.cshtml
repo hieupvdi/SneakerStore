@@ -1,0 +1,169 @@
+﻿@using AppData.ViewModels;
+@model AppData.ViewModels.HoaDonVM
+
+@{
+    ViewData["Title"] = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<VoucherVM> listVoucher = ViewBag.VoucherData;
+}
+
+<link rel="stylesheet" type="text/css" href="~/client/styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="~/client/styles/single_responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- ========================= SECTION CONTENT ========================= -->
+<div class="container contact_container">
+    <div class="row">
+        <div class="col">
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <section class="section-content padding-y">
+            <div class="container" >
+
+                <div class="col-md-8 mx-auto">
+
+
+        
+
+                @using (Html.BeginForm("CreateHD", "HoaDon", FormMethod.Post))
+                {
+                    @foreach (var user in ViewBag.UserData)
+                    {
+
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Người Nhận:</label>
+                                @Html.TextBoxFor(p => p.NguoiNhan, new { @class = "form-control" })
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">SĐT:</label>
+                                @Html.TextBoxFor(p => p.SDT, new { @class = "form-control"})
+                            
+                            </div>
+
+                            <input type="hidden" name="DiaChi" value="@ViewBag.DiaChiData">
+                            <span>Địa Chỉ: @ViewBag.DiaChiData</span>
+                       
+                        <div class="input-group mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TienShip" id="TienShip" value="25000" checked>
+                                <label class="form-check-label" for="TienShip">
+                                    Nội Thành: 25.000VNĐ
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="TienShip" id="TienShip1" value="35000">
+                                <label class="form-check-label" for="TienShip1">
+                                        Ngoại Thành: 35.000VNĐ
+                                </label>
+                            </div>
+                        </div>
+
+
+      @*                  <div class="input-group mb-3">
+
+                            <select class="form-control" name="IdVoucher">
+                                    <div class="input-group mb-3">
+                                        <label>Voucher:</label>
+                                    </div>
+                                
+                                    @if (listVoucher != null)
+                                {
+                                    @foreach (var vo in listVoucher)
+                                    {
+                                            if (@ViewBag.TongTienData >= vo.DieuKien)
+                                            {
+
+                                                <option value="@vo.Id">@vo.Ten</option>
+                                            }
+                              
+                                    }
+
+                                }
+                                    @{
+                                        // Đảm bảo khởi tạo các biến bên trong vòng lặp hoặc bên ngoài vòng lặp trước khi sử dụng chúng.
+                                        decimal PhanTram = listVoucher.FirstOrDefault(c => c.Id == @vo.Id)?.PhanTram ?? 0; // Mặc định là 0 nếu không chọn voucher
+                                        decimal totalAmount = ViewBag.TongTienData;
+                                        decimal TongTienGiam = totalAmount - (totalAmount * PhanTram / 100);
+                                    }
+                            </select>
+
+                              
+                        </div>*@
+
+
+
+
+                        <div class="input-group mb-3">
+                                <div class="input-group mb-3">
+                                    <label>PT Thanh Toán:</label>
+                                </div>
+                            <select class="form-select" name="PTThanhToan" size="3" aria-label="Size 3 select example">
+                             
+                                @if (ViewBag.PTTTData != null)
+                                {
+                                    @foreach (var pt in ViewBag.PTTTData)
+                                    {
+                                        <option value="@pt.Ten">@pt.Ten</option>
+                                    }
+
+                                }
+
+                            </select>
+
+                        </div>
+
+                           @* <input type="hidden" name="TongTien" value="@TongTienGiam">*@
+                            <h4>Tổng Tiền: @ViewBag.TongTienData</h4>
+                         @*   <h4>Tổng Tiền Giảm:@TongTienGiam</h4>*@
+
+                             
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block">Đặt Hàng</button>
+                        </div>
+                    }
+                }
+
+
+                </div>
+
+
+            </div>
+            <!-- container .//  -->
+        </section>
+
+    </div>
+</div>
+
+<script src="~/client/js/single_custom.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

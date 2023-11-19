@@ -2,8 +2,9 @@
 @model IEnumerable<AppData.ViewModels.CTSanPhamVM>
 
 @{
-    ViewData["Title"] = "ShowAllSanPham";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "ShowAllSanPham";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	int pagestt = 1;
 }
 
 
@@ -171,18 +172,7 @@
 										</ul>
 									</li>
 								</ul>
-								<div class="pages d-flex flex-row align-items-center">
-									<div class="page_current">
-										<span>1</span>
-										<ul class="page_selection">
-											<li><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-										</ul>
-									</div>
-									<div class="page_total"><span>of</span> 3</div>
-									<div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-								</div>
+				
 
 							</div>
 
@@ -245,16 +235,17 @@
 								</ul>
 								<span class="showing_results">Showing 1–3 of 12 results</span>
 								<div class="pages d-flex flex-row align-items-center">
-									<div class="page_current">
-										<span>1</span>
-										<ul class="page_selection">
-											<li><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
+
+									<nav aria-label="Contacts Page Navigation">
+										<ul class="pagination justify-content-center m-0">
+											@foreach (var item in ViewBag.CTSanPhamData)
+											{
+												<li class="page-item"><a class="page-link" href="@Url.Action("ShowAllSanPham","SanPham",new{page=pagestt})">@pagestt</a></li>
+												pagestt++;
+											}
+
 										</ul>
-									</div>
-									<div class="page_total"><span>of</span> 3</div>
-									<div id="next_page_1" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+									</nav>
 								</div>
 
 							</div>

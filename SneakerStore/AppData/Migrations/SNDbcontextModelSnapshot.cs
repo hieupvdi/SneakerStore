@@ -356,8 +356,9 @@ namespace AppData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TienShip")
                         .HasColumnType("decimal(18,2)");
@@ -529,8 +530,9 @@ namespace AppData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenTaiKhoan")
                         .IsRequired()
@@ -555,15 +557,15 @@ namespace AppData.Migrations
                         new
                         {
                             Id = new Guid("e37fa96e-3019-4a16-862f-8fafc6017dfe"),
-                            Email = "hieupham12@gmail.com",
+                            Email = "hieupvph27565@fpt.edu.vn",
                             GioiTinh = 0,
                             HoTen = "Phạm Văn Hiếu",
                             IdCV = new Guid("9cfc528c-bac3-4106-a8d9-745512bb0e3b"),
                             MatKhau = "1234",
-                            SDT = 337019932,
+                            SDT = "0337019932",
                             TenTaiKhoan = "Admin007",
                             TrangThai = 1,
-                            Url = "imagesvta_tr.jpg"
+                            Url = "/images/anh-anime-chibi-2.jpg"
                         });
                 });
 

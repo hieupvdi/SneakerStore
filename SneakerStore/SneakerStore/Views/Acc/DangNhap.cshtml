@@ -34,14 +34,17 @@
                 <span>hoặc sử dụng email của bạn để đăng ký</span>
                 <div class="infield">
                         <input type="Email" placeholder="Email" name="Email" />
+                        @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
                     <label></label>
                 </div>
                 <div class="infield">
                     <input type="TenTaiKhoan" placeholder="Tên Tài Khoản" name="TenTaiKhoan" />
+                        @Html.ValidationMessageFor(Model => Model.TenTaiKhoan, "", new { @class = "text-danger" })
                     <label></label>
                 </div>
                 <div class="infield">
                         <input type="MatKhau" placeholder="Mật Khẩu" name="MatKhau" />
+                        @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
                     <label></label>
                 </div>
                 <button>Đăng ký</button>
@@ -61,11 +64,11 @@
                 </div>
                 <span>hoặc sử dụng tài khoản của bạn</span>
                 <div class="infield">
-                    <input type="TenTaiKhoan" placeholder="Tên Tài Khoản" name="TenTaiKhoan" />
+                    <input type="TenTaiKhoan" placeholder="Tên Tài Khoản" name="TenTaiKhoan" />                 
                     <label></label>
                 </div>
                 <div class="infield">
-                    <input type="MatKhau" placeholder="Mật Khẩu" name="MatKhau" />
+                    <input type="MatKhau" placeholder="Mật Khẩu" name="MatKhau" />                
                     <label></label>
                 </div>
                 <a href="#" class="forgot">Quên mật khẩu?</a>
