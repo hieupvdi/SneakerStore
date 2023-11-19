@@ -69,6 +69,16 @@ namespace SneakerStore.Controllers
         public async Task<IActionResult> DangKy(UserVM user)
         {
             var httpClient = new HttpClient();
+
+            //string apiURL2 = $"https://localhost:7001/api/User/User/TenTaiKhoan?TenTaiKhoan={user.TenTaiKhoan}";
+
+            //var response2 = await httpClient.PostAsync(apiURL2, new StringContent(""));
+
+            //if (response2 !=null) { 
+
+            //    ModelState.AddModelError("", "Tên tài khoản đã tồn tại");
+            //    return View(user);
+            //}      
             string apiURL = $"https://localhost:7001/api/User/User/create";
             var us = new UserVM
             {
