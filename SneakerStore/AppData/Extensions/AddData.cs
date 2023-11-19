@@ -14,7 +14,7 @@ namespace AppData.Extensions
         {
 
             modelBuilder.Entity<AnhSanPham>().HasData(
-            new AnhSanPham() { Id = Guid.Parse("ad88a222-3be0-4780-aba9-6097eb0735ff"), IdCTSP = Guid.Parse("b24acc5b-1f48-4aed-a28b-a28a46afeb3f"), URlAnh = "", AnhSo = 1, TrangThai = 1 }
+            new AnhSanPham() { Id = Guid.Parse("ad88a222-3be0-4780-aba9-6097eb0735ff"), IdCTSP = Guid.Parse("b24acc5b-1f48-4aed-a28b-a28a46afeb3f"), URlAnh = "/images/Converse9.jpeg", AnhSo = 1, TrangThai = 1 }
             );
 
             modelBuilder.Entity<SanPham>().HasData(
