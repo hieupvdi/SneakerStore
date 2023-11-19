@@ -92,7 +92,7 @@
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
             <th>
-                @Html.DisplayNameFor(model => model.PTThanhToan)
+                @Html.DisplayFor(model => item.PTThanhToan)
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.SDT)
@@ -111,18 +111,26 @@
                                 }
                                 else if (item.TrangThai == 1)
                                 {
-                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                    <span id="quantity_value">Chờ xác nhận </span>
                                 }
                                 else if (item.TrangThai == 2)
                                 {
-                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                }
+                                else if (item.TrangThai == 3)
+                                {
+                                    <span id="quantity_value">Đơn hàng đã bàn giao cho đơn vị vận chuyển</span>
                                 }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TenVoucher)
             </td>
             <td>
-                                <a class="btn btn-primary" href="@Url.Action("XacNhan","HoaDon",new{idhd=item.Id})">Xác Nhận Đơn</a>  
+                                @if (item.TrangThai == 1)
+                                {
+                                    <a class="btn btn-primary" href="@Url.Action("XacNhan","HoaDon",new{idhd=item.Id})">Xác Nhận Đơn</a>
+                                }
+                                
                                 <a class="btn btn-primary" href="@Url.Action("ShowAllHDCT","HoaDon",new{idhd=item.Id})">Sản Phẩm</a>
            
             </td>
