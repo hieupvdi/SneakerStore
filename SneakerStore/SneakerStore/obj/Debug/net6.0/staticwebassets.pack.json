@@ -10309,6 +10309,10 @@
       "PackagePath": "staticwebassets\\images\\avta_tr.jpg"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\bg.jpg",
+      "PackagePath": "staticwebassets\\images\\bg.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\ThucTap\\Nhom1\\SneakerStore\\SneakerStore\\wwwroot\\images\\cute.png",
       "PackagePath": "staticwebassets\\images\\cute.png"
     },

@@ -155,7 +155,7 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
                                         <div class="input-group mb-3">
                                                 <label>Địa Chỉ:</label>
                                         </div>
-                                        <select class="form-select" name="DiaChi" size="3" aria-label="Size 3 select example">
+                                            <select class="form-control" name="DiaChi">
                                             @*<option value="" disabled selected>Chọn Địa Chỉ</option>*@
                                             @if (ViewBag.DiaChiData != null)
                                             {
@@ -176,12 +176,12 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
                                 <button type="button" class="btn btn-warning btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom:20px">
                                     Thêm Địa Chỉ
                                 </button>
-                                    <div class="input-group mb-3">
-
+                                 <div class="input-group mb-3">
+                                        <div class="input-group mb-3">
+                                            <label>Voucher:</label>
+                                        </div>
                                         <select class="form-control" name="IdVoucher">
-                                            <div class="input-group mb-3">
-                                                <label>Voucher:</label>
-                                            </div>
+
 
                                             @if (ViewBag.VoucherData != null)
                                             {
@@ -190,7 +190,7 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
                                                     if (TongTien >= vo.DieuKien)
                                                     {
 
-                                                        <option value="@vo.Id">@vo.Ten</option>
+                                                        <option value="@vo.Id">@vo.Ten @vo.PhanTram %</option>
                                                     }
 
                                                 }
@@ -201,7 +201,7 @@ rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAs
 
 
                                     </div>
-
+                                
                                     <div>
                                         <button type="submit" class="btn btn-primary btn-block">Thanh Toán</button>
                                     </div>

@@ -155,7 +155,7 @@
                                                                                 }
                                                                                 else if (item.TrangThai == 1)
                                                                                 {
-                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                    <span id="quantity_value">Chờ xác nhận đơn hàng </span>
                                                                                 }
                                                                                 else if (item.TrangThai == 2)
                                                                                 {
@@ -169,7 +169,7 @@
                                                                         </td>
                                                                         <td class="text-right">
                                                                             <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            @if (item.TrangThai ==1)
                                                                             {
                                                                                 <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
 
@@ -295,13 +295,16 @@
                                                                                 }
                                                                                 else if (item.TrangThai == 1)
                                                                                 {
-                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                    <span id="quantity_value">Chờ xác nhận </span>
                                                                                 }
                                                                                 else if (item.TrangThai == 2)
                                                                                 {
-                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
                                                                                 }
-
+                                                                                else if (item.TrangThai == 3)
+                                                                                {
+                                                                                    <span id="quantity_value">Đơn hàng đã bàn giao cho đơn vị vận chuyển</span>
+                                                                                }
 
 
                                                                             </div>
@@ -309,7 +312,7 @@
                                                                         </td>
                                                                         <td class="text-right">
                                                                             <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2 && item.TrangThai != 3)
                                                                             {
                                                                                 <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
 
