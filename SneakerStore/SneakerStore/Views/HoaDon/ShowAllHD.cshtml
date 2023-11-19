@@ -155,13 +155,16 @@
                                                                                 }
                                                                                 else if (item.TrangThai == 1)
                                                                                 {
-                                                                                    <span id="quantity_value">Chờ xác nhận đơn hàng </span>
+                                                                                    <span id="quantity_value">Chờ xác nhận </span>
                                                                                 }
                                                                                 else if (item.TrangThai == 2)
                                                                                 {
-                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
                                                                                 }
-
+                                                                                else if (item.TrangThai == 3)
+                                                                                {
+                                                                                    <span id="quantity_value">Đơn hàng đã bàn giao cho đơn vị vận chuyển</span>
+                                                                                }
 
 
                                                                             </div>
@@ -169,7 +172,7 @@
                                                                         </td>
                                                                         <td class="text-right">
                                                                             <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                                            @if (item.TrangThai ==1)
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2 && item.TrangThai != 3)
                                                                             {
                                                                                 <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
 
@@ -205,7 +208,7 @@
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                    <h3 class="card-title">Chờ Xác Nhận</h3>
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
@@ -232,7 +235,7 @@
 
 
 
-                                                                if (item.IdUser == ViewBag.UserId)
+                                                                if (item.IdUser == ViewBag.UserId &&item.TrangThai==1)
                                                                 {
 
                                                                     <tr>
@@ -349,11 +352,10 @@
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                    <h3 class="card-title">Đang giao</h3>
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
-
 
 
                                                     <table class="table table-borderless table-shopping-cart">
@@ -376,7 +378,7 @@
 
 
 
-                                                                if (item.IdUser == ViewBag.UserId)
+                                                                if (item.IdUser == ViewBag.UserId &&item.TrangThai==2)
                                                                 {
 
                                                                     <tr>
@@ -439,13 +441,16 @@
                                                                                 }
                                                                                 else if (item.TrangThai == 1)
                                                                                 {
-                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                    <span id="quantity_value">Chờ xác nhận </span>
                                                                                 }
                                                                                 else if (item.TrangThai == 2)
                                                                                 {
-                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
                                                                                 }
-
+                                                                                else if (item.TrangThai == 3)
+                                                                                {
+                                                                                    <span id="quantity_value">Đơn hàng đã bàn giao cho đơn vị vận chuyển</span>
+                                                                                }
 
 
                                                                             </div>
@@ -453,7 +458,7 @@
                                                                         </td>
                                                                         <td class="text-right">
                                                                             <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2 && item.TrangThai != 3)
                                                                             {
                                                                                 <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
 
@@ -489,11 +494,10 @@
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Tất Cả Đơn Hàng</h3>
+                                                    <h3 class="card-title">Đã hủy</h3>
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
-
 
 
                                                     <table class="table table-borderless table-shopping-cart">
@@ -516,7 +520,7 @@
 
 
 
-                                                                if (item.IdUser == ViewBag.UserId)
+                                                                if (item.IdUser == ViewBag.UserId &&item.TrangThai==0)
                                                                 {
 
                                                                     <tr>
@@ -579,13 +583,16 @@
                                                                                 }
                                                                                 else if (item.TrangThai == 1)
                                                                                 {
-                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
+                                                                                    <span id="quantity_value">Chờ xác nhận </span>
                                                                                 }
                                                                                 else if (item.TrangThai == 2)
                                                                                 {
-                                                                                    <span id="quantity_value">Shop đang chuẩn bị hàng </span>
+                                                                                    <span id="quantity_value">Đặt hàng thành công </span>
                                                                                 }
-
+                                                                                else if (item.TrangThai == 3)
+                                                                                {
+                                                                                    <span id="quantity_value">Đơn hàng đã bàn giao cho đơn vị vận chuyển</span>
+                                                                                }
 
 
                                                                             </div>
@@ -593,7 +600,7 @@
                                                                         </td>
                                                                         <td class="text-right">
                                                                             <a href="@Url.Action("ShowAllHDCT","HoaDon",new { idhd=item.Id })">  <button class="btn btn-primary">Hóa ĐơnCT</button></a>
-                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2)
+                                                                            @if (item.TrangThai != 0 && item.TrangThai != 2 && item.TrangThai != 3)
                                                                             {
                                                                                 <a href="@Url.Action("Delete","HoaDon",new { idhd=item.Id })"> <button class="btn btn-danger">Hủy Đơn Hàng</button></a>
 
@@ -608,7 +615,6 @@
 
                                                         </tbody>
                                                     </table>
-
 
 
                                                 </div>
