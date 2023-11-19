@@ -16,12 +16,17 @@ namespace SneakerStore.Areas.Admin.Controllers
         }
         public async Task<IActionResult> ShowAllBlog()
         {
-            var httpClient = new HttpClient();
-            string apiURL = "https://localhost:7001/api/Blog/Blog/get-all";
-            var response = await httpClient.GetAsync(apiURL);
-            string apiData = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<List<BlogVM>>(apiData);
-            return View(result);
+            var userIdinSession = HttpContext.Session.GetString("userId");
+            if (!string.IsNullOrEmpty(userIdinSession))
+            {
+                var httpClient = new HttpClient();
+                string apiURL = "https://localhost:7001/api/Blog/Blog/get-all";
+                var response = await httpClient.GetAsync(apiURL);
+                string apiData = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<List<BlogVM>>(apiData);
+                return View(result);
+            }
+            return RedirectToAction("DangNhap", "Acc", new { area = "default" });
         }
 
 
