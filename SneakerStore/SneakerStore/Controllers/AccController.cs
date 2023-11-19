@@ -60,9 +60,13 @@ namespace SneakerStore.Controllers
             return View();
 
         }
-	
+        public async Task<IActionResult> DangKy()
+        { 
+             return View();
+        }
 
-		public async Task<IActionResult> DangKy(UserVM user)
+        [HttpPost]
+        public async Task<IActionResult> DangKy(UserVM user)
         {
             var httpClient = new HttpClient();
             string apiURL = $"https://localhost:7001/api/User/User/create";
@@ -86,10 +90,11 @@ namespace SneakerStore.Controllers
             var response = await httpClient.PostAsync(apiURL, content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("DangNhap", "Acc");
+                ModelState.AddModelError("", "Đăng Ký thành công");
+                //return RedirectToAction("DangNhap", "Acc");
             }
 			ModelState.AddModelError("", "Đăng Ký k thành công");
-            return RedirectToAction("DangNhap", "Acc");
+            return View(us);
 
 
         }

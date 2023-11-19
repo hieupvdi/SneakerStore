@@ -2,115 +2,58 @@
 
 @{
     Layout = null;
-
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in || Sign up from</title>
-    <!-- font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- css stylesheet -->
-    <link rel="stylesheet" href="~/LoginAndRegister/style.css">
+    <title>Login Form | Dan Aleko</title>
+    <link href="~/loginandregister/style.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            @using (Html.BeginForm("DangKy", "Acc", FormMethod.Post))
-            {
-            <form action="#">
-                <h1>Tạo tài khoản</h1>
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>hoặc sử dụng email của bạn để đăng ký</span>
-                <div class="infield">
-                        <input type="Email" placeholder="Email" name="Email" />
-                        @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
-                    <label></label>
-                </div>
-                <div class="infield">
-                    <input type="TenTaiKhoan" placeholder="Tên Tài Khoản" name="TenTaiKhoan" />
-                        @Html.ValidationMessageFor(Model => Model.TenTaiKhoan, "", new { @class = "text-danger" })
-                    <label></label>
-                </div>
-                <div class="infield">
-                        <input type="MatKhau" placeholder="Mật Khẩu" name="MatKhau" />
-                        @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
-                    <label></label>
-                </div>
-                <button>Đăng ký</button>
-            </form>
-            }
-        </div>
-        <div class="form-container sign-in-container">
-            @using (Html.BeginForm("DangNhap", "Acc", FormMethod.Post))
-            {
-            <form action="#">
+    <div class="wrapper">
+        @using (Html.BeginForm("DangNhap", "Acc", FormMethod.Post))
+        {
+            <form action="">
                 <h1>Đăng Nhập</h1>
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>              
+                <div class="input-box">
+                    <input type="text" placeholder="Tên Tài Khoản" name="TenTaiKhoan" required>
+                    @Html.ValidationMessageFor(Model => Model.TenTaiKhoan, "", new { @class = "text-danger" })
+                    <i class='bx bxs-user'></i>
                 </div>
-                <span>hoặc sử dụng tài khoản của bạn</span>
-                <div class="infield">
-                    <input type="TenTaiKhoan" placeholder="Tên Tài Khoản" name="TenTaiKhoan" />                 
-                    <label></label>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Mật Khẩu" name="MatKhau" id="MatKhau" required>
+                    @Html.ValidationMessageFor(Model => Model.MatKhau, "", new { @class = "text-danger" })
+                    <i class='bx bxs-lock-alt'></i>
                 </div>
-                <div class="infield">
-                    <input type="MatKhau" placeholder="Mật Khẩu" name="MatKhau" />                
-                    <label></label>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox" onclick="showHidePassword()">Hiện MK</label>
+                    <a href="#">Quên MK</a>
                 </div>
-                <a href="#" class="forgot">Quên mật khẩu?</a>
-                <button>Đăng Nhập</button>
+                <button type="submit" class="btn">Đăng Nhập</button>
+                <div class="register-link">
+                    <p>Dont have an account? <a href="@Url.Action("DangKy","Acc")">Đăng Ký</a></p>
+                </div>
             </form>
-            }
-        </div>
-        <div class="overlay-container" id="overlayCon">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button>Đăng Nhập</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button>Đăng Ký</button>
-                </div>
-            </div>
-            <button id="overlayBtn"></button>
-        </div>
+        }
     </div>
-
-
-    <!-- js code -->
-    <script>
-        const container = document.getElementById('container');
-        const overlayCon = document.getElementById('overlayCon');
-        const overlayBtn = document.getElementById('overlayBtn');
-
-        overlayBtn.addEventListener('click', () => {
-            container.classList.toggle('right-panel-active');
-            overlayBtn.classList.remove('btnScaled');
-            window.requestAnimationFrame(() => {
-                overlayBtn.classList.add('btnScaled');
-            }
-            )
-        });
-
-
-    </script>
-
 </body>
 </html>
+
+
+<script>
+    function showHidePassword() {
+        var passwordInput = document.getElementById("MatKhau");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>

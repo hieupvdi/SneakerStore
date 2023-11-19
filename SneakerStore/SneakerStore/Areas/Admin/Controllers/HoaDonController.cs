@@ -2,6 +2,8 @@
 using AppData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace SneakerStore.Areas.Admin.Controllers
 {
@@ -21,10 +23,37 @@ namespace SneakerStore.Areas.Admin.Controllers
             var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
             return View(result);
         }
+        public async Task<IActionResult> XacNhan(Guid idhd)
+        {
+            var httpClient = new HttpClient();
+
+            string apiURL3 = $"https://localhost:7001/api/HoaDon/HoaDon/{idhd}";
+            var response3 = await httpClient.GetAsync(apiURL3);
+            string apiData3 = await response3.Content.ReadAsStringAsync();
+            var result3 = JsonConvert.DeserializeObject<HoaDonVM>(apiData3);
+
+
+            result3.TrangThai = 2;
+            var updateHDApiURL = $"https://localhost:7001/api/HoaDon/HoaDon/update/{idhd}";
+            var updateHDJson = JsonConvert.SerializeObject(result3);
+            var updateHDContent = new StringContent(updateHDJson, Encoding.UTF8, "application/json");
+            var updateHDResponse = await httpClient.PutAsync(updateHDApiURL, updateHDContent);
+
+            if (updateHDResponse.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ShowAllHD", "HoaDon");
+            }
+            ModelState.AddModelError("", "Xác Nhận Đơn không thành công");
+            return View();
+           
+        }
 
 
 
-          public async Task<IActionResult> ShowAllHDCT(Guid idhd)
+
+
+
+            public async Task<IActionResult> ShowAllHDCT(Guid idhd)
         {
 
             var httpClient = new HttpClient();

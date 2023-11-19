@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "ThanhToan";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    List<VoucherVM> listVoucher = ViewBag.VoucherData;
 }
 
 <link rel="stylesheet" type="text/css" href="~/client/styles/single_styles.css">
@@ -45,9 +44,6 @@
 
                 <div class="col-md-8 mx-auto">
 
-
-        
-
                 @using (Html.BeginForm("CreateHD", "HoaDon", FormMethod.Post))
                 {
                     @foreach (var user in ViewBag.UserData)
@@ -57,17 +53,22 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Người Nhận:</label>
                                 @Html.TextBoxFor(p => p.NguoiNhan, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(Model => Model.NguoiNhan, "", new { @class = "text-danger" })
                             </div>
 
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">SĐT:</label>
                                 @Html.TextBoxFor(p => p.SDT, new { @class = "form-control"})
-                            
+                                @Html.ValidationMessageFor(Model => Model.SDT, "", new { @class = "text-danger" })
                             </div>
 
+                     
+
+                          
+
                             <input type="hidden" name="DiaChi" value="@ViewBag.DiaChiData">
-                            <span>Địa Chỉ: @ViewBag.DiaChiData</span>
+                            <h5>Địa Chỉ: @ViewBag.DiaChiData</h5>
                        
                         <div class="input-group mb-3">
                             <div class="form-check">
@@ -88,45 +89,14 @@
                         </div>
 
 
-      @*                  <div class="input-group mb-3">
-
-                            <select class="form-control" name="IdVoucher">
-                                    <div class="input-group mb-3">
-                                        <label>Voucher:</label>
-                                    </div>
-                                
-                                    @if (listVoucher != null)
-                                {
-                                    @foreach (var vo in listVoucher)
-                                    {
-                                            if (@ViewBag.TongTienData >= vo.DieuKien)
-                                            {
-
-                                                <option value="@vo.Id">@vo.Ten</option>
-                                            }
-                              
-                                    }
-
-                                }
-                                    @{
-                                        // Đảm bảo khởi tạo các biến bên trong vòng lặp hoặc bên ngoài vòng lặp trước khi sử dụng chúng.
-                                        decimal PhanTram = listVoucher.FirstOrDefault(c => c.Id == @vo.Id)?.PhanTram ?? 0; // Mặc định là 0 nếu không chọn voucher
-                                        decimal totalAmount = ViewBag.TongTienData;
-                                        decimal TongTienGiam = totalAmount - (totalAmount * PhanTram / 100);
-                                    }
-                            </select>
-
-                              
-                        </div>*@
-
-
+    
 
 
                         <div class="input-group mb-3">
                                 <div class="input-group mb-3">
                                     <label>PT Thanh Toán:</label>
                                 </div>
-                            <select class="form-select" name="PTThanhToan" size="3" aria-label="Size 3 select example">
+                            <select class="form-select" name="PTThanhToan" >
                              
                                 @if (ViewBag.PTTTData != null)
                                 {
@@ -141,10 +111,23 @@
 
                         </div>
 
-                           @* <input type="hidden" name="TongTien" value="@TongTienGiam">*@
-                            <h4>Tổng Tiền: @ViewBag.TongTienData</h4>
-                         @*   <h4>Tổng Tiền Giảm:@TongTienGiam</h4>*@
+                        <div class="form-group" >
 
+                                @foreach (var item in ViewBag.VoucherData)
+                                {
+                                    <input type="hidden" name="IdVoucher" value="@item.Id">
+                                    <h5>Voucher:@item.Ten @item.PhanTram %</h5>
+                                }
+
+
+                                <input type="hidden" name="TongTien" value="@ViewBag.TongTienGiamData">
+                                <h5 >Đơn Gía: @ViewBag.TongTienData</h5>
+                                <h5 >Số Tiền Giảm: @(ViewBag.TongTienData - @ViewBag.TongTienGiamData)</h5>
+                                <h5 >Tổng Tiền:@ViewBag.TongTienGiamData</h5>
+
+                        </div>
+                    
+                        <hr>
                              
                         <div>
                             <button type="submit" class="btn btn-primary btn-block">Đặt Hàng</button>
@@ -167,3 +150,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<script>
+
+    function updatePhanTram(selectElement) {
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var phanTramValue = selectedOption.getAttribute("data-phantram");
+
+        // Update the hidden field value
+        document.getElementById("selectedPhanTram").value = phanTramValue;
+    }
+</script>

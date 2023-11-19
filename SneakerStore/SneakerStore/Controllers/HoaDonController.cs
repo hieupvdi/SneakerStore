@@ -45,45 +45,61 @@ namespace SneakerStore.Controllers
 
         public async Task<IActionResult> ThanhToan(HoaDonVM hd)
         {
-
-            var httpClient = new HttpClient();
-
-            var userIdinSession = HttpContext.Session.GetString("userId");
-
-
-            if (!string.IsNullOrEmpty(userIdinSession))
+            if (hd.TongTien==0)
             {
-                Guid userId = Guid.Parse(userIdinSession);
+                return RedirectToAction("ShowAllGHCT", "GioHang");
 
-                ViewBag.TongTienData = hd.TongTien;
-                ViewBag.DiaChiData = hd.DiaChi;
-                ViewBag.IdVoucherData = hd.IdVoucher;
-
-                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
-                var response3 = await httpClient.GetAsync(apiURL3);
-                string apiData3 = await response3.Content.ReadAsStringAsync();
-                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
-                ViewBag.UserData = new List<UserVM> { result3 };
-
-
-                string apiURL5 = "https://localhost:7001/api/Voucher/Voucher/get-all";
-                var response5 = await httpClient.GetAsync(apiURL5);
-                string apiData5 = await response5.Content.ReadAsStringAsync();
-                var result5 = JsonConvert.DeserializeObject<List<VoucherVM>>(apiData5);
-                ViewBag.VoucherData = result5;
-
-
-                string apiURL6 = "https://localhost:7001/api/PhuongThucThanhToan/PTTT/get-all";
-                var response6 = await httpClient.GetAsync(apiURL6);
-                string apiData6 = await response6.Content.ReadAsStringAsync();
-                var result6 = JsonConvert.DeserializeObject<List<PhuongThucThanhToanVM>>(apiData6);
-                ViewBag.PTTTData = result6;
-
-                return View();
 
             }
+            else
+            {
+                var httpClient = new HttpClient();
 
-            return RedirectToAction("DangNhap", "Acc");
+                var userIdinSession = HttpContext.Session.GetString("userId");
+
+
+                if (!string.IsNullOrEmpty(userIdinSession))
+                {
+                    Guid userId = Guid.Parse(userIdinSession);
+
+                    ViewBag.TongTienData = hd.TongTien;
+                    ViewBag.DiaChiData = hd.DiaChi;
+                    ViewBag.DiaChiData = hd.DiaChi;
+
+                    if (hd.IdVoucher != null)
+                    {
+                        string apiURL = $"https://localhost:7001/api/Voucher/Voucher/{hd.IdVoucher}";
+                        var response = await httpClient.GetAsync(apiURL);
+                        string apiData = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<VoucherVM>(apiData);
+                        ViewBag.VoucherData = new List<VoucherVM> { result };
+                        decimal TongTienGiam = hd.TongTien - (hd.TongTien * result.PhanTram / 100);
+                        ViewBag.TongTienGiamData = TongTienGiam;
+
+                    }
+
+
+
+                    string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
+                    var response3 = await httpClient.GetAsync(apiURL3);
+                    string apiData3 = await response3.Content.ReadAsStringAsync();
+                    var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+                    ViewBag.UserData = new List<UserVM> { result3 };
+
+
+                    string apiURL6 = "https://localhost:7001/api/PhuongThucThanhToan/PTTT/get-all";
+                    var response6 = await httpClient.GetAsync(apiURL6);
+                    string apiData6 = await response6.Content.ReadAsStringAsync();
+                    var result6 = JsonConvert.DeserializeObject<List<PhuongThucThanhToanVM>>(apiData6);
+                    ViewBag.PTTTData = result6;
+
+                    return View();
+
+                }
+
+                return RedirectToAction("DangNhap", "Acc");
+            }
+
 
 
 
@@ -92,77 +108,86 @@ namespace SneakerStore.Controllers
 
         public async Task<IActionResult> CreateHD(HoaDonVM hoadon)
         {
-            //Tạo Hóa đơn
-            var userIdinSession = HttpContext.Session.GetString("userId");
-            if (string.IsNullOrEmpty(userIdinSession)) return RedirectToAction("DangNhap", "Acc");
-
-            Guid userId = Guid.Parse(userIdinSession);
-
-            var httpClient = new HttpClient();
-
-            var ApiURL = "https://localhost:7001/api/HoaDon/HoaDon/create";
-            string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
-
-            var response3 = await httpClient.GetAsync(apiURL3);
-            string apiData3 = await response3.Content.ReadAsStringAsync();
-            var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
-            //mã hd tự tăng=>
-
-            string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
-            var response = await httpClient.GetAsync(apiURL);
-            string apiData = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
-
-            var latestInvoice = result.OrderByDescending(h => h.MaHD).FirstOrDefault();
-            int latestInvoiceNumber = latestInvoice != null ? int.Parse(latestInvoice.MaHD.Substring(3)) : 0;
-            int newInvoiceNumber = latestInvoiceNumber + 1;
-            string newMaHD = "HD:" + newInvoiceNumber.ToString();
-
-            //<==mã tự tăng
-
-            var hd = new HoaDonVM
+            if (hoadon.NguoiNhan == null && hoadon.SDT==null)
             {
-                Id=Guid.NewGuid(),
-                IdUser = userId,
-                IdVoucher = hoadon.IdVoucher,
-                MaHD= newMaHD,
-                NgayTao=DateTime.Now,
-                NgayThanhToan=DateTime.Now,
-                NgayShip=DateTime.Now,
-                NgayNhan=DateTime.Now,
-                NguoiNhan= result3.HoTen,
-                PTThanhToan=hoadon.PTThanhToan,
-                DiaChi= hoadon.DiaChi,
-                SDT= result3.SDT,             
-                TienShip=hoadon.TienShip,
-                TongTien=hoadon.TongTien,
-                TrangThai=1,
+                return BadRequest("Đặt hàng không thành công thiếu người nhận hoặc sđt");
 
-
-            };
-
-            var json = JsonConvert.SerializeObject(hd);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var Response = await httpClient.PostAsync(ApiURL, content);
-
-            if (Response.IsSuccessStatusCode)//check hóa đơn tạo thành c
+            }
+            else
             {
-                //tạo Hóa đơn ct
-                string gioHangApiUrl = $"https://localhost:7001/api/GioHangCT/GioHangCT/{userIdinSession}";
-                var gioHangResponse = await httpClient.GetAsync(gioHangApiUrl);
-            
-                   
+
+
+                //Tạo Hóa đơn
+                var userIdinSession = HttpContext.Session.GetString("userId");
+                if (string.IsNullOrEmpty(userIdinSession)) return RedirectToAction("DangNhap", "Acc");
+
+                Guid userId = Guid.Parse(userIdinSession);
+
+                var httpClient = new HttpClient();
+
+                var ApiURL = "https://localhost:7001/api/HoaDon/HoaDon/create";
+                string apiURL3 = $"https://localhost:7001/api/User/User/{userId}";
+
+                var response3 = await httpClient.GetAsync(apiURL3);
+                string apiData3 = await response3.Content.ReadAsStringAsync();
+                var result3 = JsonConvert.DeserializeObject<UserVM>(apiData3);
+                //mã hd tự tăng=>
+
+                string apiURL = "https://localhost:7001/api/HoaDon/HoaDon/get-all";
+                var response = await httpClient.GetAsync(apiURL);
+                string apiData = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<List<HoaDonVM>>(apiData);
+
+                var latestInvoice = result.OrderByDescending(h => h.MaHD).FirstOrDefault();
+                int latestInvoiceNumber = latestInvoice != null ? int.Parse(latestInvoice.MaHD.Substring(3)) : 0;
+                int newInvoiceNumber = latestInvoiceNumber + 1;
+                string newMaHD = "HD:" + newInvoiceNumber.ToString();
+
+                //<==mã tự tăng
+
+                var hd = new HoaDonVM
+                {
+                    Id = Guid.NewGuid(),
+                    IdUser = userId,
+                    IdVoucher = hoadon.IdVoucher,
+                    MaHD = newMaHD,
+                    NgayTao = DateTime.Now,
+                    NgayThanhToan = DateTime.Now,
+                    NgayShip = DateTime.Now,
+                    NgayNhan = DateTime.Now,
+                    NguoiNhan = result3.HoTen,
+                    PTThanhToan = hoadon.PTThanhToan,
+                    DiaChi = hoadon.DiaChi,
+                    SDT = result3.SDT,
+                    TienShip = hoadon.TienShip,
+                    TongTien = hoadon.TongTien,
+                    TrangThai = 1,
+
+
+                };
+
+                var json = JsonConvert.SerializeObject(hd);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var Response = await httpClient.PostAsync(ApiURL, content);
+
+                if (Response.IsSuccessStatusCode)//check hóa đơn tạo thành c
+                {
+                    //tạo Hóa đơn ct
+                    string gioHangApiUrl = $"https://localhost:7001/api/GioHangCT/GioHangCT/{userIdinSession}";
+                    var gioHangResponse = await httpClient.GetAsync(gioHangApiUrl);
+
+
                     string gioHangData = await gioHangResponse.Content.ReadAsStringAsync();
                     var gioHangDataList = JsonConvert.DeserializeObject<List<GioHangCTVM>>(gioHangData);
 
 
                     foreach (var gioHangCT in gioHangDataList)
                     {
-                        
+
                         var hdct = new HoaDonCTVM
                         {
-                           
-                            IdHD =hd.Id,
+
+                            IdHD = hd.Id,
                             IdCTSP = gioHangCT.IdCTSP,
                             SoLuong = gioHangCT.SoLuong,
                             DonGia = gioHangCT.DonGia,
@@ -179,8 +204,8 @@ namespace SneakerStore.Controllers
 
 
                         // cập nhật số lượng
-                    
-                        string CTSPApiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all"; 
+
+                        string CTSPApiURL = "https://localhost:7001/api/CTSanPham/CTSanPham/get-all";
                         var CTSPResponse = await httpClient.GetAsync(CTSPApiURL);
                         var CTSPResponseData = await CTSPResponse.Content.ReadAsStringAsync();
                         var lstCtspVM = JsonConvert.DeserializeObject<List<CTSanPhamVM>>(CTSPResponseData);
@@ -196,7 +221,7 @@ namespace SneakerStore.Controllers
                         var updateProductdetailResponse = await httpClient.PutAsync(updateProductdetailApiURL, updateProductdetailContent);
 
                         // xóa SP giỏ hàng
-                        var deleteGHCTApiURL = $"https://localhost:7001/api/GioHangCT/GioHangCT/Delete/{gioHangCT.Id}"; 
+                        var deleteGHCTApiURL = $"https://localhost:7001/api/GioHangCT/GioHangCT/Delete/{gioHangCT.Id}";
                         var deleteGHCTReponse = await httpClient.DeleteAsync(deleteGHCTApiURL);
 
                     }
@@ -204,15 +229,15 @@ namespace SneakerStore.Controllers
                     return RedirectToAction("ShowAllHD", new { id = hd.Id });
 
 
-                
 
 
+
+                }
+                else
+                {
+                    return BadRequest("Tạo hóa đơn không thành công do: thiếu địa chỉ hoặc voucher");
+                }
             }
-            else
-            {
-                return BadRequest("Tạo hóa đơn không thành công do: thiếu địa chỉ hoặc voucher");
-            }
-
 
         }
 
